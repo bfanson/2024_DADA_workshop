@@ -12,6 +12,18 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Example dataset
 
+```{r downloaddata, echo=FALSE, code_folding = FALSE}
+library(downloadthis)
+  download_file(
+    path='data/Attendance list.xlsx',
+    output_name = "Attendance list.xlsx",
+    button_label = "Download Attendance data",
+    button_type = "warning",
+    has_icon = TRUE,
+    icon = "fa fa-save"
+  )
+```
+
 
 ```{r}
 
