@@ -1,0 +1,35 @@
+---
+title: "Day 1: Getting data into shape"
+description: |
+  Tidyverse world
+author:
+  - name: Ben Fanson
+    url: https://bfanson.github.io/2024DADAworkshop/
+    affiliation: Arthur Rylah Institute
+    affiliation_url: https://www.ari.vic.gov.au/
+date: 2024-09-04
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true # table of content true
+    toc_float: true # make 
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    code_folding: true # awesome buttons to show/hide the code
+draft: false
+slug: fanson2024dada
+---
+
+
+# Header1
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+
