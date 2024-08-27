@@ -1,0 +1,70 @@
+[
+  {
+    "path": "sessions/day1-getting-data-into-shape/",
+    "title": "Day 1: Getting data into shape",
+    "description": "Tidyverse world",
+    "author": [
+      {
+        "name": "Ben Fanson",
+        "url": "https://bfanson.github.io/2024DADAworkshop/"
+      }
+    ],
+    "date": "2024-09-04",
+    "categories": [],
+    "contents": "\r\n\r\nContents\r\nHeader1\r\n\r\nHeader1\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2024-08-28T08:10:34+10:00",
+    "input_file": {}
+  },
+  {
+    "path": "sessions/day2-analysis-workflow/",
+    "title": "Day 2: Analysis workflow",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Paul Moloney",
+        "url": "https://bfanson.github.io/2024DADAworkshop/"
+      }
+    ],
+    "date": "2024-09-03",
+    "categories": [],
+    "contents": "\r\n\r\nContents\r\nHeader1\r\n\r\nHeader1\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2024-08-28T08:06:08+10:00",
+    "input_file": {}
+  },
+  {
+    "path": "sessions/day3-report-writing-with-quarto/",
+    "title": "Day 3: Report writing with Quarto",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Paul Moloney",
+        "url": "https://bfanson.github.io/2024DADAworkshop/"
+      }
+    ],
+    "date": "2024-09-02",
+    "categories": [],
+    "contents": "\r\nHeader 1\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\nHeader 2\r\nHeader 3\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2024-08-28T08:03:53+10:00",
+    "input_file": {}
+  },
+  {
+    "path": "sessions/day4-shiny-apps/",
+    "title": "Day 4: Shiny apps",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Ben Fanson",
+        "url": "https://bfanson.github.io/2024DADAworkshop/"
+      }
+    ],
+    "date": "2024-09-01",
+    "categories": [],
+    "contents": "\r\n\r\nContents\r\nHeader1\r\n\r\nHeader1\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2024-08-28T08:03:42+10:00",
+    "input_file": {}
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "articles": [
+    {
+      "path": "about.html",
+      "title": "About this site",
+      "description": "Some additional details about the website",
+      "author": [],
+      "contents": "\r\nExample dataset\r\n\r\n\r\n\r\nspeed\r\n\r\n\r\ndist\r\n\r\n\r\n4\r\n\r\n\r\n2\r\n\r\n\r\n4\r\n\r\n\r\n10\r\n\r\n\r\n7\r\n\r\n\r\n4\r\n\r\n\r\n7\r\n\r\n\r\n22\r\n\r\n\r\n8\r\n\r\n\r\n16\r\n\r\n\r\n9\r\n\r\n\r\n10\r\n\r\n\r\n10\r\n\r\n\r\n18\r\n\r\n\r\n10\r\n\r\n\r\n26\r\n\r\n\r\n10\r\n\r\n\r\n34\r\n\r\n\r\n11\r\n\r\n\r\n17\r\n\r\n\r\n\r\nSpatial map\r\n\r\n\r\n\r\nMovement\r\n\r\n\r\n\r\n\r\nmapdeck\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2024-08-28T08:50:35+10:00"
+    },
+    {
+      "path": "index.html",
+      "title": "Daily Sesssions",
+      "description": "Welcome to the website. I hope you enjoy it!\n",
+      "author": [],
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2024-08-28T08:47:47+10:00"
+    }
+  ],
+  "collections": ["sessions/sessions.json"]
+}

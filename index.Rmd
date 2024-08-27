@@ -1,5 +1,5 @@
 ---
-title: "2024 DADA workshop"
+title: "Daily Sesssions"
 description: |
   Welcome to the website. I hope you enjoy it!
 site: distill::distill_website
