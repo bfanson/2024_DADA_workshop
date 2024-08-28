@@ -11,9 +11,9 @@
     ],
     "date": "2024-09-04",
     "categories": [],
-    "contents": "\r\n\r\nContents\r\nHeader1\r\n\r\nHeader1\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
+    "contents": "\r\n\r\nContents\r\nHeader1\r\n\r\nHeader1\r\n\r\n\r\nShow code\r\n\r\n  knitr::include_graphics(\"tidyr.pdf\")\r\n\r\n\r\n\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2024-08-28T08:10:34+10:00",
+    "last_modified": "2024-08-28T10:54:42+10:00",
     "input_file": {}
   },
   {
@@ -62,9 +62,9 @@
     ],
     "date": "2024-09-01",
     "categories": [],
-    "contents": "\r\n\r\nContents\r\nHeader1\r\n\r\nHeader1\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
+    "contents": "\r\n\r\nContents\r\nReminder on a few R fundamentals\r\nCreating a shiny app using Rstudio\r\nHeader1\r\nGeneral thoughts\r\nDay Objectives\r\nsteps\r\nShiny Templates\r\nExercise\r\nAdditional resources\r\n\r\nReminder on a few R fundamentals\r\nLISTS\r\nCreating a shiny app using Rstudio\r\nHeader1\r\n\r\n\r\nShow code\r\n\r\n#install.packages(\"shiny\")\r\n\r\n\r\n\r\nYou can find a variety of cheatsheets at https://posit.co/resources/cheatsheets/\r\n\r\n\r\nShow code\r\n\r\n  knitr::include_graphics(\"shiny.pdf\")\r\n\r\n\r\n\r\n\r\nShow code\r\n\r\n# library(shiny) \r\n# ui <- fluidPage(   \"Hello, world!\" ) \r\n# server <- function(input, output, session) { } \r\n# shinyApp(ui, server)\r\n\r\n\r\nGeneral thoughts\r\nFor Shiny Apps, the code looks foreign and a bit are you serious after all this time I spent learning R coding\r\nOnce you get the basic structure, you can easily get started and then it is “Trial and Error”\r\nDay Objectives\r\nUnderstand the core structure of Shiny apps: UI, Server, Reactivity\r\nLearn how to create and run an App locally\r\nLearn how to deploy your App on ARI’s shiny account\r\nsteps\r\nadd UI controls\r\nadd “behaviour”\r\nShiny uses reactive programming to make apps interactive.\r\n\r\nShiny Templates\r\nhow might you look it up\r\nextras at < https://github.com/nanxstats/awesome-shiny-extensions>\r\nExercise\r\nLet’s create replicate\r\nExamples https://shiny.posit.co/r/gallery/\r\nAdditional resources\r\nsee https://mastering-shiny.org/\r\n\r\nAsides can be useful for preso.\r\n\r\n\r\n\r\n",
     "preview": {},
-    "last_modified": "2024-08-28T08:03:42+10:00",
-    "input_file": {}
+    "last_modified": "2024-08-29T08:10:07+10:00",
+    "input_file": "day4-shiny-apps.knit.md"
   }
 ]

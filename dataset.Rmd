@@ -1,0 +1,61 @@
+---
+title: "Dataset"
+description: |
+  Describes the dataset for the workshop
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Header1
+
+# Example dataset
+
+## example of downloading the dataset
+
+```{r downloaddata, echo=FALSE, code_folding = FALSE}
+library(downloadthis)
+  download_file(
+    path='data/Attendance list.xlsx',
+    output_name = "Attendance list.xlsx",
+    button_label = "Download Attendance data",
+    button_type = "warning",
+    has_icon = TRUE,
+    icon = "fa fa-save"
+  )
+```
+
+<br>
+
+## Example of html table (give preview of data)
+
+```{r}
+
+kableExtra::scroll_box( kableExtra::kable(cars[1:10,],'html'),
+                        height="200px", width='180px')
+
+
+```
+
+## Spatial map
+
+```{r}
+library(sf)
+sf_vic <- ozmaps::ozmap_states
+
+mapview::mapview(sf_vic)
+
+```
+
+## Movement (example of adding a nest html)
+
+```{r}
+
+#htmltools::includeHTML('map_flood.html')
+
+```
+
+
+

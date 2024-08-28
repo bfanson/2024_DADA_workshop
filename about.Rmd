@@ -2,54 +2,58 @@
 title: "About this site"
 description: |
   Some additional details about the website
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 2
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+[**Here, we point you to useful resources for various topics**]{style="color:red;"}
+
+# Ummm, pretend that I forgot everything about Rstudio (asking for a mate)...
+
+introduction to Rstudio use...\<\>
+
+<br>
+
+# ...and maybe a refresher on R as well??
+
+introduction to Rstudio use...\<\>
+
+<br>
+
+# Wait, what is this Posit thing? I thought it was Rstudio
+
+switch from Rstudio to Posit...<https://posit.co/>
+
+Rmarkdown to Quarto
+
+Rstudio IDE to Positron <https://github.com/posit-dev/positron/wiki>
+
+<br>
+
+# For f\*sake, now what is this Github thing?
+
+couple notes on navigating Github...<https://github.com/bfanson>
+
+# My brain hurts...
+
+Zen out while checking out the 367 Collins Peregrines....
+
+<iframe width="657" height="370" src="https://www.youtube.com/embed/VLLNNTjaSEA" title="367 Collins Falcons 2024 - South facing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<br>
+
+Panama bird/bat feeders....
+
+<iframe width="654" height="460" src="https://www.youtube.com/embed/VfFfS64rtZE" title="Panama Fruit Feeder Cam at Canopy Lodge powered by EXPLORE.org" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
-# Example dataset
+<br>
 
-```{r downloaddata, echo=FALSE, code_folding = FALSE}
-library(downloadthis)
-  download_file(
-    path='data/Attendance list.xlsx',
-    output_name = "Attendance list.xlsx",
-    button_label = "Download Attendance data",
-    button_type = "warning",
-    has_icon = TRUE,
-    icon = "fa fa-save"
-  )
-```
-
-
-```{r}
-
-kableExtra::scroll_box( kableExtra::kable(cars[1:10,],'html'),
-                        height="200px", width='180px')
-
-
-```
-
-## Spatial map
-
-```{r}
-library(sf)
-sf_vic <- ozmaps::ozmap_states
-
-mapview::mapview(sf_vic)
-
-```
-
-
-
-## Movement
-
-```{r}
-
-#htmltools::includeHTML('map_flood.html')
-
-```
 

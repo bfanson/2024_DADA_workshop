@@ -20,16 +20,28 @@ draft: false
 slug: fanson2024dada
 ---
 
-
-# Header1
-
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+# Header1
+
+
+## Side note about cheatsheats
+
+You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets/>
+
+```{r cheatsheet, out.width='100%', out.height='200%'}
+  knitr::include_graphics("tidyr.pdf")
+```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 Distill is a publication format for scientific and technical writing, native to the web.
 
 Learn more about using Distill at <https://rstudio.github.io/distill>.
-
-

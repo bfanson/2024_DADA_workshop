@@ -1,0 +1,21 @@
+---
+title: "Workshop evaluation"
+description: |
+  Evaluation of workshop
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+
+Below is a shiny App used for the course evaluation [to be added after creating it..,placeholder at the moment]
+
+
+<iframe width="657" height="370" src="https://www.youtube.com/embed/VLLNNTjaSEA" title="367 Collins Falcons 2024 - South facing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+
+

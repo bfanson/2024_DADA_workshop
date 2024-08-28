@@ -20,15 +20,81 @@ draft: false
 slug: fanson2024dada
 ---
 
-# Header1
-
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
+# General thoughts
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+1) For Shiny Apps, the code looks foreign and a bit are you serious after all this time I spent learning R coding
+
+2) Once you get the basic structure, you can easily get started and then it is "Trial and Error"
+
+# Day Objectives
+
+1) Understand the core structure of Shiny apps: UI, Server, Reactivity
+
+2) Learn how to create and run an App locally
+
+3) Learn how to deploy your App on ARI's shiny account
 
 
+
+
+# Reminder on a few R fundamentals
+
+LISTS 
+
+# Creating a shiny app using Rstudio
+
+
+
+# Header1
+
+```{r, class.source="bg-success"}
+#install.packages("shiny")
+
+```
+
+You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets/>
+
+```{r cheatsheet, out.width='100%', out.height='200%'}
+  knitr::include_graphics("shiny.pdf")
+```
+
+```{r}        
+# library(shiny) 
+# ui <- fluidPage(   "Hello, world!" ) 
+# server <- function(input, output, session) { } 
+# shinyApp(ui, server)
+```
+
+
+# steps
+1) add UI controls
+2) add "behaviour"
+Shiny uses reactive programming to make apps interactive. 
+3)
+
+you put R code in renderFunction
+
+
+# Shiny Templates
+
+- how might you look it up
+
+extras at < https://github.com/nanxstats/awesome-shiny-extensions>
+
+# Exercise
+
+Let's create replicate 
+Examples <https://shiny.posit.co/r/gallery/>
+
+
+
+# Additional resources
+
+
+see <https://mastering-shiny.org/>
+
+<aside>Asides can be useful for preso.</aside>

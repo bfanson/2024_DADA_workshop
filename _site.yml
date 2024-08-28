@@ -5,10 +5,14 @@ description: |
 output_dir: "docs"
 navbar:
   right:
-    - text: "Home"
-      href: index.html
-    - text: "About"
-      href: about.html
+    - text: "Workshop Links"
+      menu:
+      - text: "Getting Started"
+        href: about.html
+      - text: "Dataset"
+        href: dataset.html
+      - text: "Workshop Evaluation"
+        href: evaluation.html
     - text: "Extra Resources"
       menu:
         - text: 'Github in R'
