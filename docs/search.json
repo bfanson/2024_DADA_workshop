@@ -6,15 +6,15 @@
       "description": "Some additional details about the website\n",
       "author": [],
       "contents": "\r\n\r\nContents\r\nUmmm, pretend that I forgot everything about Rstudio (asking for a mate)…\r\n…and maybe a refresher on R as well??\r\nWait, what is this Posit thing? I thought it was Rstudio\r\nFor f*sake, now what is this Github thing?\r\nMy brain hurts…\r\n\r\nHere, we point you to useful resources for various topics\r\nUmmm, pretend that I forgot everything about Rstudio (asking for a mate)…\r\nintroduction to Rstudio use…<>\r\n\r\n…and maybe a refresher on R as well??\r\nintroduction to Rstudio use…<>\r\n\r\nWait, what is this Posit thing? I thought it was Rstudio\r\nswitch from Rstudio to Posit…https://posit.co/\r\nRmarkdown to Quarto\r\nRstudio IDE to Positron https://github.com/posit-dev/positron/wiki\r\n\r\nFor f*sake, now what is this Github thing?\r\ncouple notes on navigating Github…https://github.com/bfanson\r\nMy brain hurts…\r\nZen out while checking out the 367 Collins Peregrines….\r\n\r\n\r\n\r\nPanama bird/bat feeders….\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2024-08-29T07:22:42+10:00"
+      "last_modified": "2024-08-29T13:42:22+10:00"
     },
     {
       "path": "dataset.html",
       "title": "Dataset",
       "description": "Describes the dataset for the workshop",
       "author": [],
-      "contents": "\r\nHEader1\r\nExample dataset\r\nexample of downloading the dataset\r\n\r\n\r\n Download Attendance data\r\n\r\n\r\n\r\nExample of html table (give preview of data)\r\n\r\n\r\n\r\nspeed\r\n\r\n\r\ndist\r\n\r\n\r\n4\r\n\r\n\r\n2\r\n\r\n\r\n4\r\n\r\n\r\n10\r\n\r\n\r\n7\r\n\r\n\r\n4\r\n\r\n\r\n7\r\n\r\n\r\n22\r\n\r\n\r\n8\r\n\r\n\r\n16\r\n\r\n\r\n9\r\n\r\n\r\n10\r\n\r\n\r\n10\r\n\r\n\r\n18\r\n\r\n\r\n10\r\n\r\n\r\n26\r\n\r\n\r\n10\r\n\r\n\r\n34\r\n\r\n\r\n11\r\n\r\n\r\n17\r\n\r\n\r\n\r\nSpatial map\r\n\r\n\r\n\r\nMovement (example of adding a nest html)\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2024-08-29T07:22:48+10:00"
+      "contents": "\r\nHeader1\r\nExample dataset\r\nexample of downloading the dataset\r\n\r\n\r\n Download Attendance data\r\n\r\n\r\n\r\nExample of html table (give preview of data)\r\n\r\n\r\n\r\nspeed\r\n\r\n\r\ndist\r\n\r\n\r\n4\r\n\r\n\r\n2\r\n\r\n\r\n4\r\n\r\n\r\n10\r\n\r\n\r\n7\r\n\r\n\r\n4\r\n\r\n\r\n7\r\n\r\n\r\n22\r\n\r\n\r\n8\r\n\r\n\r\n16\r\n\r\n\r\n9\r\n\r\n\r\n10\r\n\r\n\r\n10\r\n\r\n\r\n18\r\n\r\n\r\n10\r\n\r\n\r\n26\r\n\r\n\r\n10\r\n\r\n\r\n34\r\n\r\n\r\n11\r\n\r\n\r\n17\r\n\r\n\r\n\r\nSpatial map\r\n\r\n\r\n\r\nMovement (example of adding a nest html)\r\n\r\n\r\n\r\n\r\n\r\n\r\n",
+      "last_modified": "2024-08-29T13:42:27+10:00"
     },
     {
       "path": "evaluation.html",
@@ -22,7 +22,7 @@
       "description": "Evaluation of workshop",
       "author": [],
       "contents": "\r\nBelow is a shiny App used for the course evaluation [to be added after creating it..,placeholder at the moment]\r\n\r\n\r\n\r\n\r\n\r\n",
-      "last_modified": "2024-08-29T07:22:51+10:00"
+      "last_modified": "2024-08-29T13:42:29+10:00"
     },
     {
       "path": "index.html",
@@ -30,7 +30,21 @@
       "description": "Welcome to the website. I hope you enjoy it!\n",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2024-08-29T07:22:52+10:00"
+      "last_modified": "2024-08-29T13:42:30+10:00"
+    },
+    {
+      "path": "inkscape.html",
+      "title": "Editing pdfs using Inkscape",
+      "description": "Short tutorial on editing pdfs\n",
+      "author": [
+        {
+          "name": "Nora Jones",
+          "url": "https://example.com/norajones"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\r\nPurpose\r\nGetting Inkscape\r\nGo to https://inkscape.org/\r\nShort video tutorial of editing a pdf\r\n\r\n\r\n\r\n",
+      "last_modified": "2024-08-29T13:42:31+10:00"
     }
   ],
   "collections": ["sessions/sessions.json"]
