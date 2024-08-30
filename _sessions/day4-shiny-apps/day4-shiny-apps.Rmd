@@ -38,21 +38,17 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 
 3)  Learn how to deploy your App on ARI's shiny account
 
-
 # Think about how shiny Apps might be useful
 
-## Visualising data for clients 
+## Visualising data for clients
 
 Ibis Tracker - Nev masterpiece
 
-https://arisci.shinyapps.io/ibisTracker/
+<https://arisci.shinyapps.io/ibisTracker/>
 
-## Data sharing - upload 
-
-
+## Data sharing - upload
 
 ## Model simulations
-
 
 # Reminder on a few R fundamentals
 
@@ -71,45 +67,40 @@ You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets
   knitr::include_graphics("shiny.pdf")
 ```
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-s
+<br> <br> <br> <br> <br> <br> <br> <br> <br>
 
-
-```{r}
-# library(shiny) 
-# ui <- fluidPage(   "Hello, world!" ) 
-# server <- function(input, output, session) { } 
-# shinyApp(ui, server)
+``` markdown
+ library(shiny) 
+ ui <- fluidPage(   "Hello, world!" ) 
+ server <- function(input, output, session) { } 
+ shinyApp(ui, server)
 ```
 
 # steps
 
-1)  add UI controls
+1)  add **UI** controls
+    -   this is separated by commas!!!!
+    -   So many nested brackets!!!!
 
-- this is separated by commas!!!!
-- So many nested brackets!!!!
+<!-- -->
 
-2)  add "behaviour" Shiny uses reactive programming to make apps interactive.
+2)  add "behaviour" to server side
+    -   Shiny uses reactive programming to make apps interactive.
+    -   not separated by commas...more like R programming but order does not matter!!! (except if within a reactive() or renderXXX() function
+    -   R code within reactive() and renderXXX() functions
+    -   double-breaks renderXXX({ }} when multiple lines
 
-- not separated by commas...more like R programming but order does not matter!!!
+<!-- -->
 
-3)  
-
-you put R code in renderFunction
+3)  declare your package, global objects prior to setting up your **UI** and **Server**
 
 # Shiny Templates
 
 -   how might you look it up
 
 extras at \< <https://github.com/nanxstats/awesome-shiny-extensions>\>
+
+# AI shiny apps
 
 # Exercise
 
@@ -121,24 +112,19 @@ Let's create replicate Examples <https://shiny.posit.co/r/gallery/>
 
 ## Let's build something
 
-
 # Jumping back to workflow for Apps
-
 
 This will become pretty useful for collaborations and your own self-learning. Also, we now have a ARI shiny account and consistency allows for increased sharing and understanding.
 
-
 # Useful interactive packages for shiny
 
-can check https://r-graph-gallery.com/interactive-charts.html
+can check <https://r-graph-gallery.com/interactive-charts.html>
 
 ## leaflet
 
-
-
 ## plotly
 
-```{r}
+```{r out.height='500px', out.width='500px'}
   library(ggplot2)
   library(plotly)
   f <- ggplot( cars, aes(speed, dist)  ) + geom_point() + geom_smooth()
@@ -146,11 +132,29 @@ can check https://r-graph-gallery.com/interactive-charts.html
 
 ```
 
+<br> <br> <br>
+
+How a shiny App code might look of the above...
+
+```{r dwnldPlotly, echo=FALSE, code_folding = FALSE}
+library(downloadthis)
+  download_file(
+    path='examples/appPlotly.R',
+    output_name = "appPlotly",
+    button_label = "Download Shiny App for plotly",
+    button_type = "warning",
+    has_icon = TRUE,
+    icon = "fa fa-save"
+  )
+```
+
+<br>
+
 ## ggiraph
 
-- I like this one for linking up plots...below, put your cursor over a dot on the left or a bar on the right 
+-   I like this one for linking up plots...below, put your cursor over a dot on the left or a bar on the right
 
-- If you know CSS, can be pretty powerful...
+-   If you know CSS, can be pretty powerful...
 
 ```{r }
 library(ggiraph)
@@ -214,7 +218,7 @@ girafe_options(
 
 How a shiny App code might look of the above...
 
-```{r downloaddata, echo=FALSE, code_folding = FALSE}
+```{r dwnldGgiraph, echo=FALSE, code_folding = FALSE}
 library(downloadthis)
   download_file(
     path='examples/appGgiraph.R',
@@ -227,7 +231,6 @@ library(downloadthis)
 ```
 
 <br>
-
 
 # Deploy your App
 
@@ -249,7 +252,7 @@ rsconnect::setAccountInfo(name="<ACCOUNT>", token="<TOKEN>", secret="<SECRET>")
 
 # Shot bit on layouts
 
-https://shiny.posit.co/r/layouts/
+<https://shiny.posit.co/r/layouts/>
 
 # Beyond showing results
 

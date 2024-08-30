@@ -24,8 +24,19 @@ slug: fanson2024dada
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Header1
+# Day's objectives
 
+
+# Workflow
+
+
+
+# 
+
+
+# Key packages
+
+- run some code to pull key hexstickers together
 
 ## Side note about cheatsheats
 
@@ -35,12 +46,7 @@ You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets
   knitr::include_graphics("tidyr.pdf")
 ```
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br> <br> <br> <br> <br> <br>
 
 Distill is a publication format for scientific and technical writing, native to the web.
 

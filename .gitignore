@@ -44,3 +44,10 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# inkscape files
+.svg
+
+# images
+hexsticker/
+

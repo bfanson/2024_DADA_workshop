@@ -7,8 +7,8 @@ navbar:
   right:
     - text: "Workshop Links"
       menu:
-      - text: "Getting Started"
-        href: about.html
+      - text: "Workshop Overview"
+        href: course_overview.html
       - text: "Dataset"
         href: dataset.html
       - text: "Workshop Evaluation"
