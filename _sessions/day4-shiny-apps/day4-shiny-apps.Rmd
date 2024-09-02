@@ -76,7 +76,7 @@ We will work through an example of building a simple app that displays a graph d
 
 ### Setting up the app
 
-![](images/setup_page.png)
+![](images/setup_page.png){width="50%"}
 
 For you app setup, you can either select a single file called `app.R` [like we did in the example] or you can create two files: `ui.R` and `server.R`. What this is doing is just breaking up the one file into two, otherwise basically the same. The advantage of the latter is in larger apps and for reusing code. We will stick with one file method for rest of today.
 
@@ -105,7 +105,7 @@ shinyApp(ui = ui, server = server)
 
 Visual model of the file...
 
-![](images/shiny_model.png)
+![](images/shiny_model.png){width="50%"}
 
 ## UI (= user interface)
 
@@ -119,7 +119,7 @@ XXXXXX CREATE IMAGE OF DIFFERENT LAYOUTS XXXXXXX
 
 Of course the cheatsheet has some basic layout functions
 
-![](images/ui_layout.png)
+![](images/ui_layout.png){width="40%"}
 
 ### Step 2: create the inputs objects: buttons, inputs, drop-down menu
 
@@ -127,11 +127,11 @@ Once layout is figured out, now you add in the input objects. In our example tha
 
 Again, cheatsheet has the basic ones listed for you
 
-![](images/shiny_input_cheat.png)
+![](images/shiny_input_cheat.png){width="300"}
 
 Let's have a look at the cheatsheet
 
-![](images/shiny_input_cheat.png)
+![](images/shiny_input_cheat.png){width="40%"}
 
 **Few key points**
 
@@ -151,7 +151,7 @@ Let's have a look at the cheatsheet
 
 The server is the heart of the app. Let revisit the visual model...
 
-![](images/shiny_serverside.png){width="50%"}
+![](images/shiny_serverside.png){width="40%"}
 
 Three main bits... 1) You have the inputs coming in that will be used 2) R code that will take the inputs and convert to new output(s) 3) the output list is created and exported back to UI
 
@@ -179,7 +179,7 @@ server <- function(input, output) {
 
 Alright, let's look more at the options for output in the cheatsheet
 
-![](images/server_cheatsheet_box.png)
+![](images/server_cheatsheet_box.png){width="500"}
 
 Note - this is not a comprehensive list and packages might have then own renderXXX()
 
@@ -278,7 +278,7 @@ can check <https://r-graph-gallery.com/interactive-charts.html>
 
 ### `mapview` package
 
-The mapview package can be used to set up a simple, quick leaflet.  This would be most useful when the leaflet is created on startup.  For instance, you might want to show all the sites surveyed and attach metadata (e.g. dates surveyed, number of fish caught, number of plots) to that point.  
+The mapview package can be used to set up a simple, quick leaflet. This would be most useful when the leaflet is created on startup. For instance, you might want to show all the sites surveyed and attach metadata (e.g. dates surveyed, number of fish caught, number of plots) to that point.
 
 ```{r mapview, eval=F}
   mapview::renderMapview()  # server side
@@ -287,12 +287,11 @@ The mapview package can be used to set up a simple, quick leaflet.  This would b
 
 ### `leaflet` package
 
-Now, if you are going to build maps that will change with user input, it is best to build from "scratch" using leaflet package (+ other leaflet extra packages; see Justin's intro on leaflet's XXXXXXX) 
+Now, if you are going to build maps that will change with user input, it is best to build from "scratch" using leaflet package (+ other leaflet extra packages; see Justin's intro on leaflet's XXXXXXX)
 
-When you have user inputs affecting the map shown, you want to try to avoid rebuilding the map object and rather just modify the elements that the user wants changed (e.g. drop lines and add points instead).  This requires using reactive programming and `observe()` functions.  Ask Nev to share his app code or 
+When you have user inputs affecting the map shown, you want to try to avoid rebuilding the map object and rather just modify the elements that the user wants changed (e.g. drop lines and add points instead). This requires using reactive programming and `observe()` functions. Ask Nev to share his app code or
 
 XXXXXX find apps to reference on gallery XXXXX
-
 
 ```{r eval=F}
   leaflet::leafletOutput()  # UI side
@@ -301,9 +300,6 @@ XXXXXX find apps to reference on gallery XXXXX
   leaflet::leafletProxy()   # this is the server function that updates the map 
 
 ```
-
-
-
 
 ## plotly
 
@@ -507,10 +503,9 @@ Build a shiny app to communicate Day 2 analysis results to your client. Things y
 
 -   A map
 -   Model estimates
-
 :::
 
-XXXXX create a simple shiny app for study results XXXXX 
+XXXXX create a simple shiny app for study results XXXXX
 
 ```{r dwnldStudy, eval=F, echo=FALSE, code_folding = FALSE}
 library(downloadthis)
@@ -524,9 +519,4 @@ library(downloadthis)
   )
 ```
 
-_Possible steps:_
-1)  Decide on what outputs you want to show
-2)  How does the user interact with the app?
-3)  Based on the outputs, which layout works best for you?  Go to shiny layouts to pick one or try AI
-4)  
-
+*Possible steps:* 1) Decide on what outputs you want to show 2) How does the user interact with the app? 3) Based on the outputs, which layout works best for you? Go to shiny layouts to pick one or try AI 4)

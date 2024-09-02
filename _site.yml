@@ -13,6 +13,8 @@ navbar:
         href: dataset.html
       - text: "Workshop Evaluation"
         href: evaluation.html
+      - text: "Daily sessions"
+        href: index.html
     - text: "Extra Resources"
       menu:
         - text: 'Github in R'
