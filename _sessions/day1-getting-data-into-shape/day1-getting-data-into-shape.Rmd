@@ -26,28 +26,134 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Day's objectives
 
-
-# Workflow
-
-
-
-# 
-
+1)  Understand workflow, why it is important, and how to do it using Rstudio/R
+2)  Have an understanding of the tidyverse framework and its key packages
+3)  Work through an example
 
 # Key packages
 
-- run some code to pull key hexstickers together
+![](images/tidyverse.png){width="10%"} ![](images/tidyr.png){width="10%"} ![](images/dplyr.png){width="10%"} ![](images/stringr.png){width="10%"} ![](images/lubridate.png){width="10%"}
 
-## Side note about cheatsheats
+
+# Example of some workflows
+
+## mine
+
+## Paul's
+
+## Commonalities
+
+# Advantages of workflow
+
+## asfd
+
+## adsf
+
+# Dataset for workshop
+
+For this workshop, we will you an example dataset to go through the whole workflow process.  
+
+
+# Rstudio
 
 You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets/>
 
+
+## Basics
+
+-   assume familiar with
+-   might want to turn off .Rdata so everything is fresh on startup (no issues with previous objects so completely reproducible)
+-   
+
+## Tips and tricks
+
+-   tab
+-   fills in paths
+-   hexcode color coating
+-   code folding (\#)
+-   insert pipe: ctrl+shift+M %\>%
+-   comment: ctrl + shift + C
+-   find in all files
+
+# Programming good technique
+
+-   consistent style
+-   modularize your code (functions - slightly more advanced)
+
+# Tidyverse framework
+
+![](images/tidyverse.png){width="10%"}
+
+## Historical context
+
+-   quirky things about R: factors vs character, NAs,
+
+-   tibble is data.frame v2.0
+
+    -   better printing of the data
+    -   handles some of the quirky things that caught up people
+    -   column names
+
+-   lubridate fixed date quirks
+
+# Importing
+
+## Excel files
+
+![](images/readxl.png){width="10%"}
+
+## CSV/Table
+
+![](images/readr.png){width="10%"}
+
+# Joins
+
+![](images/dplyr.png){width="10%"}
+
 ```{r cheatsheet, out.width='100%', out.height='200%'}
-  knitr::include_graphics("tidyr.pdf")
 ```
+
+  knitr::include_graphics("dplyr.pdf")
 
 <br> <br> <br> <br> <br> <br>
 
-Distill is a publication format for scientific and technical writing, native to the web.
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+Note: joins = merges (synonyms)
+
+
+## Tips and tricks
+
+-   Essential to make sure that the number of rows out matches your expectation
+-   Almost all my joins are 
+
+# Restructuring
+
+![](images/tidyr.png){width="10%"}
+
+```{r cheatsheet, out.width='100%', out.height='200%'}
+```
+ knitr::include_graphics("tidyr.pdf")
+
+<br> <br> <br> <br> <br> <br>
+
+# String manipulation
+
+![](images/stringr.png){width="10%"}
+
+```{r cheatsheet, out.width='100%', out.height='200%'}
+```
+  knitr::include_graphics("stringr.pdf")
+
+<br> <br> <br> <br> <br> <br>
+
+
+# Date/time
+
+![](images/lubridate.png){width="10%"}
+
+```{r cheatsheet, out.width='100%', out.height='200%'}
+```
+
+  knitr::include_graphics("lubridate.pdf")
+<br> <br> <br> <br> <br> <br>
+

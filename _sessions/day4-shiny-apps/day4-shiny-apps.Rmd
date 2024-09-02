@@ -24,25 +24,185 @@ slug: fanson2024dada
 knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 ```
 
-# General thoughts
+# Day's learning objectives
 
-1)  For Shiny Apps, the code looks foreign and a bit are you serious after all this time I spent learning R coding
+1)  Have a good understanding of what Shiny apps can do and how it might be useful for you
 
-2)  Once you get the basic structure, you can easily get started and then it is "Trial and Error"
+2)  Understand the core structure of Shiny apps: UI, Server, Reactivity
 
-# Day Objectives
+3)  Learn how to create and run an App locally as well as deploy on ARI's shiny account
 
-1)  Understand the core structure of Shiny apps: UI, Server, Reactivity
+4)  **Feel confident enough to grab example code from Rshiny gallery** `r emo::ji('cross')`
 
-2)  Learn how to create and run an App locally
+# Key packages
 
-3)  Learn how to deploy your App on ARI's shiny account
+![](images/shiny.png){width="10%"} ![](images/rsconnect.png){width="10%"}
+
+# Pep talk
+
+Okay, before we get started, I think that it is useful to give a pep talk. For the more programming-phobic of you, the Shiny code will look foreign. You first reaction might be "for f\*ksake, I am a researcher, not a programmer and I do not want to be programmer" and "are you serious after all this time I spent learning R coding and now I have to learn another type of programming??"
+
+```{r shine_ex, include=T, echo=T,eval=F, collapse=T}
+library(shiny)
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+  fluidRow( 
+    selectInput('x','X-Variable', choices = names(mtcars)),
+    selectInput('y','Y-Variable', choices = names(mtcars)),
+    plotOutput('plot') 
+)
+)
+# Define server logic required to draw a histogram
+server <- function(input, output, session) {
+  output$plot <- renderPlot({
+    plot( mtcars[,input$x], mtcars[,input$y] )
+    
+  })
+}# Run the application 
+
+shinyApp(ui = ui, server = server)
+```
+
+But, we swear that it is not a bad at it looks. Once you get beyond the **foreignness of the code**, we guarantee that with a little guidance, you can easily get started making your own apps in minutes. It is just about **getting the basic structure** and then having the **confidence to do "trial-and-error"** with borrowed code. Just be forewarned, shiny Apps can become addicting!!!
+
+# Let's build one together
+
+## Go through a simple example
+
+We will work through an example of building a simple app that displays a graph depending on the conditions selected. The example will demonstrate AI here...
+
+## Walk through the key bits
+
+### Setting up the app
+
+![](images/setup_page.png)
+
+For you app setup, you can either select a single file called `app.R` [like we did in the example] or you can create two files: `ui.R` and `server.R`. What this is doing is just breaking up the one file into two, otherwise basically the same. The advantage of the latter is in larger apps and for reusing code. We will stick with one file method for rest of today.
+
+## Structure of the file
+
+```{r file_str, eval=F}
+
+# 1) Define extra packages and global objects (e.g. your dataset, model results, formats...)
+library(shiny)
+library(tidyverse)
+
+
+# 2) Define UI for application [how it looks to the user]
+ui <- fluidPage(    
+  
+)
+
+# 3) Define server logic [steps taken when app starts and user clicks something]
+server <- function(input, output) {
+}
+
+# 4) Run the application 
+shinyApp(ui = ui, server = server)
+
+```
+
+Visual model of the file...
+
+![](images/shiny_model.png)
+
+## UI (= user interface)
+
+This is what the user will be using to explore your data/results/visualizations.
+
+### Step 1: pick a layout
+
+First step is determining what kind of layout you want.  Single panel, main panel with sidepanel, tabs 
+
+XXXXXX CREATE IMAGE OF DIFFERENT LAYOUTS XXXXXXX
+
+
+Of course the cheatsheet has some basic layout functions
+
+![](images/ui_layout.png)
+
+### Step 2: create the inputs objects: buttons, inputs, drop-down menu
+
+Once layout is figured out, now you add in the input objects.  In our example that was a drop-down menu that allowed the user to pick cylinder size.
+
+Again, cheatsheet has the basic ones listed for you
+
+![](images/shiny_input_cheat.png)
+
+
+
+Let's have a look at the cheatsheet
+
+![](images/shiny_input_cheat.png)
+
+**Few key points**
+
+-   basically creating html using simple functions
+
+-   
+
+## input
+
+-   like an R list
+
+-   setup by the UI
+
+-   can only be changed by the user (immutable from being changed in the server code)
+
+## server
+
+The server is the heart of the app. Let revisit the visual model...
+
+![](images/shiny_serverside.png){width="50%"}
+
+Three main bits... 1) You have the inputs coming in that will be used 2) R code that will take the inputs and convert to new output(s) 3) the output list is created and exported back to UI
+
+Let's look a little closer at the server code
+
+```{r server_code, eval=F}
+server <- function(input, output) {
+  output$scatterPlot <- renderPlot({
+    # Filter the data based on the selected number of cylinders
+    filteredData <- mtcars[mtcars$cyl == input$cyl, ]
+    
+    # Create the scatterplot with ggplot2
+    ggplot(filteredData, aes(x = hp, y = mpg)) +
+      geom_point() +
+      geom_smooth(method = "lm", se = TRUE, color = "blue") +
+      labs(title = paste("Scatterplot of hp vs mpg for", input$cyl, "cylinders"),
+           x = "Horsepower (hp)",
+           y = "Miles per Gallon (mpg)") +
+      theme_minimal()
+  })
+  
+}
+
+```
+
+Alright, let's look more at the options for output in the cheatsheet
+
+![](images/server_cheatsheet_box.png)
+
+Note - this is not a comprehensive list and packages might have then own renderXXX()
+
+## output
+
+-   basically a list sending the outputs back to the UI to display
+-   key bit here is that there are specific functions to output that pair up with renderXXX()
+
+![](server_cheatsheet_box.PNG)
+
+
+## Folder structure
+
+
 
 # Think about how shiny Apps might be useful
 
 ## Visualising data for clients
 
-Ibis Tracker - Nev masterpiece
+**Ibis Tracker - Nev's masterpiece**
 
 <https://arisci.shinyapps.io/ibisTracker/>
 
@@ -50,11 +210,7 @@ Ibis Tracker - Nev masterpiece
 
 ## Model simulations
 
-# Reminder on a few R fundamentals
-
-LISTS
-
-# Creating a shiny app using Rstudio
+## Creating a shiny app using Rstudio
 
 ```{r, class.source="bg-success"}
 #install.packages("shiny")
@@ -69,12 +225,16 @@ You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets
 
 <br> <br> <br> <br> <br> <br> <br> <br> <br>
 
-``` markdown
+```{r echo=T, eval=F}
  library(shiny) 
  ui <- fluidPage(   "Hello, world!" ) 
  server <- function(input, output, session) { } 
  shinyApp(ui, server)
 ```
+
+# Reminder on a few R fundamentals
+
+LISTS
 
 # steps
 
@@ -106,7 +266,7 @@ extras at \< <https://github.com/nanxstats/awesome-shiny-extensions>\>
 
 Let's create replicate Examples <https://shiny.posit.co/r/gallery/>
 
-# Walk through of creating App for our dataset
+# Your turn: creating an app for our dataset
 
 ## App design
 
@@ -236,21 +396,64 @@ library(downloadthis)
 
 ## ARI shiny account
 
-## rsconnect package
+Thanks to Nev and Jim in particular `r emo::ji('clap')`, we now have a ARI shiny **Professional** account (called *arisci)*. This account is available to all ARI staff though we do have limits on the number of account users (max = 25 user accounts) but it can have an unlimited number of apps and has 10,000 usage hours (per month). The shiny apps are hosted on <https://www.shinyapps.io/> and have [https://**arisci.shinyapps.io**/XXAppNameXX](https://arisci.shinyapps.io/XXAppNameXX__){.uri} address (e.g. <https://arisci.shinyapps.io/ibisTracker/>).
 
-```{r eval=F, class.source="bg-danger", class.output="bg-warning"}
-install.packages('rsconnect')
+### Setting up a shiny account
+
+1.  Chat with others in your area and decide whether it may be useful to have a program-wide (similar) account for multiple users. If you are likely a higher user, it may be best to have your own account
+
+2.  Email Jim Thomson ["The Gatekeeper"] requesting
+
+3.  You will receive an invite to create an account. For your account, you will use your email (or designated person) as the username and then set a password
+
+## linking your Rstudio to shiny server
+
+All account holders can access all the apps on the shared account. To ensure that you do not mess with other user's apps accidentally please use the rsconnect package for all you uploading, modification, archiving and deletion of apps -- you connection will have its own token. <https://cran.r-project.org/web/packages/rsconnect/readme/README.html>.
+
+![](images/deploy_link.PNG)
+
+If you prefer, you can use rsconnect package via code. Get the name, token, and secret info from the token page when logged into <https://www.shinyapps.io/>.
+
+```{r eval=F}
+rsconnect::setAccountInfo(name='arisci',
+ 			                    token='XXXXX',
+                   			  secret='XXXXX' )  
 ```
 
-``` markdown
-install.packages('rsconnect')
+## Deploying your app
+
+You can use the publish approach via Rstudio (GUI approach):
+
+![](images/deploy_publish.PNG)
+
+Or you can do the rsconnect way (just make sure the current directory is where the app is)
+
+```{r eval=F}
+rsconnect::deployApp( )  
+
+# or if in a different directory, specify the director
+
+rsconnect::deployApp('app/appAmazing' )  
+
 ```
 
-``` markdown
-rsconnect::setAccountInfo(name="<ACCOUNT>", token="<TOKEN>", secret="<SECRET>")
+## Archiving/deleting your app
+
+To prevent deleting of others apps, you should archive the app using rsconnect code below. You can just type into Rconsole and run, assuming that you have setup your shiny connection (as shown above)
+
+```{r eval=F}
+rsconnect::terminateApp(appName = 'appName')  # this will archive the app.
 ```
 
-# Shot bit on layouts
+## Creating *Public* apps
+
+At the moment, a protocol is being developed to request that you can make your app "public" (sharing the link beyond biodiversity division) if it contains any data that is not otherwise public, or potentially have any sensitivities. For this to occur, a Manager/Director sign off will be required for the final published version. Until a formal process is solidified, an email with a brief description of the content of the app, its intended audience, and whether it will be password protected for end users or not along with the request should suffice.
+
+## WRT to Passwords
+
+Creating logins/passwords is another can of worms. There are multiple packages out there to help, e.g. shinyauthr, shinymanager. If you need at some point, probably a great question for QEARI and see what people are doing.
+
+# Short bit on layouts
 
 <https://shiny.posit.co/r/layouts/>
 
@@ -269,3 +472,7 @@ For useful resources: <https://shiny.posit.co/r/articles/> For useful examples: 
 see <https://mastering-shiny.org/>
 
 <aside>Asides can be useful for preso.</aside>
+
+# Your task...
+
+Prize for best app - Build an app for voting...
