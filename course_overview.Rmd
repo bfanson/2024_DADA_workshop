@@ -1,0 +1,111 @@
+---
+title: "Overview of workshop"
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true # table of content true
+    toc_float: true # make 
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    code_folding: true # awesome buttons to show/hide the code
+draft: false
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# What the workshop is trying to do
+
+-   Become familiar with data analyst workflow
+-   Learn a workflow from data cleaning to analysis to presenting/communicating results in one platform
+-   Increase your knowledge about the R workflow, resources, and capabilities `r emo::ji("+1")`
+
+# What is it **NOT** trying to do
+
+-   Turn you into a R programmer in 4 days
+-   Going in-depth into any specific topic (except R workflow)
+-   Make you cry `r emo::ji("cry")`
+
+# Learning objectives
+
+1)  Understand "modern" workflow using R environment
+
+2)  Identify what R packages are routinely used for each analysis steps
+
+3)  Improve your workflow efficiency, reproducibility, and "general sanity"
+
+4)  Have a resource to reference when stuck or need to refresh memory
+
+# Workshop Structure
+
+This is 4-day workshop with each day running from 9am-12pm. During each day's session, we will cover a new topic in the workflow pipeline. The session will be a mix of lecturing/showing with hands-on section.
+
+1)  Monday 2024SEP16: Overview of workflow, importing, cleaning
+
+2)  Tuesday 2024SEP17: Analysis of data
+
+3)  Wednesday 2024SEP18: Creating reports
+
+4)  Thursday 2024SEP19: Creating shiny Apps
+
+**Importantly, tea will be provided!! `r emo::ji("happy")`**
+
+# What to expect
+
+## Approach
+
+Compared to when we started providing biometrics workshops, the amount of resources and online learning tools has exploded. Partly as a consequence, there has been a homogenization of workflow driven by key leaders in the area that have pushed the technology and analysis paradigms.
+
+Given this, we will attempt in this workshop to act more as a guide to help you develop a solid framework that you can use as a launching point. We will point out amazing resources out but also hoping that workshop will give you the foundation to dive deeper into the topics specific to your research/needs.
+
+During this workshop, we will use our workflow cheatsheet to structure the workshop:
+
+```{r out.width='100%', out.height='200%'}
+  knitr::include_graphics("pdfs/workflow.pdf")
+```
+
+<br> <br> <br> <br> <br> <br>
+
+## Need to take a step-back at times
+
+For some, the last two days might push their limits but they are important skills to develop as how we communicate research (and the expectations) is changing quickly.
+
+On Day 3 (creating reports), the Quarto(/Rmarkdown) approach takes a bit to get used to if you are WYSIWYG (**W**hat **Y**ou **S**ee **I**s **W**hat **Y**ou **G**et). This can take a little bit to get used and best to take in steps. Most importantly, once you get a template to work from, you can usually modify fairly easily, often having no clue how most of it works.
+
+Now, for Day 4 (Shiny Apps), Shiny is going to look (frustratingly??) different as shown below (heads up):
+
+```{r shine_ex, include=T, echo=T,eval=F, collapse=T}
+library(shiny)
+
+# Define UI for application that draws a histogram
+ui <- fluidPage(
+  fluidRow( 
+    selectInput('x','X-Variable', choices = names(mtcars)),
+    selectInput('y','Y-Variable', choices = names(mtcars)),
+    plotOutput('plot') 
+)
+)
+# Define server logic required to draw a histogram
+server <- function(input, output, session) {
+  output$plot <- renderPlot({
+    plot( mtcars[,input$x], mtcars[,input$y] )
+    
+  })
+}# Run the application 
+
+shinyApp(ui = ui, server = server)
+```
+
+However, shiny apps have a very basic structure and once you get that (and a few other key bits), you can often grab other people's code and modify slightly to get what you need.
+
+The goal here is not to make you a programmer but familiar with the tools that you can tinker away.
+
+# Plug for QEARI 
+
+Just a reminder QEARI (Quantitative Ecology ARI) is a great resource and a safe place for asking "dumb" questions. The amount expertise among its regulars is impressively! There are multiple channels to ask questions including a **new one for shiny Apps**!!!
+
+![](images/course_overview/teams_qeari.PNG)
+
