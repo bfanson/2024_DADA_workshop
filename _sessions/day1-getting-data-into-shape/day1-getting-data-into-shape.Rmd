@@ -96,6 +96,8 @@ You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets
 
 -   lubridate fixed date quirks
 
+
+
 # Importing
 
 ## Excel files
@@ -105,6 +107,13 @@ You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets
 ## CSV/Table
 
 ![](images/readr.png){width="10%"}
+
+::: {#task_read .greeting .message style="background: lightgrey;"}
+**Your Task**
+
+
+:::
+
 
 # Joins
 
@@ -126,6 +135,14 @@ Note: joins = merges (synonyms)
 -   Essential to make sure that the number of rows out matches your expectation
 -   Almost all my joins are 
 
+
+::: {#task_join .greeting .message style="background: lightgrey;"}
+**Your Task**
+
+
+:::
+
+
 # Restructuring
 
 ![](images/tidyr.png){width="10%"}
@@ -135,6 +152,14 @@ Note: joins = merges (synonyms)
  knitr::include_graphics("tidyr.pdf")
 
 <br> <br> <br> <br> <br> <br>
+
+
+::: {#task_shape .greeting .message style="background: lightgrey;"}
+**Your Task**
+
+
+:::
+
 
 # String manipulation
 
@@ -147,6 +172,12 @@ Note: joins = merges (synonyms)
 <br> <br> <br> <br> <br> <br>
 
 
+::: {#task_str .greeting .message style="background: lightgrey;"}
+**Your Task**
+
+:::
+
+
 # Date/time
 
 ![](images/lubridate.png){width="10%"}
@@ -157,3 +188,9 @@ Note: joins = merges (synonyms)
   knitr::include_graphics("lubridate.pdf")
 <br> <br> <br> <br> <br> <br>
 
+
+::: {#task_date .greeting .message style="background: lightgrey;"}
+**Your Task**
+
+
+:::

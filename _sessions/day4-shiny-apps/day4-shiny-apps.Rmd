@@ -113,10 +113,9 @@ This is what the user will be using to explore your data/results/visualizations.
 
 ### Step 1: pick a layout
 
-First step is determining what kind of layout you want.  Single panel, main panel with sidepanel, tabs 
+First step is determining what kind of layout you want. Single panel, main panel with sidepanel, tabs
 
 XXXXXX CREATE IMAGE OF DIFFERENT LAYOUTS XXXXXXX
-
 
 Of course the cheatsheet has some basic layout functions
 
@@ -124,13 +123,11 @@ Of course the cheatsheet has some basic layout functions
 
 ### Step 2: create the inputs objects: buttons, inputs, drop-down menu
 
-Once layout is figured out, now you add in the input objects.  In our example that was a drop-down menu that allowed the user to pick cylinder size.
+Once layout is figured out, now you add in the input objects. In our example that was a drop-down menu that allowed the user to pick cylinder size.
 
 Again, cheatsheet has the basic ones listed for you
 
 ![](images/shiny_input_cheat.png)
-
-
 
 Let's have a look at the cheatsheet
 
@@ -193,10 +190,7 @@ Note - this is not a comprehensive list and packages might have then own renderX
 
 ![](server_cheatsheet_box.PNG)
 
-
 ## Folder structure
-
-
 
 # Think about how shiny Apps might be useful
 
@@ -281,6 +275,35 @@ This will become pretty useful for collaborations and your own self-learning. Al
 can check <https://r-graph-gallery.com/interactive-charts.html>
 
 ## leaflet
+
+### `mapview` package
+
+The mapview package can be used to set up a simple, quick leaflet.  This would be most useful when the leaflet is created on startup.  For instance, you might want to show all the sites surveyed and attach metadata (e.g. dates surveyed, number of fish caught, number of plots) to that point.  
+
+```{r mapview, eval=F}
+  mapview::renderMapview()  # server side
+  mapview::mapviewOutput()  # UI side
+```
+
+### `leaflet` package
+
+Now, if you are going to build maps that will change with user input, it is best to build from "scratch" using leaflet package (+ other leaflet extra packages; see Justin's intro on leaflet's XXXXXXX) 
+
+When you have user inputs affecting the map shown, you want to try to avoid rebuilding the map object and rather just modify the elements that the user wants changed (e.g. drop lines and add points instead).  This requires using reactive programming and `observe()` functions.  Ask Nev to share his app code or 
+
+XXXXXX find apps to reference on gallery XXXXX
+
+
+```{r eval=F}
+  leaflet::leafletOutput()  # UI side
+
+  leaflet::renderLeaflet()  # server side - creates the basemap
+  leaflet::leafletProxy()   # this is the server function that updates the map 
+
+```
+
+
+
 
 ## plotly
 
@@ -378,16 +401,16 @@ girafe_options(
 
 How a shiny App code might look of the above...
 
-```{r dwnldGgiraph, echo=FALSE, code_folding = FALSE}
+```{r dwnldGgiraph, eval=F, echo=FALSE, code_folding = FALSE}
 library(downloadthis)
-  download_file(
-    path='examples/appGgiraph.R',
-    output_name = "appGgiraph",
-    button_label = "Download Shiny App for ggiraph",
-    button_type = "warning",
-    has_icon = TRUE,
-    icon = "fa fa-save"
-  )
+  # download_file(
+  #   path='examples/appGgiraph.R',
+  #   output_name = "appGgiraph",
+  #   button_label = "Download Shiny App for ggiraph",
+  #   button_type = "warning",
+  #   has_icon = TRUE,
+  #   icon = "fa fa-save"
+  # )
 ```
 
 <br>
@@ -431,7 +454,7 @@ Or you can do the rsconnect way (just make sure the current directory is where t
 ```{r eval=F}
 rsconnect::deployApp( )  
 
-# or if in a different directory, specify the director
+# or if in a different directory, specify the directory
 
 rsconnect::deployApp('app/appAmazing' )  
 
@@ -476,3 +499,34 @@ see <https://mastering-shiny.org/>
 # Your task...
 
 Prize for best app - Build an app for voting...
+
+::: {#task .greeting .message style="background: lightgrey;"}
+**Your Turn**
+
+Build a shiny app to communicate Day 2 analysis results to your client. Things you might want to include:
+
+-   A map
+-   Model estimates
+
+:::
+
+XXXXX create a simple shiny app for study results XXXXX 
+
+```{r dwnldStudy, eval=F, echo=FALSE, code_folding = FALSE}
+library(downloadthis)
+  download_file(
+    path='examples/appStudy.R',
+    output_name = "appStudy",
+    button_label = "Download Shiny App for workshop study",
+    button_type = "warning",
+    has_icon = TRUE,
+    icon = "fa fa-save"
+  )
+```
+
+_Possible steps:_
+1)  Decide on what outputs you want to show
+2)  How does the user interact with the app?
+3)  Based on the outputs, which layout works best for you?  Go to shiny layouts to pick one or try AI
+4)  
+
