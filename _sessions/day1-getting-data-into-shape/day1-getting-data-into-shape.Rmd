@@ -34,7 +34,6 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ![](images/tidyverse.png){width="10%"} ![](images/tidyr.png){width="10%"} ![](images/dplyr.png){width="10%"} ![](images/stringr.png){width="10%"} ![](images/lubridate.png){width="10%"}
 
-
 # Example of some workflows
 
 ## mine
@@ -51,13 +50,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Dataset for workshop
 
-For this workshop, we will you an example dataset to go through the whole workflow process.  
-
+For this workshop, we will you an example dataset to go through the whole workflow process.
 
 # Rstudio
 
 You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets/>
 
+<aside>See Rstudio IDE to Positron <https://github.com/posit-dev/positron/wiki> for note about new IDE</aside>
 
 ## Basics
 
@@ -96,23 +95,103 @@ You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets
 
 -   lubridate fixed date quirks
 
+# Setting up Rproject
 
+## Rproject
+
+## Project directory/folder structure
+
+## Hands-on
+
+::: {#task_rproj .greeting .message style="background: lightgrey;"}
+**Your Task** Setup an Rproject for the workshop study
+
+-   Call the Rproject "projectDADA"
+-   Create subfolders: data/, R/
+:::
 
 # Importing
+
+## Saving the data files
 
 ## Excel files
 
 ![](images/readxl.png){width="10%"}
 
+Key functions
+
+```{r excvel, eval=F}
+
+  readxl::read_xls()
+  readxl::read_xlsx()
+
+```
+
+Tips and tricks
+
+- NAs - defining
+- rename columns
+- reading in more rows to get column type correct
+
+
+- setup excel file to have NA
+
+
 ## CSV/Table
 
 ![](images/readr.png){width="10%"}
 
-::: {#task_read .greeting .message style="background: lightgrey;"}
+```{r excvel, eval=F}
+
+  readr::read_csv()
+  readr::read_table()
+
+```
+
+Advantages
+- 
+
+SEtting your column types
+
+
+## Hands-on
+
+After setting up the folder structure for your project, you need to add your data. Here, you will download the `data/` directory using link below:
+
+```{r dwnldData, eval=T, echo=FALSE, code_folding = FALSE}
+library(downloadthis)
+  download_dir(
+    path='data',
+    output_name = "dataProject",
+    button_label = "Download data folder for project",
+    button_type = "warning",
+    has_icon = TRUE,
+    icon = "fa fa-save"
+  )
+```
+
+After the zip file downloads, unzip and drag the `data/` folder to your Rproject folder.
+
+XXXX data/raw, data/rds, data/spatial XXXX
+
+::: {#task_import .greeting .message style="background: lightgrey;"}
 **Your Task**
 
+Import your data
 
+-   Call the Rproject `projectDADA`
+-   Create subfolders: `data/`, `R/`
+-   Create a new r script calls `importData.r` and save in `R/` folder
+-   
 :::
+
+
+# Data cleaning
+
+## 
+
+
+##
 
 
 # Joins
@@ -122,26 +201,20 @@ You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets
 ```{r cheatsheet, out.width='100%', out.height='200%'}
 ```
 
-  knitr::include_graphics("dplyr.pdf")
+knitr::include_graphics("dplyr.pdf")
 
 <br> <br> <br> <br> <br> <br>
 
-
 Note: joins = merges (synonyms)
-
 
 ## Tips and tricks
 
 -   Essential to make sure that the number of rows out matches your expectation
--   Almost all my joins are 
-
+-   Almost all my joins are
 
 ::: {#task_join .greeting .message style="background: lightgrey;"}
 **Your Task**
-
-
 :::
-
 
 # Restructuring
 
@@ -149,17 +222,14 @@ Note: joins = merges (synonyms)
 
 ```{r cheatsheet, out.width='100%', out.height='200%'}
 ```
- knitr::include_graphics("tidyr.pdf")
+
+knitr::include_graphics("tidyr.pdf")
 
 <br> <br> <br> <br> <br> <br>
 
-
 ::: {#task_shape .greeting .message style="background: lightgrey;"}
 **Your Task**
-
-
 :::
-
 
 # String manipulation
 
@@ -167,30 +237,29 @@ Note: joins = merges (synonyms)
 
 ```{r cheatsheet, out.width='100%', out.height='200%'}
 ```
-  knitr::include_graphics("stringr.pdf")
+
+knitr::include_graphics("stringr.pdf")
 
 <br> <br> <br> <br> <br> <br>
 
-
 ::: {#task_str .greeting .message style="background: lightgrey;"}
 **Your Task**
-
 :::
-
 
 # Date/time
 
 ![](images/lubridate.png){width="10%"}
 
 ```{r cheatsheet, out.width='100%', out.height='200%'}
+  knitr::include_graphics("lubridate.pdf")
 ```
 
-  knitr::include_graphics("lubridate.pdf")
 <br> <br> <br> <br> <br> <br>
-
 
 ::: {#task_date .greeting .message style="background: lightgrey;"}
 **Your Task**
-
-
 :::
+
+# Saving the clean data
+
+At the end of the import and clean stage, I save the dataset as a
