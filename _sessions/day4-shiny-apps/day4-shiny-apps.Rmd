@@ -38,6 +38,22 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 
 ![](images/shiny.png){width="10%"} ![](images/rsconnect.png){width="10%"}
 
+# Project for today
+
+```{r dwnldProject, eval=T, echo=FALSE, code_folding = FALSE}
+library(downloadthis)
+  download_file(
+    path='day4_project.zip',
+    output_name = "day4Project",
+    button_label = "Download Rstudio project",
+    button_type = "warning",
+    has_icon = TRUE,
+    icon = "fa fa-save"
+  )
+```
+
+Download from Onedrive: [day4_project.zip](https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/EUf4ChwggXVKiKAfPNKsyawBu05XOalYc-WnGQ0Wq3FjJw?e=BhpRiU)
+
 # Pep talk
 
 Okay, before we get started, I think that it is useful to give a pep talk. For the more programming-phobic of you, the Shiny code will look foreign. You first reaction might be "for f\*ksake, I am a researcher, not a programmer and I do not want to be programmer" and "are you serious after all this time I spent learning R coding and now I have to learn another type of programming??"
