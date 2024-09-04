@@ -1,7 +1,7 @@
 ---
 title: "Day 3: Report writing with Quarto"
 description: |
-  A short description of the post.
+  Learn about report making in R
 author:
   - name: Paul Moloney
     url: https://bfanson.github.io/2024DADAworkshop/
