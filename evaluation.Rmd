@@ -8,8 +8,8 @@ description: |
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-Below is a shiny App used for the course evaluation [to be added after creating it..,placeholder at the moment]
+Below is a shiny App used for the course evaluation created using shinysurveys package with data saved in Gdrive
 
-<iframe height="1000" width="100%" frameborder="no" src="https://arisci.shinyapps.io/b_WorkshopSurvey/">
+<iframe height="600" width="100%" frameborder="no" src="https://arisci.shinyapps.io/b_WorkshopSurvey/">
 
 </iframe>
