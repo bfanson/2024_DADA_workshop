@@ -1,7 +1,7 @@
 ---
 title: "Day 4: Shiny apps"
 description: |
-  A short description of the post.
+  Building shiny apps: 1) example app; 2) basic framework; 3) deploying; 4) tips/tricks; 5) hands-on: project app.
 author:
   - name: Ben Fanson
     url: https://bfanson.github.io/2024DADAworkshop/

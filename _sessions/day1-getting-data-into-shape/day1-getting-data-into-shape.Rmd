@@ -1,7 +1,7 @@
 ---
 title: "Day 1: Getting data into shape"
 description: |
-  Tidyverse world
+  Tidyverse world: 1) workflow: 2) Rstudio: 3) importing data: 4) manipulating data
 author:
   - name: Ben Fanson
     url: https://bfanson.github.io/2024DADAworkshop/
@@ -120,7 +120,7 @@ You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets
 
 Key functions
 
-```{r excvel, eval=F}
+```{r import_excel, eval=F}
 
   readxl::read_xls()
   readxl::read_xlsx()
@@ -129,30 +129,28 @@ Key functions
 
 Tips and tricks
 
-- NAs - defining
-- rename columns
-- reading in more rows to get column type correct
+-   NAs - defining
 
+-   rename columns
 
-- setup excel file to have NA
+-   reading in more rows to get column type correct
 
+-   setup excel file to have NA
 
 ## CSV/Table
 
 ![](images/readr.png){width="10%"}
 
-```{r excvel, eval=F}
+```{r import_readr, eval=F}
 
   readr::read_csv()
   readr::read_table()
 
 ```
 
-Advantages
-- 
+## Advantages
 
 SEtting your column types
-
 
 ## Hands-on
 
@@ -185,14 +183,11 @@ Import your data
 -   
 :::
 
-
 # Data cleaning
 
 ## 
 
-
-##
-
+## 
 
 # Joins
 
