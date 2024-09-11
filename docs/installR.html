@@ -2147,27 +2147,28 @@ Extra topics
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#before-you-start" id="toc-before-you-start">Before You Start</a></li>
+<li><a href="#before-the-workshop" id="toc-before-the-workshop">Before the workshop</a></li>
 <li><a href="#package-dependencies" id="toc-package-dependencies">Package Dependencies</a></li>
 </ul>
 </nav>
 </div>
-<h1 id="before-you-start">Before You Start</h1>
-<p>You will need <code>R</code> installed on your machine. If your <code>R</code> version is &lt;4.0, it is a good time to update. <code>R</code> is the programming software that does the computations for your analyses. Using <code>R</code> is made much easier by using it through <code>RStudio</code> (_I_ntegrated _D_evelopment _E_nvironment).</p>
-<p>If you are using a DEECA machine and and you do not have an open workstation then you may find it difficult to install <code>R</code>, <code>RStudio</code> and a range of <code>R</code> packages. It is recommended you have a workstation setting that allows you to download and install programs (like <code>R</code> and <code>R</code> packages). This is something you need to apply for through the DEECA IT service portal if you have not already. You should also have <code>Rtools</code> installed.</p>
-<p>To install, the order of steps are as follows:</p>
+<h1 id="before-the-workshop">Before the workshop</h1>
+<p>You will need <code>R</code> installed on your machine. If your current <code>R</code> version is &lt;4.0, it is a good time to update. <code>R</code> is the programming software that does the computations for your analyses. but using <code>R</code> is made much easier by using it through <code>RStudio</code> which is an IDE (_I_ntegrated _D_evelopment _E_nvironment). Therefore, you will need to install <code>Rstudio</code> as well. Finally, you will need something called <code>rtools</code> to help install certain packages in <code>R</code>.</p>
+<p><em>Note - If you are using a DEECA machine and and you do not have an open workstation then you may find it difficult to install <code>R</code>, <code>RStudio</code> and a range of <code>R</code> packages. It is recommended you have a workstation setting that allows you to download and install programs (like <code>R</code> and <code>R</code> packages). This is something you need to apply for through the DEECA IT service portal if you have not already.</em></p>
+<p>To install, the order of steps are as follows (for DEECA computers):</p>
 <ol type="1">
-<li><p>Install <code>R</code> (&gt; 4.0.0): <a href="https://cran.rstudio.com/" class="uri">https://cran.rstudio.com/</a></p>
+<li><p>Install <code>R</code> go to <a href="https://cran.rstudio.com/" class="uri">https://cran.rstudio.com/</a> and do the following:</p>
 <ul>
 <li><p>click “Download R for Windows”</p>
 <p><img src="images/install/r_windows.PNG" style="width:90.0%" /></p></li>
 <li><p>click “base”</p>
 <p><img src="images/install/r_base.PNG" style="width:90.0%" /></p></li>
-<li><p>click ‘Download R 4.4.1 for Windows’</p>
+<li><p>click ‘Download R-4.4.1 for Windows’</p>
 <p><img src="images/install/r_dwnld.PNG" style="width:90.0%" /></p></li>
-<li><p>click downloaded ‘R-4.4.1-win.exe’ to start install</p></li>
-<li><p>when you get to install locations, install to ‘C:\Windows\program files’ <img src="images/install/r_loc.PNG" style="width:90.0%" /></p></li>
-<li><p>accept all defaults</p></li>
+<li><p>click teh downloaded ‘R-4.4.1-win.exe’ to start install</p></li>
+<li><p>when you get to install locations, install to ‘C:\Windows\Program Files’</p>
+<p><img src="images/install/r_loc.PNG" style="width:90.0%" /></p></li>
+<li><p>accept all defaults along the way</p></li>
 </ul></li>
 <li><p>Download the version of <code>Rtools</code> matching your <code>R</code> installation: <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a></p>
 <ul>
@@ -2175,7 +2176,7 @@ Extra topics
 <p><img src="images/install/rtools_select.PNG" style="width:90.0%" /></p></li>
 <li><p>Scroll down until you see ‘Rtools44 Installer’ and click on it:</p>
 <p><img src="images/install/rtools_installer.PNG" style="width:90.0%" /></p></li>
-<li><p>Click on ‘rtools44-6104-6039.exe’ to start install</p></li>
+<li><p>Click on the downloaded ‘rtools44-6104-6039.exe’ to start install</p></li>
 <li><p>install to ‘C:\Windows\Data’ and accept defaults</p>
 <p><img src="images/install/rtools_loc.PNG" style="width:90.0%" /></p></li>
 </ul></li>
@@ -2187,7 +2188,7 @@ Extra topics
 <li><p>install to ‘C:\Windows\Data’ like rtools and accept defaults</p></li>
 </ul></li>
 <li><p>Open <code>Rstudio</code> as you would any other program to check that it opens. If so, move onto installing packages below</p>
-<p><img src="images/install/rstudio_screen.PNG" /></p></li>
+<p><img src="images/install/rstudio_screen.PNG" style="width:70.0%" /></p></li>
 </ol>
 <h1 id="package-dependencies">Package Dependencies</h1>
 <p>One of the strengths of <code>R</code> is that it is open-source and collaborators can contribute their own code in the form of packages. For our workshop we will be downloading some packages on the fly, but one <code>tidyverse</code> will be across days so please download ahead of time (copy code below and paste into R):</p>
