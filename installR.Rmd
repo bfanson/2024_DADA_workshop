@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Before the workshop
 
-You will need `R` installed on your machine. If your current `R` version is \<4.0, it is a good time to update. `R` is the programming software that does the computations for your analyses. but using `R` is made much easier by using it through `RStudio` which is an IDE (\_I_ntegrated \_D_evelopment \_E_nvironment). Therefore, you will need to install `Rstudio` as well. Finally, you will need something called `rtools` to help install certain packages in `R`.
+You will need `R` installed on your machine. If your current `R` version is \<4.0, it is a good time to update. `R` is the programming software that does the computations for your analyses. but using `R` is made much easier by using it through `RStudio` which is an IDE (**I**ntegrated **D**evelopment **E**nvironment). Therefore, you will need to install `Rstudio` as well. Finally, you will need something called `rtools` to help install certain packages in `R`.
 
 *Note - If you are using a DEECA machine and and you do not have an open workstation then you may find it difficult to install `R`, `RStudio` and a range of `R` packages. It is recommended you have a workstation setting that allows you to download and install programs (like `R` and `R` packages). This is something you need to apply for through the DEECA IT service portal if you have not already.*
 
@@ -33,7 +33,7 @@ To install, the order of steps are as follows (for DEECA computers):
 
         ![](images/install/r_dwnld.PNG){width="90%"}
 
-    -   click teh downloaded 'R-4.4.1-win.exe' to start install
+    -   click the downloaded 'R-4.4.1-win.exe' to start install
 
     -   when you get to install locations, install to 'C:\\Windows\\Program Files'
 

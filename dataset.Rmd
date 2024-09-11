@@ -4,7 +4,6 @@ description: |
   Describes the dataset for the workshop
 ---
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
@@ -12,8 +11,9 @@ library(tidyverse)
 
 # Project data
 
-If you want to start from scratch, click on link below to download project data files and go from there. _Each day we will provide a Rstudio project that will have the data as well_
+For the workshop, we will be using a greatly reduced dataset from the **W**etland **I**ntervention **M**onitoring **P**rojects (WIMP; thanks Kay Morris `r emo::ji('clap')`). *Note - We have done some masking of the data.*
 
+**Each day we will provide a Rstudio project that will have the data as well.** If you want to start from scratch, click on link below to download project data files and go from there.
 
 ```{r download_data, echo=FALSE, code_folding = FALSE}
 library(downloadthis)
@@ -30,6 +30,7 @@ library(downloadthis)
 <br>
 
 # Project overview
+
 ```{r echo=F, fig.height=4, fig.width=4}
   sf_site <- sf::read_sf('data/sf_site.gpkg')
   sf_cma <- VicmapR::vicmap_query(layer='open-data-platform:cma100') %>% collect()
@@ -39,8 +40,14 @@ library(downloadthis)
 
 ## Purpose
 
-As project
+**Goal:** Improving grazing management
 
+**Questions:** How does grazing affect wetland plants?
+
+The grazing hypothesis guiding this research is the [Intermediate Disturbance Hypothesis](https://en.wikipedia.org/wiki/Intermediate_disturbance_hypothesis).
+
+\
+![](images/dataset/disturbance.png)
 
 ## Experimental design
 
@@ -50,10 +57,10 @@ As project
   n_graze <- sum(sf_site$grazing=='Crash')
   
 ```
-Across western and eastern Victoria, a total of `r n_wetlands` wetlands were surveyed.  At each wetland
 
+### Study sites
 
-
+Across western and eastern Victoria, a total of `r n_wetlands` sites were selected to be surveyed. These sites were spread across 5 **C**atchment **M**anagement Authorities (CMA) but with the majority of sites in the western CMAs. Sites were chosen partly to cover a wide variation in grazing intensity.
 
 ```{r echo=F, fig.height=4, fig.width=7}
   #sf_cma <- VicmapR::vicmap_query(layer='open-data-platform:cma100') %>% collect()
@@ -63,17 +70,17 @@ Across western and eastern Victoria, a total of `r n_wetlands` wetlands were sur
 
 ```
 
+### Monitoring
+
+In each wetland, we are assessing how vegetation changes over time inside two trial plots. Each trial plot is about 0.25 ha in size. One plot is open to the grazing management being applied in the wetland and the other plot is fenced to exclude livestock (sheep and cattle). Monitoring is done when the wetland is drying out but still wet as this is the when most wetland plants are present. Monitoring is done along transects and quadrats in each plot before fencing, and then every year after fencing for 3-5 years.
 
 # Data overview
 
 ## Main Excel file
 
-
 ## CSV survey
 
-
-## CSV 
-
+## CSV
 
 ```{r}
 
@@ -82,7 +89,3 @@ Across western and eastern Victoria, a total of `r n_wetlands` wetlands were sur
 
 
 ```
-
-
-
-

@@ -77,7 +77,7 @@ Given this, we will attempt in this workshop to act more as a guide to help you 
 
 For some, the last two days of the workshop might push their limits but they are important skills to develop as how we communicate research (and the expectations) is changing quickly.
 
-On Day 3 (creating reports), the Quarto(/Rmarkdown) approach takes a bit to get used to if you are WYSIWYG (**W**hat **Y**ou **S**ee **I**s **W**hat **Y**ou **G**et). This can take a little bit to get used and best to take in steps. Most importantly, once you get a template to work from, you can usually modify fairly easily, often having no clue how most of it works.
+On Day 3 (creating reports), the Quarto(/Rmarkdown) approach takes a bit to get used to if you are WYSIWYG (**W**hat **Y**ou **S**ee **I**s **W**hat **Y**ou **G**et).  The key is focus on the higher level concepts (e.g. how it could be useful for you, focus on the higher level concepts (e.g. losing the forest for the trees)).  Most importantly, once you have a template to work from and understand a key fundamentals, you can modify easily (often having no clue how most of it works...my approach for years (still?) to be honest).
 
 Now, for Day 4 (Shiny Apps), Shiny is going to look (frustratingly/scaredly/freakishly) different as shown below (heads up):
 
@@ -105,14 +105,14 @@ shinyApp(ui = ui, server = server)
 
 However, shiny apps have a very basic structure and once you get that (and a few other key bits), you can often grab other people's code and modify slightly to get what you need.
 
-The goal here is __not to make you a programmer__ but familiar with a few key tools so that you can tinker away.
+Reminder - The goal here is __not to make you a programmer__ but familiar with a few key tools so that you can tinker away.
 
 
 ------------------------------------------------------------------------
 
 # Plug for QEARI
 
-Just a reminder QEARI (**Q**uantitative **E**cology **ARI**) is a great resource and a safe place for asking "dumb" questions. The amount expertise among its regulars is impressively! There are multiple channels to ask questions including a **new one for shiny Apps**!!!
+Just a reminder QEARI (**Q**uantitative **E**cology **ARI**) is a great resource and a safe place for asking "dumb" questions. The amount of expertise among its regulars is impressive! There are multiple channels to ask questions including a **new one for shiny Apps**!!!
 
 ![](images/course_overview/teams_qeari.PNG){width="50%"}
 
