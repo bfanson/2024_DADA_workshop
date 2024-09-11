@@ -72,17 +72,10 @@ Compared to when we started providing biometrics workshops, the amount of resour
 
 Given this, we will attempt in this workshop to act more as a guide to help you develop a solid framework that you can use as a launching point. We will point out amazing resources out but also hoping that workshop will give you the foundation to dive deeper into the topics specific to your research/needs.
 
-During this workshop, we will use our workflow cheatsheet to structure the workshop:
 
-```{r out.width='100%', out.height='200%', echo=F}
-  knitr::include_graphics("pdfs/workflow.pdf")
-```
+## May need to take a step-back at times
 
-<br> <br> <br> <br> <br> <br>
-
-## Need to take a step-back at times
-
-For some, the last two days might push their limits but they are important skills to develop as how we communicate research (and the expectations) is changing quickly.
+For some, the last two days of the workshop might push their limits but they are important skills to develop as how we communicate research (and the expectations) is changing quickly.
 
 On Day 3 (creating reports), the Quarto(/Rmarkdown) approach takes a bit to get used to if you are WYSIWYG (**W**hat **Y**ou **S**ee **I**s **W**hat **Y**ou **G**et). This can take a little bit to get used and best to take in steps. Most importantly, once you get a template to work from, you can usually modify fairly easily, often having no clue how most of it works.
 
@@ -112,7 +105,7 @@ shinyApp(ui = ui, server = server)
 
 However, shiny apps have a very basic structure and once you get that (and a few other key bits), you can often grab other people's code and modify slightly to get what you need.
 
-The goal here is not to make you a programmer but familiar with a few key tools so that you can tinker away.
+The goal here is __not to make you a programmer__ but familiar with a few key tools so that you can tinker away.
 
 
 ------------------------------------------------------------------------
@@ -122,3 +115,17 @@ The goal here is not to make you a programmer but familiar with a few key tools 
 Just a reminder QEARI (**Q**uantitative **E**cology **ARI**) is a great resource and a safe place for asking "dumb" questions. The amount expertise among its regulars is impressively! There are multiple channels to ask questions including a **new one for shiny Apps**!!!
 
 ![](images/course_overview/teams_qeari.PNG){width="50%"}
+
+
+
+------------------------------------------------------------------------
+
+# What to do when my brain hurts...
+
+Zen out while checking out the 367 Collins Peregrines....
+
+<iframe width="657" height="370" src="https://www.youtube.com/embed/VLLNNTjaSEA" title="367 Collins Falcons 2024 - South facing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
+
+<br>

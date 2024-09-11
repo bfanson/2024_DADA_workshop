@@ -1,5 +1,5 @@
 ---
-title: "Getting started"
+title: "Setting up R/Rstudio on DEECA computer"
 output:
   distill::distill_article:
     toc: true
@@ -12,38 +12,37 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-[**Here, we point you to useful resources for various topics**]{style="color:red;"}
-
 # Before You Start
 
-*(from Justin C.)*
+You will need `R` installed on your machine. If your `R` version is <4.0, it is a good time to update. `R` is the programming software that does the computations for your analyses. Using `R` is made much easier by using it through `RStudio` (_I_ntegrated _D_evelopment _E_nvironment). 
 
-For this short course you should have `R` installed on your machine. Preferably alongside `RStudio`. It is recommended that you use versions of `R` \> 4.0.0. So if you haven't updated recently, it might be a good time to do so.
+If you are using a DEECA machine and and you do not have an open workstation then you may find it difficult to install `R`, `RStudio` and a range of `R` packages. It is recommended you have a workstation setting that allows you to download and install programs (like `R` and `R` packages). This is something you need to apply for through the DEECA IT service portal if you have not already. You should also have `Rtools` installed. 
 
-If you are using a DEECA machine and and you do not have an open workstation then you may find it difficult to install `R`, `RStudio` and a range of `R` packages. It is recommended you have a workstation setting that allows you to download and install programs (like `R` and `R` packages). This is something you need to apply for through the DEECA IT service portal if you have not already. You should also have `Rtools` installed. Below we list a step-by-step guide to the installation of system dependencies for Windows if they are not already installed:
+To install, the order of steps are as below:
 
-1.  Install `R` (preferably version \> 4.0.0): <https://cran.rstudio.com/>\
-2.  Download the version of `Rtools` matching your `R` installation: <https://cran.r-project.org/bin/windows/Rtools/>\
+1.  Install `R` (\> 4.0.0): <https://cran.rstudio.com/>
+    -   install to 'C:\\Windows\\program files' and accept all defaults
+
+
+2.  Download the version of `Rtools` matching your `R` installation: <https://cran.r-project.org/bin/windows/Rtools/>
+    -   install to 'C:\\Windows\\Data' and accept defaults
+    
 3.  Install `RStudio`: <https://posit.co/download/rstudio-desktop/>
+    -   install to 'C:\\Windows\\Data' and accept defaults
+
+4.  Open `Rstudio` as you would any other program to check that it opens.  If so, move onto installing packages below
+
 
 # Package Dependencies
 
-For our workshop we will probably be downloading some packages on the fly, but if you want to make sure you have the relevant packages installed then you can run the following chunk:
+One of the strengths of `R` is that it is open-source and collaborators can contribute their own code in the form of packages.  For our workshop we will be downloading some packages on the fly, but one `tidyverse` will be across days so please download ahead of time (copy code below and paste into R):
 
 ```{r  pkg, eval = FALSE}
-install.packages(pkgs = c("tidyverse",
-                          "broom",
-                          "mapview", 
-                          "shiny", 
-                          "rmarkdown")
-))
+install.packages(pkgs = c("tidyverse") )
 ```
 
 
 # Workshop prerequisites
-
-
-
 
 # Ummm, pretend that I forgot everything about Rstudio (asking for a mate)...
 
@@ -75,8 +74,8 @@ couple notes on navigating Github...<https://github.com/bfanson>
 
 Zen out while checking out the 367 Collins Peregrines....
 
-<iframe width="657" height="370" src="https://www.youtube.com/embed/VLLNNTjaSEA" title="367 Collins Falcons 2024 - South facing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="657" height="370" src="https://www.youtube.com/embed/VLLNNTjaSEA" title="367 Collins Falcons 2024 - South facing" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+
+</iframe>
 
 <br>
-
-

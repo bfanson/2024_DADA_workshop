@@ -1,0 +1,82 @@
+---
+title: "Setting up R/Rstudio on DEECA computer"
+output:
+  distill::distill_article:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Before You Start
+
+You will need `R` installed on your machine. If your `R` version is \<4.0, it is a good time to update. `R` is the programming software that does the computations for your analyses. Using `R` is made much easier by using it through `RStudio` (\_I_ntegrated \_D_evelopment \_E_nvironment).
+
+If you are using a DEECA machine and and you do not have an open workstation then you may find it difficult to install `R`, `RStudio` and a range of `R` packages. It is recommended you have a workstation setting that allows you to download and install programs (like `R` and `R` packages). This is something you need to apply for through the DEECA IT service portal if you have not already. You should also have `Rtools` installed.
+
+To install, the order of steps are as follows:
+
+1.  Install `R` (\> 4.0.0): <https://cran.rstudio.com/>
+
+    -   click "Download R for Windows"
+
+        ![](images/install/r_windows.PNG){width="90%"}
+
+    -   click "base"
+
+        ![](images/install/r_base.PNG){width="90%"}
+
+    -   click 'Download R 4.4.1 for Windows'
+
+        ![](images/install/r_dwnld.PNG){width="90%"}
+
+    -   click downloaded 'R-4.4.1-win.exe' to start install
+
+    -   when you get to install locations, install to 'C:\\Windows\\program files' ![](images/install/r_loc.PNG){width="90%"}
+
+    -   accept all defaults
+
+2.  Download the version of `Rtools` matching your `R` installation: <https://cran.r-project.org/bin/windows/Rtools/>
+
+    -   click on 'RTools 4.4'
+
+        ![](images/install/rtools_select.PNG){width="90%"}
+
+    -   Scroll down until you see 'Rtools44 Installer' and click on it:
+
+        ![](images/install/rtools_installer.PNG){width="90%"}
+
+    -   Click on 'rtools44-6104-6039.exe' to start install
+
+    -   install to 'C:\\Windows\\Data' and accept defaults
+
+        ![](images/install/rtools_loc.PNG){width="90%"}
+
+3.  Install `RStudio`: <https://posit.co/download/rstudio-desktop/>
+
+    -   click on 'Download Rstudio....' button
+
+        ![](images/install/rstudio_select.PNG){width="90%"}
+
+    -   click on 'RStudio-2024.04.2-764.exe'
+
+    -   install to 'C:\\Windows\\Data' like rtools and accept defaults
+
+4.  Open `Rstudio` as you would any other program to check that it opens. If so, move onto installing packages below
+
+    ![](images/install/rstudio_screen.PNG)
+
+# Package Dependencies
+
+One of the strengths of `R` is that it is open-source and collaborators can contribute their own code in the form of packages. For our workshop we will be downloading some packages on the fly, but one `tidyverse` will be across days so please download ahead of time (copy code below and paste into R):
+
+```{r  pkg, eval = FALSE}
+install.packages(pkgs = c("tidyverse") )
+```
+
+For newbies, click on 'install' button in the `Packages` tab in lower right. Then write in 'tidyverse' and click 'Install'
+
+![](images/install/install_tidyverse.PNG){width="90%"}

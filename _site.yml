@@ -15,4 +15,8 @@ navbar:
         href: evaluation.html
       - text: "Daily sessions"
         href: index.html
+    - text: "Extra topics"
+      menu:
+      - text: "Installing R/Rstudio"
+        href: installR.html
 output: distill::distill_article

@@ -36,7 +36,8 @@ rsconnect/
 # images
 hexsticker/
 # r_extra
-r_extra/
+/r_extra/
+
 .secrets
 
 /2024_WetlandGraze/

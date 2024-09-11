@@ -15,7 +15,7 @@ library(tidyverse)
 If you want to start from scratch, click on link below to download project data files and go from there. _Each day we will provide a Rstudio project that will have the data as well_
 
 
-```{r downloaddata, echo=FALSE, code_folding = FALSE}
+```{r download_data, echo=FALSE, code_folding = FALSE}
 library(downloadthis)
   download_link(
     link='https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/ET-SqpFmklhNqbUxXAwmHcMBWR2OtEDry-OVXha4fsJ5dg?e=cVKgEY',
