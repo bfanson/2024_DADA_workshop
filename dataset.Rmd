@@ -7,20 +7,20 @@ description: |
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
 ```
 
-# Header1
+# Project data
 
-# Example dataset
+If you want to start from scratch, click on link below to download project data files and go from there. _Each day we will provide a Rstudio project that will have the data as well_
 
-## example of downloading the dataset
 
 ```{r downloaddata, echo=FALSE, code_folding = FALSE}
 library(downloadthis)
-  download_file(
-    path='data/Attendance list.xlsx',
+  download_link(
+    link='https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/ET-SqpFmklhNqbUxXAwmHcMBWR2OtEDry-OVXha4fsJ5dg?e=cVKgEY',
     output_name = "Attendance list.xlsx",
-    button_label = "Download Attendance data",
+    button_label = "Download project data",
     button_type = "warning",
     has_icon = TRUE,
     icon = "fa fa-save"
@@ -29,33 +29,60 @@ library(downloadthis)
 
 <br>
 
-## Example of html table (give preview of data)
-
-```{r}
-
-kableExtra::scroll_box( kableExtra::kable(cars[1:10,],'html'),
-                        height="200px", width='180px')
+# Project overview
+```{r echo=F, fig.height=4, fig.width=4}
+  sf_site <- sf::read_sf('data/sf_site.gpkg')
+  sf_cma <- VicmapR::vicmap_query(layer='open-data-platform:cma100') %>% collect()
 
 
 ```
 
-## Spatial map
+## Purpose
 
-```{r}
-library(sf)
-sf_vic <- ozmaps::ozmap_states
+As project
 
-mapview::mapview(sf_vic)
+
+## Experimental design
+
+```{r echo=F}
+  n_wetlands <- n_distinct(sf_site$wetland)
+  n_crash <- sum(sf_site$grazing=='Crash')
+  n_graze <- sum(sf_site$grazing=='Crash')
+  
+```
+Across western and eastern Victoria, a total of `r n_wetlands` wetlands were surveyed.  At each wetland
+
+
+
+
+```{r echo=F, fig.height=4, fig.width=7}
+  #sf_cma <- VicmapR::vicmap_query(layer='open-data-platform:cma100') %>% collect()
+  #sf::write_sf(sf_cma, 'sf_cma.gpkg')
+  mapview::mapview(sf_cma, zcol='cmaname', layer.name='cma') + 
+    mapview::mapview(sf_site, zcol='grazing', layer.name='site' )
 
 ```
 
-## Movement (example of adding a nest html)
+
+# Data overview
+
+## Main Excel file
+
+
+## CSV survey
+
+
+## CSV 
+
 
 ```{r}
 
-#htmltools::includeHTML('map_flood.html')
+# kableExtra::scroll_box( kableExtra::kable(cars[1:10,],'html'),
+#                         height="200px", width='180px')
+
 
 ```
+
 
 
 

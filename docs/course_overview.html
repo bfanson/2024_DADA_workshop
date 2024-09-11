@@ -93,8 +93,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2024-09-04"/>
-  <meta property="article:created" itemprop="dateCreated" content="2024-09-04"/>
+  <meta property="article:published" itemprop="datePublished" content="2024-09-12"/>
+  <meta property="article:created" itemprop="dateCreated" content="2024-09-12"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="2024 DADA workshop: Overview of workshop"/>
@@ -110,7 +110,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["Overview of workshop"]},{"type":"character","attributes":{},"value":["2024-09-04"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float","depth","number_sections","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","date","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["Overview of workshop"]},{"type":"character","attributes":{},"value":["2024-09-12"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float","depth","number_sections","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2094,7 +2094,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Overview of workshop","authors":[],"publishedDate":"2024-09-04T00:00:00.000+10:00"}
+{"title":"Overview of workshop","authors":[],"publishedDate":"2024-09-12T00:00:00.000+10:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2117,17 +2117,6 @@ Workshop Links
 <a href="dataset.html">Dataset</a>
 <a href="evaluation.html">Workshop Evaluation</a>
 <a href="index.html">Daily sessions</a>
-</div>
-</div>
-<div class="nav-dropdown">
-<button class="nav-dropbtn">
-Extra Resources
- 
-<span class="down-arrow">&#x25BE;</span>
-</button>
-<div class="nav-dropdown-content">
-<a href="about.html">Github in R</a>
-<a href="about.html">Shiny app at ARI</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2172,10 +2161,11 @@ Extra Resources
 </ul>
 <h1 id="what-is-it-not-trying-to-do">What is it <strong>NOT</strong> trying to do</h1>
 <ul>
-<li>Turn you into a R programmer in 4 days</li>
+<li>Turn you into a R programmer/Shiny app developer in 4 days</li>
 <li>Going in-depth into any specific topic (except R workflow)</li>
 <li>Make you cry 😢</li>
 </ul>
+<hr />
 <h1 id="learning-objectives">Learning objectives</h1>
 <ol type="1">
 <li><p>Understand “modern” workflow using R environment</p></li>
@@ -2183,15 +2173,19 @@ Extra Resources
 <li><p>Improve your workflow efficiency, reproducibility, and “general sanity”</p></li>
 <li><p>Have a resource to reference when stuck or need to refresh memory</p></li>
 </ol>
+<hr />
 <h1 id="workshop-structure">Workshop Structure</h1>
-<p>This is 4-day workshop with each day running from 9am-12pm. During each day’s session, we will cover a new topic in the workflow pipeline. The session will be a mix of lecturing/showing with hands-on section.</p>
-<ol type="1">
+<p>This is 4-day workshop with each day running from 9am-12pm. During each day’s session, we will cover a new topic in the workflow pipeline.</p>
+<ul>
 <li><p>Monday 2024SEP16: Overview of workflow, importing, cleaning</p></li>
 <li><p>Tuesday 2024SEP17: Analysis of data</p></li>
 <li><p>Wednesday 2024SEP18: Creating reports</p></li>
 <li><p>Thursday 2024SEP19: Creating shiny Apps</p></li>
-</ol>
+</ul>
+<p>Within each day, the session is structured to be mainly talk and chalk for the first half and then more hands-on for the second half.</p>
+<p><strong>Note</strong> - We will not be offended if you just stay for the first half</p>
 <p><strong>Importantly, tea will be provided!! 😀</strong></p>
+<hr />
 <h1 id="what-to-expect">What to expect</h1>
 <h2 id="approach">Approach</h2>
 <p>Compared to when we started providing biometrics workshops, the amount of resources and online learning tools has exploded. Partly as a consequence, there has been a homogenization of workflow driven by key leaders in the area that have pushed the technology and analysis paradigms.</p>
@@ -2212,7 +2206,7 @@ Show code
 <h2 id="need-to-take-a-step-back-at-times">Need to take a step-back at times</h2>
 <p>For some, the last two days might push their limits but they are important skills to develop as how we communicate research (and the expectations) is changing quickly.</p>
 <p>On Day 3 (creating reports), the Quarto(/Rmarkdown) approach takes a bit to get used to if you are WYSIWYG (<strong>W</strong>hat <strong>Y</strong>ou <strong>S</strong>ee <strong>I</strong>s <strong>W</strong>hat <strong>Y</strong>ou <strong>G</strong>et). This can take a little bit to get used and best to take in steps. Most importantly, once you get a template to work from, you can usually modify fairly easily, often having no clue how most of it works.</p>
-<p>Now, for Day 4 (Shiny Apps), Shiny is going to look (frustratingly??) different as shown below (heads up):</p>
+<p>Now, for Day 4 (Shiny Apps), Shiny is going to look (frustratingly/scaredly/freakishly) different as shown below (heads up):</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
 <summary>
@@ -2242,10 +2236,11 @@ Show code
 </details>
 </div>
 <p>However, shiny apps have a very basic structure and once you get that (and a few other key bits), you can often grab other people’s code and modify slightly to get what you need.</p>
-<p>The goal here is not to make you a programmer but familiar with the tools that you can tinker away.</p>
+<p>The goal here is not to make you a programmer but familiar with a few key tools so that you can tinker away.</p>
+<hr />
 <h1 id="plug-for-qeari">Plug for QEARI</h1>
-<p>Just a reminder QEARI (Quantitative Ecology ARI) is a great resource and a safe place for asking “dumb” questions. The amount expertise among its regulars is impressively! There are multiple channels to ask questions including a <strong>new one for shiny Apps</strong>!!!</p>
-<p><img src="images/course_overview/teams_qeari.PNG" /></p>
+<p>Just a reminder QEARI (<strong>Q</strong>uantitative <strong>E</strong>cology <strong>ARI</strong>) is a great resource and a safe place for asking “dumb” questions. The amount expertise among its regulars is impressively! There are multiple channels to ask questions including a <strong>new one for shiny Apps</strong>!!!</p>
+<p><img src="images/course_overview/teams_qeari.PNG" style="width:50.0%" /></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

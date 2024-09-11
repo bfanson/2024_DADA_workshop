@@ -1,7 +1,7 @@
 ---
 title: "Day 4: Shiny apps"
 description: |
-  Building shiny apps: 1) example app; 2) basic framework; 3) deploying; 4) tips/tricks; 5) hands-on: project app.
+  General introduction
 author:
   - name: Ben Fanson
     url: https://bfanson.github.io/2024DADAworkshop/
@@ -36,14 +36,14 @@ knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 
 # Key packages
 
-![](images/shiny.png){width="10%"} ![](images/rsconnect.png){width="10%"}
+![](images/shiny.png){width="10%"}![](images/rsconnect.png){width="10%"}
 
-# Project for today
+# Project folder for today
 
 ```{r dwnldProject, eval=T, echo=FALSE, code_folding = FALSE}
 library(downloadthis)
-  download_file(
-    path='day4_project.zip',
+  download_link(
+    link="https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/EYLE3zkOD25DrZ9wVFcOcl4Bl2gQ803ZfLssKZMWOuJgyA?e=f0gCjl",
     output_name = "day4Project",
     button_label = "Download Rstudio project",
     button_type = "warning",
@@ -52,7 +52,9 @@ library(downloadthis)
   )
 ```
 
-Download from Onedrive: [day4_project.zip](https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/EUf4ChwggXVKiKAfPNKsyawBu05XOalYc-WnGQ0Wq3FjJw?e=BhpRiU)
+
+For background information on the dataset, see [dataset summary](https://bfanson.github.io/2024_DADA_workshop/dataset.html)
+
 
 # Pep talk
 
@@ -135,7 +137,7 @@ XXXXXX CREATE IMAGE OF DIFFERENT LAYOUTS XXXXXXX
 
 Of course the cheatsheet has some basic layout functions
 
-![](images/ui_layout.png){width="40%"}
+![](images/ui_layout.png){width="30%" height="50%"}
 
 ### Step 2: create the inputs objects: buttons, inputs, drop-down menu
 
@@ -197,7 +199,12 @@ Alright, let's look more at the options for output in the cheatsheet
 
 ![](images/server_cheatsheet_box.png){width="50%"}
 
-Note - this is not a comprehensive list and packages might have then own renderXXX()
+Note - this is not a comprehensive list and packages might have then own renderXxx() and xxxOutput()
+
+```{r server_leaflet, eval=F}
+  leaflet::renderLeaflet()   # server side for leaflets
+  leaflet::leafletOutput()   # UI side for leaflets
+```
 
 ## output
 
@@ -205,6 +212,34 @@ Note - this is not a comprehensive list and packages might have then own renderX
 -   key bit here is that there are specific functions to output that pair up with renderXXX()
 
 ## Folder structure
+
+
+
+
+
+# Little more on the server side
+
+## Reactivity
+
+The style of programming used in shiny apps is called "reactive programming". The purpose of this programming style is to keep inputs and outputs in sync. To do this efficiency, you only want to update outputs that need to be changed. So the rule is "change ***if and only if*** inputs change".
+
+The two key components of this are called:
+
+-   **lazy** - only do work when called to ["procrastinate as long as possible"]
+
+-   **cache** - save the results produced when first called and use that until something changes
+
+You will see a variety of functions that are doing "extra" bits in the programming:
+
+```{r reactive, eval=F}
+  shiny::reactive()        # create function for repeated active (e.g. filtering dataset for multiple outputs )
+  shiny::reactiveValues()  # create a new reactive "list" like input and output
+  shiny::observe()         # performs a side effect, changes to input changes
+  shiny::observeEvent()    # performs when an event happens like submit button (e.g. input/output)
+  
+```
+
+We will not go into depth here but just want you to be aware and when you see them, know that they are doing extra stuff and a bit of efficiency stuff. For more complicated apps, they are essential to get a handle on...
 
 # Think about how shiny Apps might be useful
 
@@ -242,9 +277,26 @@ You can find a variety of cheatsheets at <https://posit.co/resources/cheatsheets
 
 # Shiny Templates
 
+## 
 -   how might you look it up
 
 extras at \< <https://github.com/nanxstats/awesome-shiny-extensions>\>
+
+
+## Dashboards
+
+### shinydashboards package
+
+This package helps with setting up dashboard layouts (columns, rows, matrix) as well as a suite of html objects (e.g. messages, notifications), aesthetics ("skins"), and other more bespoke tools. Check out https://rstudio.github.io/shinydashboard/ for examples and overview.
+
+
+### flexdashboard package
+
+Flexdashboard can be useful way to quickly create a layout using Rmarkdown-like file.  At the simplest, you can create an interactive dashboard with no reactivity.  If you want reactivity (e.g. inputs), then you can still use the template and integrate selectInput() functions and renderXXX() functions without explicitly defining ui/server.  It is a bit of a hybrid approach between Rmarkdown/Quarto and shiny App.  Not sure how much this package is still being developed?? 
+
+For a range of examples: https://rstudio.github.io/flexdashboard/articles/examples.html
+
+An example as a shiny App run in a Rmarkdown file, see https://jjallaire.shinyapps.io/shiny-ggplot2-diamonds/.
 
 
 # Deploy your App
@@ -284,7 +336,7 @@ You can use the publish approach via Rstudio (GUI approach):
 Or you can do the rsconnect way (just make sure the current directory is where the app is)
 
 ```{r eval=F, collapse=F}
-rsconnect::deployApp( )  
+rsconnect::deployApp( ,)  
 
 # or if in a different directory, specify the directory
 
@@ -300,11 +352,30 @@ To prevent deleting of others apps, you should archive the app using rsconnect c
 rsconnect::terminateApp(appName = 'appName')  # this will archive the app.
 ```
 
-## Creating *Public* apps
+## Publishing *Public* apps
 
 At the moment, a protocol is being developed to request that you can make your app "public" (sharing the link beyond biodiversity division) if it contains any data that is not otherwise public, or potentially have any sensitivities. For this to occur, a Manager/Director sign off will be required for the final published version. Until a formal process is solidified, an email with a brief description of the content of the app, its intended audience, and whether it will be password protected for end users or not along with the request should suffice. [from Nev]
 
-## Note on Shiny Login Passwords
+
+## Shiny Login Passwords/Security
+
+Two possible approaches
++ set app setting to private or public
++ set up a login on your app
+
+## Public/private settings
+
+
+You can do via deployApp
+
+```{r eval=F, collapse=F}
+rsconnect::deployApp(appDir = "your app", appVisibility = "private")
+```
+
+
+Or you can go onto shiny.io 1) go to your app info; 2) click on users, and 3) finally public.
+
+## Login
 
 Creating logins/passwords is another can of worms. There are multiple packages out there to help, e.g. shinyauthr, shinymanager. If you need at some point, probably a great question for QEARI and see what people are doing at the time.
 
@@ -318,10 +389,20 @@ can check <https://r-graph-gallery.com/interactive-charts.html>
 
 The mapview package can be used to set up a simple, quick leaflet. This would be most useful when the leaflet is created on startup. For instance, you might want to show all the sites surveyed and attach metadata (e.g. dates surveyed, number of fish caught, number of plots) to that point.
 
-```{r mapview, eval=F}
+```{r mapview_ex}
+  library(mapview)
+  mapview::mapview(breweries)
+
+```
+
+
+Useful shiny functions for Server/UI...
+
+```{r mapview_out, eval=F, collapse=F}
   mapview::renderMapview()  # server side
   mapview::mapviewOutput()  # UI side
 ```
+
 
 ### `leaflet` package
 
@@ -331,7 +412,18 @@ When you have user inputs affecting the map shown, you want to try to avoid rebu
 
 XXXXXX find apps to reference on gallery XXXXX
 
-```{r eval=F}
+```{r leaflet_ex}
+  library(leaflet)
+  sf_b <- mapview::breweries
+  leaflet(sf_b) %>% 
+    addTiles() %>% 
+    addMarkers()
+
+```
+
+Useful shiny functions for Server/UI...
+
+```{r leaflet_out, eval=F, collapse=F}
   leaflet::leafletOutput()  # UI side
 
   leaflet::renderLeaflet()  # server side - creates the basemap
@@ -349,17 +441,24 @@ XXXXXX find apps to reference on gallery XXXXX
 
 ```
 
-<br> <br> <br>
-
 <br>
+
+Useful shiny functions for Server/UI...
+
+
+```{r plotly_out, eval=F, collapse=F}
+  plotly::renderPlotly()
+  plotly::plotlyOutput()
+  
+```
 
 ## ggiraph
 
+-   Again, you cna build your plots using ggplot and convert
 -   I like this one for linking up plots...below, put your cursor over a dot on the left or a bar on the right
-
 -   If you know CSS, it can be pretty powerful...
 
-```{r }
+```{r ggiraph_ex}
 library(ggiraph)
 library(tidyverse)
 library(patchwork)
@@ -419,14 +518,22 @@ girafe_options(
 
 <br>
 
+Useful shiny functions for Server/UI...
+
+```{r ggiraph_out, eval=F}
+  ggiraph::renderGirafe()
+  ggiraph::ggiraphOutput()
+  
+```
 
 # Beyond showing results
 
-## Uploading files
+## I/O: Uploading files
 
-## Saving user inputs
+## I/O: Saving user inputs
 
-## Downloading
+## I/O: Downloading
+
 
 # Additional resources
 
@@ -436,7 +543,7 @@ see <https://mastering-shiny.org/>
 
 <aside>Asides can be useful for preso.</aside>
 
-# Your task...
+# Let's get our hands dirty...
 
 ::: {#task .greeting .message style="background: lightgrey;"}
 **Your Task**
@@ -448,6 +555,8 @@ Build a shiny app to communicate Day 2 analysis results to your client
 -   Step2: design a UI [ layout, user inputs to be passed to server]
 
 -   Step3: create server functions
+
+-   Step4: test your app by "Run App"
 :::
 
 You can download our version:
@@ -464,4 +573,9 @@ library(downloadthis)
   )
 ```
 
-*Possible steps:* 1) Decide on what outputs you want to show 2) How does the user interact with the app? 3) Based on the outputs, which layout works best for you? Go to shiny layouts to pick one or try AI 4)
+
+
+
+
+
+

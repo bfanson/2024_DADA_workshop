@@ -10,7 +10,6 @@ output:
     number_sections: false  ## if you want number sections at each table header
     code_folding: true # awesome buttons to show/hide the code
 draft: false
-
 ---
 
 ```{r setup, include=FALSE}
@@ -25,9 +24,11 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # What is it **NOT** trying to do
 
--   Turn you into a R programmer in 4 days
+-   Turn you into a R programmer/Shiny app developer in 4 days
 -   Going in-depth into any specific topic (except R workflow)
 -   Make you cry `r emo::ji("cry")`
+
+------------------------------------------------------------------------
 
 # Learning objectives
 
@@ -39,19 +40,29 @@ knitr::opts_chunk$set(echo = FALSE)
 
 4)  Have a resource to reference when stuck or need to refresh memory
 
+------------------------------------------------------------------------
+
 # Workshop Structure
 
-This is 4-day workshop with each day running from 9am-12pm. During each day's session, we will cover a new topic in the workflow pipeline. The session will be a mix of lecturing/showing with hands-on section.
+This is 4-day workshop with each day running from 9am-12pm. During each day's session, we will cover a new topic in the workflow pipeline.
 
-1)  Monday 2024SEP16: Overview of workflow, importing, cleaning
++  Monday 2024SEP16: Overview of workflow, importing, cleaning
 
-2)  Tuesday 2024SEP17: Analysis of data
++  Tuesday 2024SEP17: Analysis of data
 
-3)  Wednesday 2024SEP18: Creating reports
++  Wednesday 2024SEP18: Creating reports
 
-4)  Thursday 2024SEP19: Creating shiny Apps
++  Thursday 2024SEP19: Creating shiny Apps
+
+
+Within each day, the session is structured to be mainly talk and chalk for the first half and then more hands-on for the second half.  
+
+**Note** - We will not be offended if you just stay for the first half
+
 
 **Importantly, tea will be provided!! `r emo::ji("happy")`**
+
+------------------------------------------------------------------------
 
 # What to expect
 
@@ -63,7 +74,7 @@ Given this, we will attempt in this workshop to act more as a guide to help you 
 
 During this workshop, we will use our workflow cheatsheet to structure the workshop:
 
-```{r out.width='100%', out.height='200%'}
+```{r out.width='100%', out.height='200%', echo=F}
   knitr::include_graphics("pdfs/workflow.pdf")
 ```
 
@@ -75,7 +86,7 @@ For some, the last two days might push their limits but they are important skill
 
 On Day 3 (creating reports), the Quarto(/Rmarkdown) approach takes a bit to get used to if you are WYSIWYG (**W**hat **Y**ou **S**ee **I**s **W**hat **Y**ou **G**et). This can take a little bit to get used and best to take in steps. Most importantly, once you get a template to work from, you can usually modify fairly easily, often having no clue how most of it works.
 
-Now, for Day 4 (Shiny Apps), Shiny is going to look (frustratingly??) different as shown below (heads up):
+Now, for Day 4 (Shiny Apps), Shiny is going to look (frustratingly/scaredly/freakishly) different as shown below (heads up):
 
 ```{r shine_ex, include=T, echo=T,eval=F, collapse=T}
 library(shiny)
@@ -101,11 +112,13 @@ shinyApp(ui = ui, server = server)
 
 However, shiny apps have a very basic structure and once you get that (and a few other key bits), you can often grab other people's code and modify slightly to get what you need.
 
-The goal here is not to make you a programmer but familiar with the tools that you can tinker away.
+The goal here is not to make you a programmer but familiar with a few key tools so that you can tinker away.
 
-# Plug for QEARI 
 
-Just a reminder QEARI (Quantitative Ecology ARI) is a great resource and a safe place for asking "dumb" questions. The amount expertise among its regulars is impressively! There are multiple channels to ask questions including a **new one for shiny Apps**!!!
+------------------------------------------------------------------------
 
-![](images/course_overview/teams_qeari.PNG)
+# Plug for QEARI
 
+Just a reminder QEARI (**Q**uantitative **E**cology **ARI**) is a great resource and a safe place for asking "dumb" questions. The amount expertise among its regulars is impressively! There are multiple channels to ask questions including a **new one for shiny Apps**!!!
+
+![](images/course_overview/teams_qeari.PNG){width="50%"}
