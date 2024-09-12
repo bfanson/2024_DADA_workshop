@@ -1,7 +1,15 @@
 ---
-title: "Dataset"
+title: "Workshop Dataset"
 description: |
-  Describes the dataset for the workshop
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true # table of content true
+    toc_float: true # make 
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    code_folding: true # awesome buttons to show/hide the code
+draft: false
 ---
 
 ```{r setup, include=FALSE}
@@ -11,7 +19,9 @@ library(tidyverse)
 
 # Project data
 
-For the workshop, we will be using a greatly reduced dataset from the **W**etland **I**ntervention **M**onitoring **P**rojects (WIMP; thanks Kay Morris `r emo::ji('clap')`). *Note - We have done some masking of the data.*
+For the workshop, we will be using a greatly reduced dataset from the **W**etland **I**ntervention **M**onitoring **P**rojects (WIMP; thanks Kay Morris `r emo::ji('clap')`).
+
+<aside>We have done some masking of data</aside>
 
 **Each day we will provide a Rstudio project that will have the data as well.** If you want to start from scratch, click on link below to download project data files and go from there.
 
@@ -40,11 +50,11 @@ library(downloadthis)
 
 ## Purpose
 
-**Goal:** Improving grazing management
+**Goal:** Improve grazing management
 
-**Questions:** How does grazing affect wetland plants?
+**Question:** How does grazing intensity affect wetland plants?
 
-The grazing hypothesis guiding this research is the [Intermediate Disturbance Hypothesis](https://en.wikipedia.org/wiki/Intermediate_disturbance_hypothesis).
+**Framework:** The ecological framework underpinning this study is the [Intermediate Disturbance Hypothesis](https://en.wikipedia.org/wiki/Intermediate_disturbance_hypothesis).
 
 \
 ![](images/dataset/disturbance.png)
@@ -60,32 +70,72 @@ The grazing hypothesis guiding this research is the [Intermediate Disturbance Hy
 
 ### Study sites
 
-Across western and eastern Victoria, a total of `r n_wetlands` sites were selected to be surveyed. These sites were spread across 5 **C**atchment **M**anagement Authorities (CMA) but with the majority of sites in the western CMAs. Sites were chosen partly to cover a wide variation in grazing intensity.
+Across western and eastern Victoria, a total of `r n_wetlands` sites were selected to be surveyed. These sites were spread across four **C**atchment **M**anagement Authorities (CMA) but with the majority of sites in the western CMAs. Sites were chosen partly to cover a wide variation in grazing intensity.
 
 ```{r echo=F, fig.height=4, fig.width=7}
   #sf_cma <- VicmapR::vicmap_query(layer='open-data-platform:cma100') %>% collect()
   #sf::write_sf(sf_cma, 'sf_cma.gpkg')
   mapview::mapview(sf_cma, zcol='cmaname', layer.name='cma') + 
-    mapview::mapview(sf_site, zcol='grazing', layer.name='site' )
+    mapview::mapview(sf_site, zcol='grazing', layer.name='site', col.regions=c('red','blue') )
 
 ```
 
 ### Monitoring
 
-In each wetland, we are assessing how vegetation changes over time inside two trial plots. Each trial plot is about 0.25 ha in size. One plot is open to the grazing management being applied in the wetland and the other plot is fenced to exclude livestock (sheep and cattle). Monitoring is done when the wetland is drying out but still wet as this is the when most wetland plants are present. Monitoring is done along transects and quadrats in each plot before fencing, and then every year after fencing for 3-5 years.
+In each wetland, we are assessing how vegetation changes over time inside two trial plots. Each trial plot is about 0.25 ha in size. One plot is open to the grazing management being applied in the wetland and the other plot is fenced to exclude livestock (sheep and cattle). Monitoring is done when the wetland is drying out but still wet as this is the when most wetland plants are present. Monitoring is done along **transects and quadrats** in each plot before fencing, and then **every year after fencing for 3-5 years**.
 
-# Data overview
+![](images/dataset/plot_design.PNG)
 
-## Main Excel file
+### Design variables
 
-## CSV survey
+So, we have a hierarchical experimental design: site/plot/transect/quadrant. Treatments are at two levels. First, we have grazing intensity: crash (intense grazing) or press (less intense). This is at the site level. Next, we have a paired design within a site with fence.
 
-## CSV
+![](images/dataset/exp_design.png)
 
-```{r}
+A large suite of responses were measured in this study. All For the workshop we will focus on two response metrics measured at the quadrat level:
 
-# kableExtra::scroll_box( kableExtra::kable(cars[1:10,],'html'),
-#                         height="200px", width='180px')
+-   **Species richness**: total number of species
 
+-   **Maximum plant height:** measured the tallest plant in the quadrat
 
-```
+# Data provided
+
+## Overview
+
+We have three files:
+
+-   **`Workshop 2024 data.xls`** - this is our main file
+
+-   **`df_quad_spp.csv`** - this includes extra quadrat-level about species present
+
+-   **`df_survey_info.csv`** - this contains survey info, such as date
+
+Let's take a look at
+
+## **Workshop 2024 data.xls**
+
+This workbook has four tabs of data.
+
+### **site_info** tab
+
+![](images/dataset/data_main_site.png){width="110%"}
+
+### **spp_traits** tab
+
+![](images/dataset/data_main_spp.PNG){width="110%"}
+
+### **quad_ht** tab
+
+![](images/dataset/data_main_ht.PNG){width="45%"}
+
+### **spp_rich** tab
+
+![](images/dataset/data_main_richness.PNG){width="45%"}
+
+## **df_quad_spp.csv**
+
+![](images/dataset/data_quad.PNG){width="65%"}
+
+## **df_survey_info.csv**
+
+![](images/dataset/data_survey.PNG){width="65%"}

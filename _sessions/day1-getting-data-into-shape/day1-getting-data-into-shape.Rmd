@@ -38,9 +38,6 @@ slug: fanson2024dada
 
 # Workshop project: Wetland Data
 
-
-
-
 ```{r dwnldProject_day1, eval=T, echo=FALSE, code_folding = FALSE}
 library(downloadthis)
   download_link(
@@ -52,9 +49,6 @@ library(downloadthis)
     icon = "fa fa-save"
   )
 ```
-
-
-
 
 # Workflows
 
