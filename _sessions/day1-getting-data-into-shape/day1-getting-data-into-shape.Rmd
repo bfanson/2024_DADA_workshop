@@ -348,10 +348,15 @@ For factors, be very careful when converting...
 
 Next, we checked each column of interest to see if it matched our expectations. We introduced a string function `str_to_sentence()` to help. You also saw `filter()` and how to use that. The operators for `fitler()` are ==, !=, %in%. \<aside\>There are tons of string functions. Check the cheatsheet.
 
-</aside>
+<aside> We also learned about `pull(data, var)` vs `data$var` way of getting a specif column from the dataset</aside>
 
 ```{r eval=F}
- # lets check each column to see if levels look correct..table useful here
+# first, you need to learn to grab a single column from a dataset
+  pull(ds_site, cma)  # this is tidyverse way
+  #vs
+  ds_site$cma  # this is the old base way
+  
+  # I will use $ method here as this is more common (or maybe I am just old(-school) )
   table(ds_site$cma) # looks good
   
   table(ds_site$wetland) # looks good, no misspellings obvious, numbers not exactly 10

@@ -19,4 +19,7 @@ navbar:
       menu:
       - text: "Installing R/Rstudio"
         href: installR.html
+      - text: "Working with dates"
+        href: d1_lubridate.html
+
 output: distill::distill_article

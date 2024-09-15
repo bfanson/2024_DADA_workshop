@@ -19,36 +19,50 @@ library(tidyverse)
 
 # Date/time
 
-![](images/lubridate.png){width="10%"}
 
-```{r cheatsheet, eval=T, out.width='100%', out.height='200%'}
-#  knitr::include_graphics("sessions/day1-getting-data-into-shape/lubridate.pdf")
+```{r cheatsheet, eval=T, echo=F, out.width='100%', out.height='200%'}
+  knitr::include_graphics("pdfs/lubridate.pdf")
 ```
 
 <br> <br> <br> <br> <br> <br>
 
 ## Key date concepts
 
+Below contain some examples of key concepts.
+
 ### date using lubridate
 
-```{r dt_basic, eval=F, code_folding=F}
+```{r dt_basic, eval=T, code_folding=F}
 
 # tidy way to make a date
   as_date('2001-01-01') # assume Year-month-day
-  ymd('2001-01-01')  # better to be specific using helper function
+  ymd('2001-01-01')  # better to be specific about date format using helper function
   dmy('01-01-2021') # date the other way
+  dmy('01-JAN-2021') # date the other way
   
 # dates are stored as number of days since 1970-01-01 (julian days) in R 
   dt <- as_date('1970-01-01')
   class(dt)
   as.numeric(dt)  # days since 1970-01-01 is zero
   as_date('2024-01-01') %>% as.numeric() # 19,723 days since that reference date
-  
+```
+
+Let's read in the following excel file...
+
+![](images/lubridate/excel_file.PNG)
+
+We will do this using `lubridate` functions
+
+<br>
+
+``` {r dt_excel, eval=T, code_folding=F}
 # EXCEL WARNING: dates are stored as number of days since 1899-12-30 in Excel [leap year bug in Lotus]
   ds <- readxl::read_excel('data/raw/date_example.xlsx') %>% select( starts_with('dt_') )
   head(ds)  # notice the mix of numbers and text...[reminder: databases as so much better than excel]
             # notice the <s3: POSIXct> column type
-  ( v_dt <- slice_head(ds, n=4 ) %>% pull(dt_excel) %>% as.numeric() )
+  ( v_dt <- slice_head(ds, n=4 ) %>%  # example of slice function that grabs first 4 rows 
+              pull(dt_excel) %>%  # example of using pull to grab a certain column
+              as.numeric() )  # 
   as_date(v_dt)  # obviously wrong because it is using 1970-01-01 as the reference date
   as_date(v_dt,origin='1899-12-30') 
   
@@ -64,7 +78,7 @@ library(tidyverse)
 
 <br>
 
-```{r dt_helpers, eval=F}
+```{r dt_helpers, eval=T}
 # lots of useful date helpers in lubridate  
   dt <- as_date('2024-09-16')
   year(dt)  # year
@@ -73,8 +87,6 @@ library(tidyverse)
   wday(dt)  # day in the week (monday=2)
   yday(dt)  # day in the year
   leap_year(dt)  # is this year a leap year?
-  
-#   
   
 # tip using built in month vectors
     month.abb[ month(dt) ] # example to get the month abbreviation
@@ -116,7 +128,7 @@ Of course, there was a base way of making `as.Date()`. `as_date()` was created t
 
 ## Key datetime concepts
 
-It is very analagous to date concepts so let's mirror our previous steps
+It is very analogous to date concepts so let's mirror our previous steps
 
 ```{r dt_basics}
 
@@ -149,6 +161,19 @@ It is very analagous to date concepts so let's mirror our previous steps
 
 ## Timezones
 
-timezone_dst \<- 'Australia/Melbourne'
+When working with timezone daylight savings can be problematic.  Depending on project, I often just work with Brsibane timezone that has no daylight savings:
 
-timezone_no_dst \<- 'Australia/Brisbane'
+```{r}
+  timezone_aedt <- 'Australia/Melbourne' # AEDT with daylight savings
+  timezone_aest <- 'Australia/Brisbane'  # AEST with no daylight savings
+
+  dttm <- ymd_hms('2024-10-16 12:00:00') # note UTC
+  dttm
+  
+  with_tz(dttm, timezone_aedt)
+  with_tz(dttm, timezone_aest)
+
+```
+
+
+
