@@ -52,7 +52,11 @@ library(downloadthis)
 **Grazing treatment:** Here, we focus on two types of grazing: **Press** (low intensity for longer) and **Crash** (high intensity for shorter).
 
 
-![](images/dataset/disturbance.png)
+```{r}
+ cowplot::ggdraw() + cowplot::draw_image('images/dataset/idh.PNG')
+```
+
+<br>
 
 ## Experimental design
 
