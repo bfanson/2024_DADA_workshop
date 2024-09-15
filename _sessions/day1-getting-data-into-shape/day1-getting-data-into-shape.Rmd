@@ -708,8 +708,8 @@ Give it try yourself [copilot](https://copilot.microsoft.com/) - type..."*in R a
 ```{r download_data, eval=T, echo=FALSE, code_folding = FALSE}
 library(downloadthis)
   download_link(
-    link='https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/ET-SqpFmklhNqbUxXAwmHcMBWR2OtEDry-OVXha4fsJ5dg?e=cVKgEY',
-    output_name = "Attendance list.xlsx",
+    link='https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/EW7Gq9EXVetFkpM4nIi3k10Bo8TAyze6LuoMC6Z1zu4rTA?e=sWJhQU',
+    output_name = "data.zip",
     button_label = "Download project data",
     button_type = "warning",
     has_icon = TRUE,
@@ -749,7 +749,7 @@ Below is the link to my Rproject version:
 ```{r dwnldProject_hands, eval=T, echo=FALSE, code_folding = FALSE}
 library(downloadthis)
   download_link(
-    link="https://delwpvicgovau-my.sharepoint.com/:u:/r/personal/ben_fanson_deeca_vic_gov_au/Documents/Documents/Projects/workshop/day1_project.zip?csf=1&web=1&e=SWIn8S",
+    link="https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/EVkSSfqlA01Hiocl8q-ut3YBYnZV3iPh2jIcNMsVT8HHKw?e=zfocIw",
     output_name = "day1Project",
     button_label = "Download Rstudio project",
     button_type = "warning",

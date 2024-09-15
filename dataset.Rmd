@@ -28,7 +28,7 @@ For the workshop, we will be using a greatly reduced dataset from the **W**etlan
 ```{r download_data, echo=FALSE, code_folding = FALSE}
 library(downloadthis)
   download_link(
-    link='https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/ET-SqpFmklhNqbUxXAwmHcMBWR2OtEDry-OVXha4fsJ5dg?e=cVKgEY',
+    link='https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/EW7Gq9EXVetFkpM4nIi3k10Bo8TAyze6LuoMC6Z1zu4rTA?e=sWJhQU',
     output_name = "Attendance list.xlsx",
     button_label = "Download project data",
     button_type = "warning",
