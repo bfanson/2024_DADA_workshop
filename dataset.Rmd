@@ -51,7 +51,7 @@ library(downloadthis)
 
 **Grazing treatment:** Here, we focus on two types of grazing: **Press** (low intensity for longer) and **Crash** (high intensity for shorter).
 
-\
+
 ![](images/dataset/disturbance.png)
 
 ## Experimental design
