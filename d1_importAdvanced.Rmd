@@ -1,0 +1,42 @@
+---
+title: "Additional info on NA and NaN"
+description: |
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true # table of content true
+    toc_float: true # make 
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    code_folding: false # awesome buttons to show/hide the code
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Advanced topic(s)
+
+### Importing lots of files with same (or similar-ish) structure
+
+There are times that you will want to import 10s or 100s of files that are structurally the same (e.g. camera data, acoustic tagging data). I use the `purrr` package on almost daily basis. This package was created to help simplify the `apply` family of functions (e.g. `apply`,`lapply`,`sapply`,`mapply`) into a more intuitive nomenclature (like the rest of tidyverse). One website that gives a tutorial is <https://jennybc.github.io/purrr-tutorial/> (but several others out there).
+
+```{r import_multi, eval=F}
+
+  v_list <- dir('data/raw/tagging',full.names = T)   # get a list of files to import.  use full.names=T to relative path
+  importData <- function(x) read_csv( x ) %>% mutate(file_id=x) # create the function that imports a single file
+  ds_all <- purrr::map_df( v_list, ~importData(.x) )   # loop through each filename in v_list, combine together into new dataset
+
+```
+
+Note - you could do this using for-loops but it takes more code.
+
+### Excel files and importing color metadata
+
+First off, **just don't use cell styles (color)** in excel as a way to store data. For instance, using color to indicate treatment.
+
+That being said, you can extract that information using `tidyxl` package. I have had good luck with
+
+

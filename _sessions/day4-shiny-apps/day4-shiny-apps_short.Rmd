@@ -1,0 +1,40 @@
+---
+title: "Day 4: Shiny apps"
+description: |
+  General introduction
+author:
+  - name: Ben Fanson
+    url: https://bfanson.github.io/2024DADAworkshop/
+    affiliation: Arthur Rylah Institute
+    affiliation_url: https://www.ari.vic.gov.au/
+date: 2024-09-01
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true # table of content true
+    toc_float: true # make 
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    code_folding: true # awesome buttons to show/hide the code
+draft: false
+slug: fanson2024dada
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
+```
+
+# Day's learning objectives
+
+1)  Have a good understanding of what Shiny apps can do and how it might be useful for you
+
+2)  Understand the core structure of Shiny apps: UI, Server, Reactivity
+
+3)  Learn how to create and run an App locally as well as deploy on ARI's shiny account
+
+4)  **Feel confident enough to grab example code from Rshiny gallery** `r emo::ji("crossed_fingers")`
+
+
+
+
+

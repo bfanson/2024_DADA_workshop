@@ -2,11 +2,6 @@
 title: "Editing pdfs using Inkscape"
 description: |
   Short tutorial on editing pdfs
-author:
-  - name: Nora Jones 
-    url: https://example.com/norajones
-    affiliation: Spacely Sprockets
-    affiliation_url: https://example.com/spacelysprokets
 date: "`r Sys.Date()`"
 output: distill::distill_article
 ---
@@ -18,12 +13,33 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Purpose
 
+Imagine the following scenarios:
 
-# Getting Inkscape
++ Your report is looking great and you are ready to send off to client.  Right before, you send you notice minor spelling error in one of the figures.  The figure was made by one of co-authors who has buggered off already for the day 
 
-Go to <https://inkscape.org/>
++ You are making a map which involves tedious placement of spatial labels that you tried to do in R.  You just need to nudge the placement for the final version
+
++ You get revisions back from the journal, everything perfect, except they want you to change the axis-labels in plot.   You just want to quickly fix and right back  before your luck changes.
 
 
-# Short video tutorial of editing a pdf
+The above are all cases in which you just need to modify an insignificant change that have no effect on reproducibility. You just want a quick fix (partly for mental sanity).  If you have the original plot figures as pdf (or other vector formats), you can just use vector graphics software like Aboda Illustrator or Inkscape (freeware) to quickly open and change.
 
+
+# Producing pdfs as part of workflow
+
+As part of my workflow, I produce png and pdfs of all plots/images in the Rmarkdown when I knit it.  The figures are labeled by order of appearance.  
+
+![](images/inkscape/inkscape_figs.png)
+
+
+# Using Inkscape
+
++ download and install [website](https://inkscape.org/) 
+
++ open inkscape and drop your pdf into the main screen
+
++ click on the object you want to change (similar to ppx when you have multiple objects)
+
+
+<iframe width="645" height="363" src="https://www.youtube.com/embed/kzdy6qDQRKw" title="inkscape example" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

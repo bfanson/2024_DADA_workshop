@@ -96,7 +96,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--  https://schema.org/Article -->
   <meta property="article:published" itemprop="datePublished" content="2024-09-12"/>
   <meta property="article:created" itemprop="dateCreated" content="2024-09-12"/>
-  <meta name="article:author" content="Nora Jones"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="2024 DADA workshop: Editing pdfs using Inkscape"/>
@@ -114,7 +113,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Editing pdfs using Inkscape"]},{"type":"character","attributes":{},"value":["Short tutorial on editing pdfs\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url","affiliation","affiliation_url"]}},"value":[{"type":"character","attributes":{},"value":["Nora Jones"]},{"type":"character","attributes":{},"value":["https://example.com/norajones"]},{"type":"character","attributes":{},"value":["Spacely Sprockets"]},{"type":"character","attributes":{},"value":["https://example.com/spacelysprokets"]}]}]},{"type":"character","attributes":{},"value":["2024-09-12"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Editing pdfs using Inkscape"]},{"type":"character","attributes":{},"value":["Short tutorial on editing pdfs\n"]},{"type":"character","attributes":{},"value":["2024-09-12"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2098,7 +2097,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Editing pdfs using Inkscape","description":"Short tutorial on editing pdfs","authors":[{"author":"Nora Jones","authorURL":"https://example.com/norajones","affiliation":"Spacely Sprockets","affiliationURL":"https://example.com/spacelysprokets","orcidID":""}],"publishedDate":"2024-09-12T00:00:00.000+10:00","citationText":"Jones, 2024"}
+{"title":"Editing pdfs using Inkscape","description":"Short tutorial on editing pdfs","authors":[],"publishedDate":"2024-09-12T00:00:00.000+10:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2148,17 +2147,27 @@ Extra topics
 <p><p>Short tutorial on editing pdfs</p></p>
 </div>
 
-<div class="d-byline">
-  Nora Jones <a href="https://example.com/norajones" class="uri">https://example.com/norajones</a> (Spacely Sprockets)<a href="https://example.com/spacelysprokets" class="uri">https://example.com/spacelysprokets</a>
-  
-<br/>2024-09-12
-</div>
 
 <div class="d-article">
 <h1 id="purpose">Purpose</h1>
-<h1 id="getting-inkscape">Getting Inkscape</h1>
-<p>Go to <a href="https://inkscape.org/" class="uri">https://inkscape.org/</a></p>
-<h1 id="short-video-tutorial-of-editing-a-pdf">Short video tutorial of editing a pdf</h1>
+<p>Imagine the following scenarios:</p>
+<ul>
+<li><p>Your report is looking great and you are ready to send off to client. Right before, you send you notice minor spelling error in one of the figures. The figure was made by one of co-authors who has buggered off already for the day</p></li>
+<li><p>You are making a map which involves tedious placement of spatial labels that you tried to do in R. You just need to nudge the placement for the final version</p></li>
+<li><p>You get revisions back from the journal, everything perfect, except they want you to change the axis-labels in plot. You just want to quickly fix and right back before your luck changes.</p></li>
+</ul>
+<p>The above are all cases in which you just need to modify an insignificant change that have no effect on reproducibility. You just want a quick fix (partly for mental sanity). If you have the original plot figures as pdf (or other vector formats), you can just use vector graphics software like Aboda Illustrator or Inkscape (freeware) to quickly open and change.</p>
+<h1 id="producing-pdfs-as-part-of-workflow">Producing pdfs as part of workflow</h1>
+<p>As part of my workflow, I produce png and pdfs of all plots/images in the Rmarkdown when I knit it. The figures are labeled by order of appearance.</p>
+<p><img src="images/inkscape/inkscape_figs.png" /></p>
+<h1 id="using-inkscape">Using Inkscape</h1>
+<ul>
+<li><p>download and install <a href="https://inkscape.org/">website</a></p></li>
+<li><p>open inkscape and drop your pdf into the main screen</p></li>
+<li><p>click on the object you want to change (similar to ppx when you have multiple objects)</p></li>
+</ul>
+<iframe width="645" height="363" src="https://www.youtube.com/embed/kzdy6qDQRKw" title="inkscape example" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

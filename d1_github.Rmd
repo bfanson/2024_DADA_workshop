@@ -1,0 +1,42 @@
+---
+title: "Notes on github"
+description: |
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true # table of content true
+    toc_float: true # make 
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    code_folding: false # awesome buttons to show/hide the code
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# Version Control: Git/Github [Advanced]
+
+As part of my due-diligence, I have to mention version control. In short, version control is external software that keeps track of all your changes (so you can go back if something breaks in your code) and very helpful with collaborations (e.g. allowing you both code away and then merging those changes).
+
+For R/Rstudio, Git/Github is the most popular. Now, **Git is the version control software locally on your computer** and it does the tracking of all changes In contrast, **Github is an online platform** in which you can upload those changes (and project folder/files) and is mainly useful for the collaboration/sharing (plus some other useful features)
+
+**Key points on Git/Github:**
+
+-   If not collaborating, the overhead of Git (learning, initial setup, random breaks) might not worth it to you. You still have version histories via Onedrive to save you (not as easy to shift through as Git).
+
+-   If collaborating, it really is the best approach that will save you effort in the long run.
+
+-   It is worth playing around with Github online so you know how to navigate the website (this workshop will help with that). Github is a rich resource with example code and useful packages not on CRAN. Github project (aka repositories) can look intimidating at first.
+
+-   Rstudio has git integration that makes it easier to work with, though the github desktop
+
+-   Github has Github pages which is hosting this website [workflow: 1) write RMD files in Rstudio; 2) upload to Github; 3) Github publishes at <https:username.github.io/project_id>]
+
+**GIT resources to get started**
+
+Cheatsheet: <https://rstudio.github.io/cheatsheets/git-github.pdf>
+
+Useful book with R focus: <https://happygitwithr.com/>

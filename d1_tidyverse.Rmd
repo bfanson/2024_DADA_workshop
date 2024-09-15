@@ -1,0 +1,156 @@
+---
+title: "Additional info on NA and NaN"
+description: |
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true # table of content true
+    toc_float: true # make 
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    code_folding: false # awesome buttons to show/hide the code
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Historical context
+
+-   base R [the packages included when you install R the first time]
+-   `base`, `stats`, `grid`, `utils`, ...
+
+```{r base_r, eval=F}
+# example of getting a plot using base
+  ds <- mtcars  # grab the built-in mtcars dataset
+  ds <- ds[, c('mpg','hp')]   # select just the columns you want
+  ds$l_100km <- 1/( ds$mpg/3.78 * 1.6 )*100 # convert mile per gallon to liters / 100km
+  plot( ds$l_100km ~ ds$hp )  # plot relationship between horsepower and km/l
+
+```
+
+-   quirky things about R: factors vs character, NAs,
+
+-   lubridate fixed date quirks
+
+-   lack of consistency within base and between packages
+
+-   data argument might be first or last
+
+## Basic principles
+
+-   human-centered
+
+    -   readable to humans
+
+    -   uses verbs like `mutate`, `select`, `filter`, `summarise`
+
+    -   uses sentence like structure: noun -\> verb -\> verb [ Paul -\> walks (to work) -\> sets up ( his computer) -\> creates a plot -\> saves plot (to a file) -\> calls it day -\> walks (home) ]
+
+-   consistent
+
+    -   when using tidy functions, you get consistent output data structure (called a tibble)
+
+```{r  eval=F}
+  # an example of tidyverse consistent structure
+  class(mtcars)   # data.frame
+  head(mtcars)    # notice the rowlabels
+  View(mtcars)    # see the rownames in the spreadsheet
+  as_tibble(mtcars,rownames = 'make')  # tidyverse datasets (tibbles) never have rownames
+
+```
+
+-   
+
+-   composable (chunks)
+
+## Tibbles
+
+-   I mentioned briefly above about "tibbles"
+
+    tibble is data.frame v2.0
+
+    -   better printing of the data
+    -   handles some of the quirky things that caught up people
+    -   column names
+
+## Pipes: %\>% (magittr package)
+
+A key component of tidyverse world is the concept of "pipes". The pipe connects multiples steps into a single sequence of commands.
+
+<aside>Just to make things harder, a new pipe `|>` has been introduced. It is very similar to `%>%` but it does act a little different. We will just teach `%>%` because we are set in our ways</aside>
+
+### Building "sentences"
+
+```{r, eval=F}
+  library(tidyverse)
+  head(mtcars)
+  mtcars %>% head(10)  # get mtcars, pass to head function, take the first 10 rows
+  
+# sentence using tidy functions we will dive into below...just follow basic logic
+  mtcars %>% 
+    slice_head(n=10) %>%  # take first 10 rows   
+    mutate( mpl = round( mpg/3.79,2 ) ) %>%  # convert mpg to miles per liter (mpl)
+    select( mpg, mpl )  # keep just the mpg and mpl columns 
+
+# placeholder "."
+  mtcars %>% head(5)    
+  mtcars %>% head(.,5)  # same as above but explicitly using . to denote the input
+
+  # example where you want to input the dataset not into first argument spot
+  mtcars %>% lm(mpg~hp) %>% summary()  # fails as it is trying lm(formula=mtcars, data=mpg~hp )
+  mtcars %>% lm(mpg~hp, data=.) %>% summary()  # referencing the input by "."
+
+```
+
+### "Odd" looking uses
+
+With `%>%` it is worth being aware that you will see different variations that look odd. I show a few examples below.
+
+<aside>Note that you can have different variations using `%>%` that might look odd. E.g. `data %>% head` or `data %>% .$var`. Just be beware</aside>
+
+```{r eval=F}
+
+  mtcars %>% head  # lack of brackets
+  mtcars %>% head(n=3) %>%  bind_rows( ., .)   # multiple "." example
+  mtcars %>% .$mpg   # grabs a specific column - combining tidyverse with base approaches 
+  mtcars %>% {c( mean=mean(.$mpg), median=median(.$mpg) ) }  # curly bracket example using "." and $ - prevents putting . into c(., mean(.$mpg), median(.$mpg))
+
+
+```
+
+### old vs. new: %\>% vs. \|\>
+
+\|\> is considered to be "simple" now compared to %\>%
+
+are some differences mainly associated with referring to the passed
+
+Tip - set a shortcut for... Ctrl-Shift-M
+
+```{r , eval=F}
+  library(tidyverse)
+  head(mtcars)
+  mtcars %>% head()
+  mtcars |> head() # newer version 
+
+# examples of differences (advanced)
+  mtcars %>% head # works
+  mtcars |> head  # fails  (must have brackets)
+  mtcars |> head()  # works  (must have brackets)
+
+  #subselecting
+  mtcars %>% .$mpg
+  mtcars |>  .$mpg  # $ not supported
+  mtcars |>  pull(mpg)  # use pull
+
+  mtcars %>% head(x=., 10) # . works for %>% 
+  mtcars |>  head(x=., 10)  # . placeholder does not work
+  mtcars |>  head(x=_, 10)  # _ placeholder instead
+  mtcars |>  head(n=10, x=_)  # _ placeholder instead
+  mtcars  %>%   head(n=10, .)  # can place without argument specified
+  mtcars  %>%   head(n=10, _)  # must you argument if not in first position
+
+    
+```

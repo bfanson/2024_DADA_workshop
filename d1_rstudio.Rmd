@@ -1,0 +1,60 @@
+---
+title: "Additional info on NA and NaN"
+description: |
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true # table of content true
+    toc_float: true # make 
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    code_folding: false # awesome buttons to show/hide the code
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# Rprojects
+
+## Why use? 
++ Relative Paths
+
+## How to set-up
+
+
+## How to open your Rproject
+
+
+
+# Getting familiar with Rstudio
+
+- four windows
+
+Short youtube 
+
+<iframe width="678" height="393" src="https://www.youtube.com/embed/FIrsOBy5k58" title="RStudio for the Total Beginner" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+# Turning off .Rdata
+
+
+# Tips/Tricks
+
+tab
+
+fills in paths
+
+hexcode color coating
+
+code folding (#)
+
+insert pipe: ctrl+shift+M %>%
+
+comment: ctrl + shift + C
+
+find in all files
+
+click on object in "Data" to view and filter the dataset

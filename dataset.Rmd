@@ -41,13 +41,6 @@ library(downloadthis)
 
 # Project overview
 
-```{r echo=F, fig.height=4, fig.width=4}
-  sf_site <- sf::read_sf('data/sf_site.gpkg')
-  sf_cma <- VicmapR::vicmap_query(layer='open-data-platform:cma100') %>% collect()
-
-
-```
-
 ## Purpose
 
 **Goal:** Improve grazing management
@@ -61,20 +54,14 @@ library(downloadthis)
 
 ## Experimental design
 
-```{r echo=F}
-  n_wetlands <- n_distinct(sf_site$wetland)
-  n_crash <- sum(sf_site$grazing=='Crash')
-  n_graze <- sum(sf_site$grazing=='Crash')
-  
-```
 
 ### Study sites
 
-Across western and eastern Victoria, a total of `r n_wetlands` sites were selected to be surveyed. These sites were spread across four **C**atchment **M**anagement Authorities (CMA) but with the majority of sites in the western CMAs. Sites were chosen partly to cover a wide variation in grazing intensity.
+Across western and eastern Victoria, a total of 28 sites were selected to be surveyed. These sites were spread across four **C**atchment **M**anagement Authorities (CMA) but with the majority of sites in the western CMAs. Sites were chosen partly to cover a wide variation in grazing intensity.
 
 ```{r echo=F, fig.height=4, fig.width=7}
-  #sf_cma <- VicmapR::vicmap_query(layer='open-data-platform:cma100') %>% collect()
-  #sf::write_sf(sf_cma, 'sf_cma.gpkg')
+  sf_site <- sf::read_sf('data/sf_site.gpkg')
+  sf_cma <- VicmapR::vicmap_query(layer='open-data-platform:cma100') %>% collect()
   mapview::mapview(sf_cma, zcol='cmaname', layer.name='cma') + 
     mapview::mapview(sf_site, zcol='grazing', layer.name='site', col.regions=c('red','blue') )
 

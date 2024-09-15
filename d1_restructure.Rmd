@@ -1,0 +1,60 @@
+---
+title: "Restructuring data"
+description: |
+output:
+  distill::distill_article:
+    self_contained: true
+    toc: true # table of content true
+    toc_float: true # make 
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    code_folding: false # awesome buttons to show/hide the code
+draft: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# ## notes on missing values
+
+-   reminder of different ways to handle
+
+-   run model, will be dropped
+
+-   causes errors (NA) in summary (na.rm=T, do not do as a default)
+
+-   
+
+    # Dealing with NA
+
+## NA and NaN in R
+
+-   unique
+-   0/0
+-   as.character( c(NaN, 1) )
+-   as.character( c(NA, 1) )
+-   n_distinct( c(NA,'a','b') )
+
+## other similar values: NaN, Inf
+
+1/0
+
+## useful functions
+
+is.na(), is.Nan(), is.Inf()
+
+## NAs in other functions
+
+-   mean( na.rm=T)
+
+-   rolling()
+
+-   statistical models regression example
+
+a)  options: delete explicitly (missing at random), imputation techniques (mean)
+
+## 
+
+# 
