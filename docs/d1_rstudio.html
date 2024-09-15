@@ -88,26 +88,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>2024 DADA workshop: Working with dates and time</title>
+  <title>2024 DADA workshop: Additional info on NA and NaN</title>
 
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="2024 DADA workshop: Working with dates and time"/>
+  <meta property="og:title" content="2024 DADA workshop: Additional info on NA and NaN"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="2024 DADA workshop"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="2024 DADA workshop: Working with dates and time"/>
+  <meta property="twitter:title" content="2024 DADA workshop: Additional info on NA and NaN"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["Working with dates and time"]},{"type":"NULL"},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float","depth","number_sections","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","draft"]}},"value":[{"type":"character","attributes":{},"value":["Additional info on NA and NaN"]},{"type":"NULL"},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","toc_float","depth","number_sections","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[3]},{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[false]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2091,7 +2091,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Working with dates and time","authors":[]}
+{"title":"Additional info on NA and NaN","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2135,7 +2135,7 @@ Extra topics
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Working with dates and time</h1>
+<h1>Additional info on NA and NaN</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -2147,148 +2147,43 @@ Extra topics
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#datetime" id="toc-datetime">Date/time</a>
+<li><a href="#rprojects" id="toc-rprojects">Rprojects</a>
 <ul>
-<li><a href="#key-date-concepts" id="toc-key-date-concepts">Key date concepts</a>
-<ul>
-<li><a href="#date-using-lubridate" id="toc-date-using-lubridate">date using lubridate</a></li>
-<li><a href="#lubridate-vs.-base" id="toc-lubridate-vs.-base">lubridate vs. base</a></li>
+<li><a href="#why-use" id="toc-why-use">Why use?</a></li>
+<li><a href="#how-to-set-up" id="toc-how-to-set-up">How to set-up</a></li>
+<li><a href="#how-to-open-your-rproject" id="toc-how-to-open-your-rproject">How to open your Rproject</a></li>
 </ul></li>
-<li><a href="#key-datetime-concepts" id="toc-key-datetime-concepts">Key datetime concepts</a></li>
-<li><a href="#timezones" id="toc-timezones">Timezones</a></li>
-</ul></li>
+<li><a href="#getting-familiar-with-rstudio" id="toc-getting-familiar-with-rstudio">Getting familiar with Rstudio</a></li>
+<li><a href="#turning-off-.rdata" id="toc-turning-off-.rdata">Turning off .Rdata</a></li>
+<li><a href="#tipstricks" id="toc-tipstricks">Tips/Tricks</a></li>
 </ul>
 </nav>
 </div>
-<h1 id="datetime">Date/time</h1>
-<p><img src="images/lubridate.png" style="width:10.0%" /></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'>#  knitr::include_graphics("sessions/day1-getting-data-into-shape/lubridate.pdf")</span></span></code></pre>
-</div>
-</div>
-<p><br> <br> <br> <br> <br> <br></p>
-<h2 id="key-date-concepts">Key date concepts</h2>
-<h3 id="date-using-lubridate">date using lubridate</h3>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># tidy way to make a date</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='st'>'2001-01-01'</span><span class='op'>)</span> <span class='co'># assume Year-month-day</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/ymd.html'>ymd</a></span><span class='op'>(</span><span class='st'>'2001-01-01'</span><span class='op'>)</span>  <span class='co'># better to be specific using helper function</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span><span class='op'>(</span><span class='st'>'01-01-2021'</span><span class='op'>)</span> <span class='co'># date the other way</span></span>
-<span>  </span>
-<span><span class='co'># dates are stored as number of days since 1970-01-01 (julian days) in R </span></span>
-<span>  <span class='va'>dt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='st'>'1970-01-01'</span><span class='op'>)</span></span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>dt</span><span class='op'>)</span></span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>dt</span><span class='op'>)</span>  <span class='co'># days since 1970-01-01 is zero</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='st'>'2024-01-01'</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># 19,723 days since that reference date</span></span>
-<span>  </span>
-<span><span class='co'># EXCEL WARNING: dates are stored as number of days since 1899-12-30 in Excel [leap year bug in Lotus]</span></span>
-<span>  <span class='va'>ds</span> <span class='op'>&lt;-</span> <span class='fu'>readxl</span><span class='fu'>::</span><span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span><span class='st'>'data/raw/date_example.xlsx'</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span> <span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span><span class='op'>(</span><span class='st'>'dt_'</span><span class='op'>)</span> <span class='op'>)</span></span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>ds</span><span class='op'>)</span>  <span class='co'># notice the mix of numbers and text...[reminder: databases as so much better than excel]</span></span>
-<span>            <span class='co'># notice the &lt;s3: POSIXct&gt; column type</span></span>
-<span>  <span class='op'>(</span> <span class='va'>v_dt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice_head</a></span><span class='op'>(</span><span class='va'>ds</span>, n<span class='op'>=</span><span class='fl'>4</span> <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/pull.html'>pull</a></span><span class='op'>(</span><span class='va'>dt_excel</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>)</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='va'>v_dt</span><span class='op'>)</span>  <span class='co'># obviously wrong because it is using 1970-01-01 as the reference date</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='va'>v_dt</span>,origin<span class='op'>=</span><span class='st'>'1899-12-30'</span><span class='op'>)</span> </span>
-<span>  </span>
-<span>  <span class='co'># switch from POXICxt to Date</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='va'>ds</span>, dt_correct <span class='op'>=</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='va'>dt_correct</span><span class='op'>)</span> <span class='op'>)</span> <span class='co'># now it is &lt;date&gt;</span></span>
-<span>  </span>
-<span>  <span class='co'># for those interested, one possible fix to the column</span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='va'>ds</span>, dt_fixed <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/case_when.html'>case_when</a></span><span class='op'>(</span> <span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>dt_excel</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>~</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>dt_excel</span><span class='op'>)</span>, origin<span class='op'>=</span><span class='st'>'1899-12-30'</span><span class='op'>)</span>,</span>
-<span>                                   <span class='cn'>TRUE</span> <span class='op'>~</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span><span class='op'>(</span> <span class='va'>dt_excel</span><span class='op'>)</span>  <span class='op'>)</span> <span class='op'>)</span></span>
-<span>  <span class='co'># what does AI do? Try "using tidyverse in R, how can I fix a dataset that has a column that is text that needs to be converted to date but the column has julian days as well as date character formats in it?"</span></span></code></pre>
-</div>
-</div>
-<p><br></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># lots of useful date helpers in lubridate  </span></span>
-<span>  <span class='va'>dt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='st'>'2024-09-16'</span><span class='op'>)</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/year.html'>year</a></span><span class='op'>(</span><span class='va'>dt</span><span class='op'>)</span>  <span class='co'># year</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/month.html'>month</a></span><span class='op'>(</span><span class='va'>dt</span><span class='op'>)</span> <span class='co'># month</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/week.html'>week</a></span><span class='op'>(</span><span class='va'>dt</span><span class='op'>)</span>  <span class='co'># week in the year</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/day.html'>wday</a></span><span class='op'>(</span><span class='va'>dt</span><span class='op'>)</span>  <span class='co'># day in the week (monday=2)</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/day.html'>yday</a></span><span class='op'>(</span><span class='va'>dt</span><span class='op'>)</span>  <span class='co'># day in the year</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/leap_year.html'>leap_year</a></span><span class='op'>(</span><span class='va'>dt</span><span class='op'>)</span>  <span class='co'># is this year a leap year?</span></span>
-<span>  </span>
-<span><span class='co'>#   </span></span>
-<span>  </span>
-<span><span class='co'># tip using built in month vectors</span></span>
-<span>    <span class='va'>month.abb</span><span class='op'>[</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/month.html'>month</a></span><span class='op'>(</span><span class='va'>dt</span><span class='op'>)</span> <span class='op'>]</span> <span class='co'># example to get the month abbreviation</span></span>
-<span>    <span class='va'>month.name</span><span class='op'>[</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/month.html'>month</a></span><span class='op'>(</span><span class='va'>dt</span><span class='op'>)</span> <span class='op'>]</span> <span class='co'># example to get the month fullname</span></span></code></pre>
-</div>
-</div>
-<h3 id="lubridate-vs.-base">lubridate vs. base</h3>
-<p>Of course, there was a base way of making <code>as.Date()</code>. <code>as_date()</code> was created to fix a few pitfalls with as.Date(), so it is safer/better to just use <code>as_date()</code></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># tidy vs base...  </span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='st'>'01-11-2021'</span><span class='op'>)</span>  <span class='co'># gives error - tidyverse</span></span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>'01-11-2021'</span><span class='op'>)</span>  <span class='co'># note the issue - base R</span></span>
-<span></span>
-<span><span class='co'># note assumptions still happen but tidy is a bit safer  </span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='st'>'01-01-01'</span><span class='op'>)</span> <span class='co'># assumes Year-month-date and that we are 20XX</span></span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>'01-01-01'</span><span class='op'>)</span> <span class='co'># no chance of correct</span></span>
-<span>  </span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span><span class='op'>(</span><span class='st'>'01-11-2021'</span><span class='op'>)</span>  <span class='co'># can you the helper functions to convert</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='st'>'01-11-2021'</span>, format<span class='op'>=</span><span class='st'>'%d-%m-%Y'</span><span class='op'>)</span> <span class='co'># or add a format for those inclined</span></span>
-<span>  <span class='op'>?</span><span class='va'>strptime</span>  <span class='co'># one place to find format codes</span></span>
-<span>  <span class='co'># copilot - try "what is the date format code for 01-nov-2022 using R"  </span></span>
-<span>  </span>
-<span><span class='co'># timezone stuff-ups  </span></span>
-<span>  <span class='va'>dt_utc</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/ymd_hms.html'>ymd_hms</a></span><span class='op'>(</span><span class='st'>"2024-09-01 00:50:50"</span><span class='op'>)</span></span>
-<span>  <span class='va'>dt_europe</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/ymd_hms.html'>ymd_hms</a></span><span class='op'>(</span><span class='st'>"2024-09-01 00:50:50"</span>, tz <span class='op'>=</span> <span class='st'>"Europe/London"</span><span class='op'>)</span></span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='va'>dt_utc</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>dt_utc</span><span class='op'>)</span><span class='op'>)</span></span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_date</a></span><span class='op'>(</span><span class='va'>dt_europe</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>dt_europe</span><span class='op'>)</span> <span class='op'>)</span></span>
-<span></span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='va'>dt_europe</span>, tz<span class='op'>=</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/tz.html'>tz</a></span><span class='op'>(</span><span class='va'>dt_europe</span><span class='op'>)</span> <span class='op'>)</span> <span class='co'># have to grab the tz explicitly</span></span></code></pre>
-</div>
-</div>
-<h2 id="key-datetime-concepts">Key datetime concepts</h2>
-<p>It is very analagous to date concepts so let’s mirror our previous steps</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># tidy way to make a datetime</span></span>
-<span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/as_date.html'>as_datetime</a></span><span class='op'>(</span><span class='st'>'2001-01-01 10:00:00'</span><span class='op'>)</span> </span></code></pre>
-</div>
-<pre><code>[1] &quot;2001-01-01 10:00:00 UTC&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/ymd_hms.html'>ymd_hms</a></span><span class='op'>(</span><span class='st'>'2001-01-01 10:00:00'</span><span class='op'>)</span>  <span class='co'># better to be specific using helper function</span></span></code></pre>
-</div>
-<pre><code>[1] &quot;2001-01-01 10:00:00 UTC&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span>  <span class='fu'><a href='https://lubridate.tidyverse.org/reference/ymd_hms.html'>dmy_hm</a></span><span class='op'>(</span><span class='st'>'01-Nov-2001 10:00'</span><span class='op'>)</span>  <span class='co'># better to be specific using helper function</span></span></code></pre>
-</div>
-<pre><code>[1] &quot;2001-11-01 10:00:00 UTC&quot;</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># dates are stored as number of seconds since 1970-01-01 00:00:00 in R </span></span>
-<span>  <span class='va'>dttm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://lubridate.tidyverse.org/reference/ymd_hms.html'>ymd_hms</a></span><span class='op'>(</span><span class='st'>'1970-01-01 00:00:60'</span><span class='op'>)</span></span>
-<span>  <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>dttm</span><span class='op'>)</span>  <span class='co'># 60 seconds</span></span></code></pre>
-</div>
-<pre><code>[1] 60</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># however, dates are stored as number of days since 1899-12-30 in Excel [leap year bug in Lotus]</span></span>
-<span>  <span class='co'># ds &lt;- readxl::read_excel('data/raw/date_example.xlsx') %&gt;% select( contains('tm_'))</span></span>
-<span>  <span class='co'># head(ds)  # notice the mix of numbers and text...[reminder: databases as so much better than excel]</span></span>
-<span>  <span class='co'>#           # notice the &lt;s3: POSIXct&gt; column type</span></span>
-<span>  <span class='co'># ( v_dt &lt;- slice_head(ds, n=4 ) %&gt;% pull(dttm_excel) %&gt;% as.numeric() )</span></span>
-<span>  <span class='co'># as_date(v_dt)  # obviously wrong because it is using 1970-01-01 as the reference date</span></span>
-<span>  <span class='co'># as_date(v_dt,origin='1899-12-30') </span></span>
-<span>  <span class='co'># </span></span>
-<span>  <span class='co'># # switch from POXICxt to Date</span></span>
-<span>  <span class='co'># mutate(ds, dt_correct = as_date(dt_correct) ) # now it is &lt;date&gt;</span></span>
-<span>  <span class='co'># </span></span>
-<span>  <span class='co'># # for those interested, one possible fix to the column</span></span>
-<span>  <span class='co'># mutate(ds, dt_fixed = case_when( !is.na(as.numeric(dt_excel)) ~ as_date( as.numeric(dt_excel), origin='1899-12-30'),</span></span>
-<span>  <span class='co'>#                                  TRUE ~ dmy( dt_excel)  ) )</span></span>
-<span>  <span class='co'># what does AI do? Try "using tidyverse in R, how can I fix a dataset that has a column that is text that needs to be converted to date but the column has julian days as well as date character formats in it?"</span></span></code></pre>
-</div>
-</div>
-<h2 id="timezones">Timezones</h2>
-<p>timezone_dst &lt;- ‘Australia/Melbourne’</p>
-<p>timezone_no_dst &lt;- ‘Australia/Brisbane’</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="rprojects">Rprojects</h1>
+<h2 id="why-use">Why use?</h2>
+<ul>
+<li>Relative Paths</li>
+</ul>
+<h2 id="how-to-set-up">How to set-up</h2>
+<h2 id="how-to-open-your-rproject">How to open your Rproject</h2>
+<h1 id="getting-familiar-with-rstudio">Getting familiar with Rstudio</h1>
+<ul>
+<li>four windows</li>
+</ul>
+<p>Short youtube</p>
+<iframe width="678" height="393" src="https://www.youtube.com/embed/FIrsOBy5k58" title="RStudio for the Total Beginner" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<h1 id="turning-off-.rdata">Turning off .Rdata</h1>
+<h1 id="tipstricks">Tips/Tricks</h1>
+<p>tab</p>
+<p>fills in paths</p>
+<p>hexcode color coating</p>
+<p>code folding (#)</p>
+<p>insert pipe: ctrl+shift+M %&gt;%</p>
+<p>comment: ctrl + shift + C</p>
+<p>find in all files</p>
+<p>click on object in “Data” to view and filter the dataset</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
