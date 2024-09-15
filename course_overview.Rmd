@@ -16,11 +16,45 @@ draft: false
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+# Acknowledgement of country
+
+I would like to begin by acknowledging the traditional owners of the land on which we are meeting today, the Wurundjeri people of the Kulin Nation, and pay my respects to their Elders past, present and emerging.
+
+------------------------------------------------------------------------
+
+# Workshop Structure
+
+This is a 4-day workshop ( SEP16-19 2024) with each day running from 9am-12pm. During each day's session, we will cover a new topic in the workflow pipeline.
+
+-   Monday: Overview of workflow, importing, cleaning (Ben)
+
+-   Tuesday: Analysis of data (Paul)
+
+-   Wednesday: Creating reports (Paul)
+
+-   Thursday: Creating shiny Apps (Ben)
+
+Within each day, the session is structured to be mainly 'talk-and-chalk' for the first half and then more hands-on for the second half.
+
+\*\* Notes \*\*
+
+1.  We will not be offended if **you just stay for the first half**
+
+2.  **Ask questions** anytime. Most likely someone else will have the same question. We may defer the question to hands-on section if it is too much of rabbit-hole.
+
+3.  We will have a wide range of skills across the days
+
+**Most Importantly, tea will be provided!! `r emo::ji("happy")`**
+
+
+------------------------------------------------------------------------
+
 # What the workshop is trying to do
 
 -   Become familiar with data analyst workflow
 -   Learn a workflow from data cleaning to analysis to presenting/communicating results in one platform
 -   Increase your knowledge about the R workflow, resources, and capabilities `r emo::ji("+1")`
+-   Provide a resource to refer to to help remind you how to get going 
 
 # What is it **NOT** trying to do
 
@@ -28,39 +62,6 @@ knitr::opts_chunk$set(echo = FALSE)
 -   Going in-depth into any specific topic (except R workflow)
 -   Make you cry `r emo::ji("cry")`
 
-------------------------------------------------------------------------
-
-# Learning objectives
-
-1)  Understand "modern" workflow using R environment
-
-2)  Identify what R packages are routinely used for each analysis steps
-
-3)  Improve your workflow efficiency, reproducibility, and "general sanity"
-
-4)  Have a resource to reference when stuck or need to refresh memory
-
-------------------------------------------------------------------------
-
-# Workshop Structure
-
-This is 4-day workshop with each day running from 9am-12pm. During each day's session, we will cover a new topic in the workflow pipeline.
-
-+  Monday 2024SEP16: Overview of workflow, importing, cleaning
-
-+  Tuesday 2024SEP17: Analysis of data
-
-+  Wednesday 2024SEP18: Creating reports
-
-+  Thursday 2024SEP19: Creating shiny Apps
-
-
-Within each day, the session is structured to be mainly talk and chalk for the first half and then more hands-on for the second half.  
-
-**Note** - We will not be offended if you just stay for the first half
-
-
-**Importantly, tea will be provided!! `r emo::ji("happy")`**
 
 ------------------------------------------------------------------------
 
@@ -70,16 +71,15 @@ Within each day, the session is structured to be mainly talk and chalk for the f
 
 Compared to when we started providing biometrics workshops, the amount of resources and online learning tools has exploded. Partly as a consequence, there has been a homogenization of workflow driven by key leaders in the area that have pushed the technology and analysis paradigms.
 
-Given this, we will attempt in this workshop to act more as a guide to help you develop a solid framework that you can use as a launching point. We will point out amazing resources out but also hoping that workshop will give you the foundation to dive deeper into the topics specific to your research/needs.
-
+Given this, we will attempt in this workshop to act more as a guide to help you develop a solid framework that you can use as a launching point. We will point out amazing resources out but also hoping that the workshop will give you the foundation to dive deeper into the topics specific to your research/needs.  Part of this is introducing to you to tools/concepts as well as introducing to the terminology in R workflows. 
 
 ## May need to take a step-back at times
 
-For some, the last two days of the workshop might push their limits but they are important skills to develop as how we communicate research (and the expectations) is changing quickly.
+For some, the last two days of the workshop might push their limits but the skills in these session are becoming more important as the expectation of how we communicate our research grows and evolves.
 
-On Day 3 (creating reports), the Quarto(/Rmarkdown) approach takes a bit to get used to if you are WYSIWYG (**W**hat **Y**ou **S**ee **I**s **W**hat **Y**ou **G**et).  The key is focus on the higher level concepts (e.g. how it could be useful for you, focus on the higher level concepts (e.g. losing the forest for the trees)).  Most importantly, once you have a template to work from and understand a key fundamentals, you can modify easily (often having no clue how most of it works...my approach for years (still?) to be honest).
+On Day 3 (creating reports), the Quarto(/Rmarkdown) approach takes a bit to get used to if you are used to WYSIWYG (**W**hat **Y**ou **S**ee **I**s **W**hat **Y**ou **G**et). The key is to focus on the higher level concepts (e.g. focusing on the higher level concepts of how it could be useful for your research). Most importantly, once you have a template to work from and understand key fundamentals, you can easily modify  (often having no clue how most of it works...my approach for years to be honest).
 
-Now, for Day 4 (Shiny Apps), Shiny is going to look (frustratingly/scaredly/freakishly) different as shown below (heads up):
+Now, for Day 4 (Shiny Apps), Shiny is going to look, frustratingly, different as shown below:
 
 ```{r shine_ex, include=T, echo=T,eval=F, collapse=T}
 library(shiny)
@@ -105,8 +105,7 @@ shinyApp(ui = ui, server = server)
 
 However, shiny apps have a very basic structure and once you get that (and a few other key bits), you can often grab other people's code and modify slightly to get what you need.
 
-Reminder - The goal here is __not to make you a programmer__ but familiar with a few key tools so that you can tinker away.
-
+Reminder - The goal here is **not to make you a programmer** but familiar with a few key tools so that you can tinker away.
 
 ------------------------------------------------------------------------
 
@@ -115,8 +114,6 @@ Reminder - The goal here is __not to make you a programmer__ but familiar with a
 Just a reminder QEARI (**Q**uantitative **E**cology **ARI**) is a great resource and a safe place for asking "dumb" questions. The amount of expertise among its regulars is impressive! There are multiple channels to ask questions including a **new one for shiny Apps**!!!
 
 ![](images/course_overview/teams_qeari.PNG){width="50%"}
-
-
 
 ------------------------------------------------------------------------
 

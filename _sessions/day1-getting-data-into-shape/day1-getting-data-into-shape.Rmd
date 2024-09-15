@@ -1,7 +1,7 @@
 ---
 title: "Day 1: Getting data into shape"
 description: |
-  Tidyverse world
+  An introduction to workflow and the Tidyverse world
 author:
   - name: Ben Fanson
     url: https://bfanson.github.io/2024DADAworkshop/
@@ -38,18 +38,6 @@ slug: fanson2024dada
 
 # Workshop project: Wetland Data
 
-```{r dwnldProject_day1, eval=T, echo=FALSE, code_folding = FALSE}
-library(downloadthis)
-  download_link(
-    link="https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/EfZB-ZZBg8FDs0LNsHfz5kABx0Wc2Gf9_WRNmBaj74rLaQ?e=M5yhq6",
-    output_name = "dataProject",
-    button_label = "Download project data",
-    button_type = "warning",
-    has_icon = TRUE,
-    icon = "fa fa-save"
-  )
-```
-
 Click over to [dataset webpage](https://bfanson.github.io/2024_DADA_workshop/dataset.html) for overview of the wetland data
 
 # Workflows
@@ -60,13 +48,18 @@ Click over to [dataset webpage](https://bfanson.github.io/2024_DADA_workshop/dat
 
 ## Example of a R/Rstudio workflow
 
-So those are the basics and suspect most will be rather familiar with that workflow. But, examples speak volumes. Let's go through an example of the fundamentals of my R/Studio workflow:
+So those are the basics and suspect most will be rather familiar with that workflow. But, examples speak volumes. Let's go through an example of the fundamentals of my R/Studio workflow (I will show a few of my workflow)
+
+
+Let's review
 
 -   Project folder structure
+  +  how do you name your project folder so easy to find
 
 ![](images/proj_folder.png){width="40%"}
 
 -   Data storage: three main folders raw, rds, spatial
+  + what are the key data folders you need for your project
 
 ![](images/proj_data.png){width="40%"}
 
@@ -78,7 +71,11 @@ So those are the basics and suspect most will be rather familiar with that workf
 
 ![](images/proj_outline.png){width="90%"}
 
--   Report writing: Rmarkdown file [day3]
+-   Report writing: Rmarkdown/Quarto file [day3]
+
+![](images/proj_rmd.PNG){width="45%"}
+
+<aside> Rmarkdown used to be the main report tool in R but recently Quarto has been slated to replace Rmarkdown.  I am still using Rmarkdown.</aside>
 
 ## Advantages of workflow
 
@@ -126,11 +123,28 @@ Okay, we have the data and understand the project goals, design, and key questio
 
     ![](images/step1_script.png)
 
-Let's talk a look at my standard import script
+###  Important concept of relative paths
+
+Probably the most important attribute of an Rstudio project is the idea of __relative path__.  In your analysis, since you are using R code, you will need to point to files using file paths (e.g.  "data/raw/data.xlsx").  
+
+```{r eval=F}
+# you can see the working directory by typing
+  getwd()
+
+```
+
+<aside>Notice that I used forward slash "/" instead of backslash "\".  In R, you need to use forward slash in file paths as backslash are special "escape" characters</aside> 
+
+An __absolute path__ is the full path "C:/Users/bf0a/workshops/2024_WetlandGraze/data/raw/data.xlsx".  If you use absolute path, any time you change your computer or share your project across computers, you will need to change the path.  A relative path means that you just need to specify the path from within the project folder. 
+
+Given that, it is important to open your project using the "project_name.Rproj" link, e.g. ![](images/task_rproj_button.PNG){width="30%"}
+
+### Let's talk a look at my standard import script
 
 ![](images/step1_script_setup.png){width="80%"}
 
 <aside>Click the outline button in upper right of the script screen to show the outline of script. The outline is created by the \#### Text \####</aside>
+
 
 ### Tidyverse
 

@@ -49,15 +49,16 @@ library(downloadthis)
 
 **Framework:** The ecological framework underpinning this study is the [Intermediate Disturbance Hypothesis](https://en.wikipedia.org/wiki/Intermediate_disturbance_hypothesis).
 
+**Grazing treatment:** Here, we focus on two types of grazing: **Press** (low intensity for longer) and **Crash** (high intensity for shorter).
+
 \
 ![](images/dataset/disturbance.png)
 
 ## Experimental design
 
-
 ### Study sites
 
-Across western and eastern Victoria, a total of 28 sites were selected to be surveyed. These sites were spread across four **C**atchment **M**anagement Authorities (CMA) but with the majority of sites in the western CMAs. Sites were chosen partly to cover a wide variation in grazing intensity.
+Across western and eastern Victoria, a total of 28 sites were selected to be surveyed. These sites were spread across four **C**atchment **M**anagement Authorities (CMA) but with the majority of sites in the western CMAs. Sites were chosen partly to cover a wide variation in grazing intensity and grazing treatment.
 
 ```{r echo=F, fig.height=4, fig.width=7}
   sf_site <- sf::read_sf('data/sf_site.gpkg')
@@ -75,15 +76,15 @@ In each wetland, we are assessing how vegetation changes over time inside two tr
 
 ### Design variables
 
-So, we have a hierarchical experimental design: site/plot/transect/quadrant. Treatments are at two levels. First, we have grazing intensity: crash (intense grazing) or press (less intense). This is at the site level. Next, we have a paired design within a site with fence.
+So, we have a hierarchical experimental design: site/plot/transect/quadrant. First we have the site-level. At this level, we have the grazing treatments: Crash (intense grazing, shorter) and Press (less intense, longer). Next, we have a paired design within a site with fence. Within plot we have transects and within transect, quadrats.
 
-![](images/dataset/exp_design.png)
+At the quadrat level, a large suite of responses were measured in this study. For the workshop we will focus on two response metrics measured at the quadrat level:
 
-A large suite of responses were measured in this study. All For the workshop we will focus on two response metrics measured at the quadrat level:
-
--   **Species richness**: total number of species
+-   **Native species richness**: total number of native species (summarised by transect-level)
 
 -   **Maximum plant height:** measured the tallest plant in the quadrat
+
+![](images/dataset/exp_design.png)
 
 # Data provided
 
@@ -93,11 +94,11 @@ We have three files:
 
 -   **`Workshop 2024 data.xls`** - this is our main file
 
--   **`df_quad_spp.csv`** - this includes extra quadrat-level about species present
-
 -   **`df_survey_info.csv`** - this contains survey info, such as date
 
-Let's take a look at
+-   **`df_quad_spp.csv`** - this includes extra quadrat-level about species present
+
+Let's take a look at snapshot of each file
 
 ## **Workshop 2024 data.xls**
 
@@ -119,10 +120,11 @@ This workbook has four tabs of data.
 
 ![](images/dataset/data_main_richness.PNG){width="45%"}
 
+## **df_survey_info.csv**
+
+![](images/dataset/data_survey.PNG){width="65%"}
+
 ## **df_quad_spp.csv**
 
 ![](images/dataset/data_quad.PNG){width="65%"}
 
-## **df_survey_info.csv**
-
-![](images/dataset/data_survey.PNG){width="65%"}
