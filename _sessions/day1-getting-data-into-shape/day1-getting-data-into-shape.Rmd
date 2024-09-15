@@ -44,22 +44,23 @@ Click over to [dataset webpage](https://bfanson.github.io/2024_DADA_workshop/dat
 
 ## Basic of data analysis workflow
 
-![](images/workflow_tidy.png)
+A basic workflow for data analysis is shown below. We will be following this workflow through the workshop. This workflow is likely familiar everyone. Here, we demonstrate how `R` (with Rstudio) can be used for every step, so you are using a single tool for every step.
+
+![](images/workflow_preso.PNG){width="90%"}
 
 ## Example of a R/Rstudio workflow
 
 So those are the basics and suspect most will be rather familiar with that workflow. But, examples speak volumes. Let's go through an example of the fundamentals of my R/Studio workflow (I will show a few of my workflow)
 
-
 Let's review
 
 -   Project folder structure
-  +  how do you name your project folder so easy to find
+-   how do you name your project folder so easy to find
 
 ![](images/proj_folder.png){width="40%"}
 
 -   Data storage: three main folders raw, rds, spatial
-  + what are the key data folders you need for your project
+-   what are the key data folders you need for your project
 
 ![](images/proj_data.png){width="40%"}
 
@@ -75,7 +76,7 @@ Let's review
 
 ![](images/proj_rmd.PNG){width="45%"}
 
-<aside> Rmarkdown used to be the main report tool in R but recently Quarto has been slated to replace Rmarkdown.  I am still using Rmarkdown.</aside>
+<aside>Rmarkdown used to be the main report tool in R but recently Quarto has been slated to replace Rmarkdown. I am still using Rmarkdown.</aside>
 
 ## Advantages of workflow
 
@@ -123,9 +124,9 @@ Okay, we have the data and understand the project goals, design, and key questio
 
     ![](images/step1_script.png)
 
-###  Important concept of relative paths
+### Important concept of relative paths
 
-Probably the most important attribute of an Rstudio project is the idea of __relative path__.  In your analysis, since you are using R code, you will need to point to files using file paths (e.g.  "data/raw/data.xlsx").  
+Probably the most important attribute of an Rstudio project is the idea of **relative path**. In your analysis, since you are using R code, you will need to point to files using file paths (e.g. "data/raw/data.xlsx").
 
 ```{r eval=F}
 # you can see the working directory by typing
@@ -133,9 +134,9 @@ Probably the most important attribute of an Rstudio project is the idea of __rel
 
 ```
 
-<aside>Notice that I used forward slash "/" instead of backslash "\".  In R, you need to use forward slash in file paths as backslash are special "escape" characters</aside> 
+<aside>Notice that I used forward slash "/" instead of backslash "". In R, you need to use forward slash in file paths as backslash are special"escape" characters</aside>
 
-An __absolute path__ is the full path "C:/Users/bf0a/workshops/2024_WetlandGraze/data/raw/data.xlsx".  If you use absolute path, any time you change your computer or share your project across computers, you will need to change the path.  A relative path means that you just need to specify the path from within the project folder. 
+An **absolute path** is the full path "C:/Users/bf0a/workshops/2024_WetlandGraze/data/raw/data.xlsx". If you use absolute path, any time you change your computer or share your project across computers, you will need to change the path. A relative path means that you just need to specify the path from within the project folder.
 
 Given that, it is important to open your project using the "project_name.Rproj" link, e.g. ![](images/task_rproj_button.PNG){width="30%"}
 
@@ -144,7 +145,6 @@ Given that, it is important to open your project using the "project_name.Rproj" 
 ![](images/step1_script_setup.png){width="80%"}
 
 <aside>Click the outline button in upper right of the script screen to show the outline of script. The outline is created by the \#### Text \####</aside>
-
 
 ### Tidyverse
 
@@ -253,9 +253,15 @@ Some possible packages to check:
 -   `RODBC`: This package provides a way to connect to any database that supports ODBC (Open Database Connectivity)1.
 -   `RJDBC`: This package uses Java Database Connectivity (JDBC) to connect to a wide variety of databases1.
 
-### Importing our project files
+### Importing our project files (starting with site)
 
 ```{r}
+#_____________________________________________________________________________
+#### Global Variable/Settings ####
+  library(tidyverse)  # this brings in all the tidyverse packages
+  library(readxl)     # we will need this 
+
+  file_excel <- 'data/raw/Workshop 2024 data.xlsx'
 #_____________________________________________________________________________  
 #### Section 1: site information ####
 # check sheet names in excel file
@@ -275,7 +281,29 @@ Some possible packages to check:
 
 ### Overview of basics
 
-Now we have the first file in. That is the easy bit. However, we need to clean up dataset(s) so that they are ready for analysis. By cleaning I mean: - column management + renaming columns for coding + drop extra columns and extra rows + makes sure column types (e.g. numeric, character, factors, date) are correct + data entry errors in columns + string manipulations - check design (aka get intimate `r emo::ji('heart')` with the data) + extract out the design elements to confirm it matches (or identity where is does not) + missing data - join together response variables, design, and covariates - restructure data for analysis (e.g. long vs wide form)
+Now we have the first file in. That is the easy bit. However, we need to clean up dataset(s) so that they are ready for analysis. By cleaning I mean:
+
+-   column management
+
+    -   renaming columns for coding
+
+    -   drop extra columns and extra rows
+
+    -   makes sure column types (e.g. numeric, character, factors, date) are correct
+
+    -   data entry errors in columns
+
+    -   string manipulations
+
+-   check design (aka get intimate `r emo::ji('heart')` with the data)
+
+    -   extract out the design elements to confirm it matches (or identity where is does not)
+
+    -   missing data [part of design missing?]
+
+-   join together response variables, design, and covariates
+
+-   restructure data for analysis (e.g. long vs wide form)
 
 ### column management
 
@@ -362,7 +390,7 @@ For factors, be very careful when converting...
 
 Next, we checked each column of interest to see if it matched our expectations. We introduced a string function `str_to_sentence()` to help. You also saw `filter()` and how to use that. The operators for `fitler()` are ==, !=, %in%. \<aside\>There are tons of string functions. Check the cheatsheet.
 
-<aside> We also learned about `pull(data, var)` vs `data$var` way of getting a specif column from the dataset</aside>
+<aside>We also learned about `pull(data, var)` vs `data$var` way of getting a specif column from the dataset</aside>
 
 ```{r eval=F}
 # first, you need to learn to grab a single column from a dataset
@@ -483,9 +511,11 @@ We finished off Section1 by using the distinct() [so more]. `distinct()` is real
 
 ### Missing values
 
+<aside>NA can be tricky. In statistical models, any row with NA will be dropped quietly. When using functions like mean(), sd(), NAs will return NAs.</aside>
+
 A new topic learned in Section 2 was NAs. We used the `is.na()` function to filter out this cells. NA are special characters and you cannot just do `filter(ds_site, wetland==NA)` or `filter(ds_site, wetland=='NA')`. The former statement caused `R` to look for a variable called 'NA' and the latter makes `R` look for variable level 'NA'.
 
-<aside>NA can be tricky. In statistical models, any row with NA will be dropped quietly. When using functions like mean(), sd(), NAs will return NAs.</aside>
+<br>
 
 ```{r}
 #_____________________________________________________________________________  
@@ -545,15 +575,14 @@ A new topic learned in Section 2 was NAs. We used the `is.na()` function to filt
   inner_join() # safer to do left_join() and then filter()
   outer_join() # just stick to left_join and filter()
 
-# note- there is bind_cols() but best to avoid and use a left_join() instead
 
 ```
 
 ### Commentary on merges/join (left_join)
 
-You will join datasets are the time. In joins, (usually) you have two datasets and have something in common (e.g. site_id). For instance, you may have response variable in one dataset and covariates in another. You want to combine together.
+You will join datasets all the time. In joins, (usually) you have two datasets and have something in common (e.g. site_id). For instance, you may have response variable in one dataset and covariates in another. You want to combine together.
 
-Be warned, joins can be major pitfalls!!!! If you are not intimate `r emo::ji('heart')` with your datasets, it can lead to big issues. We showed this in our code in which we "forgot" to include transect_id:
+Be warned, **joins can be major pitfalls!!!!** If you are not intimate `r emo::ji('heart')` with your datasets, it can lead to big issues. We showed this in our code in which we "forgot" to include transect_id:
 
 ```{r eval=F}
 
@@ -564,7 +593,7 @@ Be warned, joins can be major pitfalls!!!! If you are not intimate `r emo::ji('h
   
 ```
 
-What happened here is called a one-to-many join. I was expecting the left dataset (the first dataset) to have the same number of rows before and after the join. Instead, it has more, creating fake data in essence (and increasing sample size, decreasing SEs, leading to erroneous stats). Therefore, you really need to keep tabs on number of rows.
+What happened here is called a one-to-many join. I was expecting the left dataset (the first dataset) to have the same number of rows before and after the join. Instead, it has more, creating fake data (repeated) in essence (and increasing sample size, decreasing SEs, leading to erroneous stats). Therefore, you really need to keep tabs on number of rows.
 
 Luckily, `dplyr::left_join()` brought in a warning for this (I had my own function to warn me about this). My advice for you is to only use `left_join()` and make it a one-to-one join. Be careful being fancy in one-to-many and many-to-many (`full_join`) joins. Sometimes it is safer to work in separate steps rather than one big step.
 
@@ -624,7 +653,7 @@ I did not use concatenating in this dataset. A common use for this is when you h
 
 ```
 
-<aside>there is a `bind_cols()` to add columns next to each other. I rarely use, preferring to use a join to make sure everything lines up</aside>
+<aside>there is a `bind_cols()` to add columns next to each other. I rarely use, preferring to use a `left_join()` to make sure everything lines up</aside>
 
 ## P6: Saving the data files
 
@@ -722,13 +751,13 @@ library(downloadthis)
 ::: {#task_rproj .greeting .message style="background: lightgrey;"}
 **Your Task:** Create your Rproject for the workshop and import data for analysis-ready datasets
 
-1)  Download the workshop data (refer dataset webpage for background info if needed)
+1)  Download the workshop data (refer to dataset webpage for background info if needed)
 2)  Setup your workflow
     -   think about your naming convention for the project names (does it have year, projectID, client). [My standard is "{Year}\_{Researcher}\_{Topic}"]
     -   create Rproject
     -   create folder structure (how do you want yours to look?)
-3)  add in datasets to your data folder
-4)  create your import script file
+3)  add in datasets to your data folder [e.g. data/raw/]
+4)  create your import script file [add to your script folder]
     -   what is your naming convention for R script (e.g. importData.R, 01_import.R, bringInData.R)
     -   create your R script structure (e.g. do you have headers, bookmarks)
 5)  fill in script for what we have done so far
