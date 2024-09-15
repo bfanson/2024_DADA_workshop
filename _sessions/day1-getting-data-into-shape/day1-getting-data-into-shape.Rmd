@@ -323,7 +323,7 @@ When you want to create a new column or modify an existing column, `mutate()` is
 
 ```
 
-For dates, this is another whole topic. I highly recommend you use the `lubridate` package for all date handling. See [date webpage]() for a bit more info
+For dates, this is another whole topic. I highly recommend you use the `lubridate` package for all date handling. See [date webpage](https://bfanson.github.io/2024_DADA_workshop/d1_lubridate.html) for a bit more info
 
 For factors, be very careful when converting...
 
