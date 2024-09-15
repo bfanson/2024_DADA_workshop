@@ -109,6 +109,17 @@ Reminder - The goal here is **not to make you a programmer** but familiar with a
 
 ------------------------------------------------------------------------
 
+# Course Website
+
+Obviously, there is a course website.  For those that attended the masterclass on R spatial capabilities orchestrated by Justin Cally, the website design will be familiar.  It is a blog-centric website and we will add each day's lecture the morning of.
+
+<aside>Website is built using `distill` package and hosted by github pages</aside>
+
+By the nature of this workshop, we have limited time and cannot go in-depth.  Therefore, we have tried to distill out the key concepts/steps in the course notes, but there might be topics that need additional explanation and examples. If so, Paul and I are happy to write up a short-blurp about it and post it on the "Extra topics" in the upper right.
+
+
+------------------------------------------------------------------------
+
 # Plug for QEARI
 
 Just a reminder QEARI (**Q**uantitative **E**cology **ARI**) is a great resource and a safe place for asking "dumb" questions. The amount of expertise among its regulars is impressive! There are multiple channels to ask questions including a **new one for shiny Apps**!!!

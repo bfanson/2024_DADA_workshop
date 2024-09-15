@@ -130,5 +130,7 @@ This workbook has four tabs of data.
 
 ## **df_quad_spp.csv**
 
+Note - not used in day1 but may be integrated later
+
 ![](images/dataset/data_quad.PNG){width="65%"}
 

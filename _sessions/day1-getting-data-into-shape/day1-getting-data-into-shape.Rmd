@@ -110,6 +110,8 @@ Okay, we have the data and understand the project goals, design, and key questio
 
 ## P1: Setup your project folder
 
+If new to Rstudio, it is worth checking out youtube tutorials (e.g. [an example one](https://www.youtube.com/embed/FIrsOBy5k58) ).  We will try to show tips and tricks along the way.
+
 1.  Create Rproject using Rstudio
 
     ![](images/step1_rstudio.png){width="70%"}
@@ -118,7 +120,7 @@ Okay, we have the data and understand the project goals, design, and key questio
 
     ![](images/step1_folder.png){width="45%"}
 
-<aside>Cheatsheets had been made for many packages and are really useful. See Rstudio IDE to Positron <https://github.com/posit-dev/positron/wiki> for note about new IDE</aside>
+<aside> Note that "Rstudio" (the company) has rebranded to "posit".  It has also created a new IDE,0  Positron <https://github.com/posit-dev/positron/wiki> for note about new IDE</aside>
 
 3.  Create an `importData.r` script
 
@@ -138,7 +140,7 @@ Probably the most important attribute of an Rstudio project is the idea of **rel
 
 An **absolute path** is the full path "C:/Users/bf0a/workshops/2024_WetlandGraze/data/raw/data.xlsx". If you use absolute path, any time you change your computer or share your project across computers, you will need to change the path. A relative path means that you just need to specify the path from within the project folder.
 
-Given that, it is important to open your project using the "project_name.Rproj" link, e.g. ![](images/task_rproj_button.PNG){width="30%"}
+Given that, it is __important to open your project using the "project_name.Rproj" link__, e.g. ![](images/task_rproj_button.PNG){width="30%"}
 
 ### Let's talk a look at my standard import script
 
@@ -163,9 +165,66 @@ Tidyverse is big topic but here are key points that I want you know:
 
     -   make R code more consistent
 
-    -   make R code more readable for humans (e.g. uses words like filter, select, mutate, summarise)
+    -   make R code more readable for humans
 
     -   create a cult
+
+#### A few key functions
+
+There are lot of functions in tidyverse world.  Below, I will just quickly introduce a few to show the human-readable attribute and give you your first exposure to what we will use later.  These functions fall (very) loosely into three categories (though not mutually-exclusive): 1) dataset cleaning tools; 2) summarising; and 3) dataset reshaping/joins.
+
+```{r}
+# dataset cleaning tools
+  select()  # choose the columns you want [subset by column]
+  filter()  # choose the rows you want [subset by row]
+  arrange() # sort the columns
+  mutate()  # create a new variable
+
+# dataset summarising tools
+  group_by()    # implicitly breaks the dataset into separate groups
+  summarise()   # performs a summary statistic on each individual group
+
+# dataset reshaping and joining   
+  left_join()   # combining columns from two datasets
+  bind_rows()   # stacking dataset on top of each other
+  
+```
+
+
+```{r cheatsheet, eval=T, echo=F, out.width='100%', out.height='200%'}
+  knitr::include_graphics("dplyr.pdf")
+```
+
+<br> <br> <br> <br> <br> <br>
+
+#### Pipes: %>%
+
+A key component of tidyverse world is the concept of "pipes". The pipe connects multiples steps into a single sequence of commands.
+
+<aside>Just to make things harder, a new pipe `|>` has been introduced. It is very similar to `%>%` but it does act a little different. We will just teach `%\>%` because we are set in our ways </aside>
+
+Below is an example of building a sentence.  You start with a dataset (or other object) and then do things to that dataset, passing (%>%) onto the next thing thing.  
+
+In Rstudio, there is __shortcut: ctrl + shift + M  to add a pipe...use it!!!!__.
+
+```{r, eval=F}
+  library(tidyverse)
+  head(mtcars,10)   # mtcars is a built in dataset
+  mtcars %>% head(10)  # get mtcars, pass to head() function, take the first 10 rows 
+
+# sentence using tidy functions we will dive into below...just follow basic logic
+  mtcars %>% 
+    rename( cylinders = cyl ) %>% # chagne cyl to cylinder
+    mutate( mpl = round( mpg/3.79,2 ) ) %>%  # convert mpg to miles per liter (mpl)
+    select( mpg, mpl, cylinders )  # keep just the mpg and mpl and cylinders columns 
+
+  #vs.
+  ds_m <- rename(mtcars, cylinders = cyl )          # change cyl to cylinder
+  ds_m <- mutate(ds_m, mpl = round( mpg/3.79,2 ) )  # convert mpg to miles per liter (mpl)
+  select(ds_m, mpg, mpl, cylinders )                # keep just the mpg and mpl and cylinders columns 
+
+```
+
 
 ### Side note - Version control/GitHub [Advanced topic]
 
@@ -215,8 +274,8 @@ For this, we will use `readxl` package
 
 ```{r eval=F}
   library(readxl)
-  read_xls()
-  read_xlsx()
+  read_xls('data/raw/example.xlsx')
+  read_xlsx('data/raw/example.xlsx')
 
 ```
 
@@ -235,9 +294,9 @@ For reading csv/txt
 
 ```{r import_readr, eval=F}
 # from readr package in tidyverse
-  read_csv(file_name)    # comma delimited
-  read_table(file_name)  # tab delimited
-  read_delim(file_name, delim='#') # or other type of delimited 
+  read_csv('data/raw/example.csv')    # comma delimited
+  read_table('data/raw/example.txt')  # tab delimited
+  read_delim('data/raw/example.ext', delim='#') # or other type of delimited 
   
   ?read_csv  # to see arguments/options for importing
 
@@ -253,6 +312,7 @@ Some possible packages to check:
 -   `RODBC`: This package provides a way to connect to any database that supports ODBC (Open Database Connectivity)1.
 -   `RJDBC`: This package uses Java Database Connectivity (JDBC) to connect to a wide variety of databases1.
 
+
 ### Importing our project files (starting with site)
 
 ```{r}
@@ -261,7 +321,8 @@ Some possible packages to check:
   library(tidyverse)  # this brings in all the tidyverse packages
   library(readxl)     # we will need this 
 
-  file_excel <- 'data/raw/Workshop 2024 data.xlsx'
+  file_excel <- 'data/raw/Workshop 2024 data.xlsx'   # created new variable to reference
+  
 #_____________________________________________________________________________  
 #### Section 1: site information ####
 # check sheet names in excel file
@@ -293,7 +354,7 @@ Now we have the first file in. That is the easy bit. However, we need to clean u
 
     -   data entry errors in columns
 
-    -   string manipulations
+    -   string manipulations (e.g. combine two columns, split two columns)
 
 -   check design (aka get intimate `r emo::ji('heart')` with the data)
 
@@ -390,7 +451,7 @@ For factors, be very careful when converting...
 
 Next, we checked each column of interest to see if it matched our expectations. We introduced a string function `str_to_sentence()` to help. You also saw `filter()` and how to use that. The operators for `fitler()` are ==, !=, %in%. \<aside\>There are tons of string functions. Check the cheatsheet.
 
-<aside>We also learned about `pull(data, var)` vs `data$var` way of getting a specif column from the dataset</aside>
+<aside>We also learned about `pull(data, var)` vs `data$var` way of getting a specific column from the dataset</aside>
 
 ```{r eval=F}
 # first, you need to learn to grab a single column from a dataset
@@ -422,7 +483,9 @@ After you did initial column cleaning, we explored the experimental design to ma
 
 Once grouped, the data stays that way until you `ungroup()` the data. **This will trick you up!!!!** If you do a calculation and cannot figure out why it is very wrong, check if data are still grouped. It is best to always `ungroup()` but that is not reality.
 
-<aside>If you want to take the first(/last) number of rows, check out the family of `slice()` functions in dplyr. See the cheatsheet for examples</aside>
+<aside>If you want to take the first(/last) number of rows, check out the family of `slice()` functions in dplyr. See the dplyr cheatsheet for examples</aside>
+
+Also, we saw a 'special' function `n()` that you can use to call to get the number of rows in a group.  Another useful function is `row_number()` which will give you the row number within each group (or the whole dataset is ungrouped).
 
 ```{r}
 ##### let's check experimental design #####  
@@ -474,7 +537,7 @@ Once grouped, the data stays that way until you `ungroup()` the data. **This wil
 
 ### Overview
 
-Restructuring is
+Restructuring is like a pivot table in Excel.  It is going from wide to long (and vice versa).  In our script, we used `pivot_wider()`.  The reverse function is `pivot_longer()` which we did not use here.
 
 ```{r}
 
@@ -482,13 +545,12 @@ Restructuring is
   ds_sum_wide <- pivot_wider( ds_sum, names_from=fence, values_from=n_transects )
   head(ds_sum_wide)
   filter(ds_sum_wide, No != Yes )  # might be worth double-checking if supposed to be
-  
  
 ```
 
 ### use of `distinct()`
 
-We finished off Section1 by using the distinct() [so more]. `distinct()` is really useful for extracting out design. `distinct()` finds the unique combination of all the variables listed in the function. We used to get the unique combination of wetland, grazing, fence. You also saw `n_distinct()` which is useful in mutate to count the number of unique levels in variable.
+We finished off Section 1 by using the distinct() [so more]. `distinct()` is really useful for extracting out design. `distinct()` finds the unique combination of all the variables listed in the function. We used to get the unique combination of wetland, grazing, fence. You also saw `n_distinct()` which is useful in mutate to count the number of unique levels in variable.
 
 ```{r}
 # let's check that the number wetland per cma
