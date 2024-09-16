@@ -174,6 +174,9 @@ Tidyverse is big topic but here are key points that I want you know:
 There are lot of functions in tidyverse world.  Below, I will just quickly introduce a few to show the human-readable attribute and give you your first exposure to what we will use later.  These functions fall (very) loosely into three categories (though not mutually-exclusive): 1) dataset cleaning tools; 2) summarising; and 3) dataset reshaping/joins.
 
 ```{r}
+
+#### example below - do not include in your hands-on section script ####
+
 # dataset cleaning tools
   select()  # choose the columns you want [subset by column]
   filter()  # choose the rows you want [subset by row]
@@ -208,6 +211,9 @@ Below is an example of building a sentence.  You start with a dataset (or other 
 In Rstudio, there is __shortcut: ctrl + shift + M  to add a pipe...use it!!!!__.
 
 ```{r, eval=F}
+
+#### example below - do not include in your hands-on section script ####
+
   library(tidyverse)
   head(mtcars,10)   # mtcars is a built in dataset
   mtcars %>% head(10)  # get mtcars, pass to head() function, take the first 10 rows 
@@ -273,6 +279,8 @@ For this, we will use `readxl` package
 <aside>There are other read excel packages but this one just works</aside>
 
 ```{r eval=F}
+#### example below - do not include in your hands-on section script ####
+
   library(readxl)
   read_xls('data/raw/example.xlsx')
   read_xlsx('data/raw/example.xlsx')
@@ -282,6 +290,8 @@ For this, we will use `readxl` package
 You should be aware of how it handles missing data. In `read_xlsx()` you can specify an argument `na=` to indicate what cell values should be treated as missing.
 
 ```{r eval=T}
+#### example below - do not include in your hands-on section script ####
+
   library(readxl)
   read_xlsx( 'data/raw/missing.xlsx', na='' ) # default
   read_xlsx( 'data/raw/missing.xlsx', na=c('NA','na') )
@@ -293,6 +303,8 @@ You should be aware of how it handles missing data. In `read_xlsx()` you can spe
 For reading csv/txt
 
 ```{r import_readr, eval=F}
+#### example below - do not include in your hands-on section script ####
+
 # from readr package in tidyverse
   read_csv('data/raw/example.csv')    # comma delimited
   read_table('data/raw/example.txt')  # tab delimited
@@ -417,6 +429,8 @@ When you want to create a new column or modify an existing column, `mutate()` is
 ```
 
 ```{r}
+#### example below - do not include in your hands-on section script ####
+
 # commmon conversion functions
   as.numeric()
   as.character()
@@ -431,6 +445,8 @@ For dates, this is another whole topic. I highly recommend you use the `lubridat
 For factors, be very careful when converting...
 
 ```{r}
+#### example below - do not include in your hands-on section script ####
+
 # factors are in essence an ordinal in that they are stored as numbers with labels
   intensity <- c('low','medium','high') 
   intensity
@@ -522,7 +538,9 @@ Also, we saw a 'special' function `n()` that you can use to call to get the numb
 ### Few other examples
 
 ```{r}
-  mtcars
+#### example below - do not include in your hands-on section script ####
+
+  mtcars # built in dataset
   group_by(mtcars, cyl) %>% summarise( mean_mpg= round(mean(mpg),1), 
                                        sd_mpd= round(sd(mpg),1),
                                        n = n() ) # n() is built in to count rows
@@ -630,6 +648,8 @@ A new topic learned in Section 2 was NAs. We used the `is.na()` function to filt
     ![](images/join_left.png){width="30%"} ![](images/join_inner.png){width="23%"} ![](images/join_full.png){width="30%"}
 
 ```{r}
+#### example below - do not include in your hands-on section script ####
+
 # whole suite joins....
   left_join()  # stick this one
   right_join() # just switch around to left_join
@@ -706,6 +726,8 @@ Now that is off my chest, let's recall the joins we needed for our project...
 I did not use concatenating in this dataset. A common use for this is when you have multiple files produced that have the same data structure (e.g. acoustic data from loggers, camera trap data, acoustic moth data) and you need to stack them together for the analysis. You will use `bind_rows()` for that.
 
 ```{r eval=T}
+#### example below - do not include in your hands-on section script ####
+
   ds1 <- data.frame( plot='plot1', quadrat=1:2, species_richness=c(10,20), comments=c('none','something'))
   ds1
   ds2 <- data.frame( plot='plot2', quadrat=1:2, species_richness=c(2,4))
@@ -768,31 +790,8 @@ When learning and using R, you will get stuck and need help. There are variety o
 
 ![](images/help_qeari.png){width="60%"}
 
-5.  AI is becoming more and more useful [I am finding the most useful]
+5.  AI is becoming more and more useful [I am finding the most useful].  See page on [AI](https://bfanson.github.io/2024_DADA_workshop/d1_ai.html)
 
-## Using AI for coding
-
-A few AI I use regularly:
-
--   **Copilot (Microsoft)**: allrounder AI which we have a free subscription at ARI. It does a decent job [I use this one daily]
-
--   **ChatGPT**: another allrounder similar to Copilot
-
--   **Claude**: prefer this one for writing text but seems to work well too
-
--   **Copilot-GitHub**: paid subscription but supposedly really good for programming
-
-For those not regularly using AI, there are a few things that can help when running your searches for help:
-
--   when asking for an example, include lots of specific to get closer to what you want. You may want to tell it to use only tidyverse functions for the example code. I often ask it to use a built-in dataset for the example so that I can check it right away.
-
--   Experiment and Iterate: Don't be afraid to experiment with the code generated by AI. Modify it, run it, and see what happens. If something is not working, you can ask point out the error and see if it can fix it
-
--   Use AI for Debugging: If you encounter errors, AI tools can help you debug your code. They can suggest fixes and optimizations, making the debugging process less daunting.
-
-Give it try yourself [copilot](https://copilot.microsoft.com/) - type..."*in R and using mtcars dataset show me how to get the mean mpg by each cyl level?*" - if it used the `aggregate()` function, type the followup: "*can you use tidyverse functions instead?*"
-
-![](images/help_ai.png)
 
 # Hands-on component
 
@@ -870,6 +869,7 @@ If your are new to R, you may have found the material a bit overwhelming. If so,
 
 5.  Run through the script highlighting each section and clicking Run button (or Ctrl+Enter shortcut)
 :::
+
 
 # Advanced topics [Advanced]
 

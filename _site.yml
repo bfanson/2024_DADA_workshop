@@ -21,5 +21,7 @@ navbar:
         href: installR.html
       - text: "Working with dates"
         href: d1_lubridate.html
+      - text: "Using AI"
+        href: d1_ai.html
 
 output: distill::distill_article

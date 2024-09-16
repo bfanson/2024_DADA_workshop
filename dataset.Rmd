@@ -51,7 +51,6 @@ library(downloadthis)
 
 **Grazing treatment:** Here, we focus on two types of grazing: **Press** (low intensity for longer) and **Crash** (high intensity for shorter).
 
-
 ```{r}
  cowplot::ggdraw() + cowplot::draw_image('images/dataset/idh.PNG')
 ```
@@ -133,4 +132,3 @@ This workbook has four tabs of data.
 Note - not used in day1 but may be integrated later
 
 ![](images/dataset/data_quad.PNG){width="65%"}
-
