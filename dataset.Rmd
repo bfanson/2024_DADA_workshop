@@ -87,7 +87,9 @@ At the quadrat level, a large suite of responses were measured in this study. Fo
 
 -   **Maximum plant height:** measured the tallest plant in the quadrat
 
-![](images/dataset/exp_design.png)
+
+![](images/dataset/exp_design.PNG)
+
 
 # Data provided
 
@@ -109,7 +111,7 @@ This workbook has four tabs of data.
 
 ### **site_info** tab
 
-![](images/dataset/data_main_site.png){width="110%"}
+![](images/dataset/data_main_site.PNG){width="110%"}
 
 ### **spp_traits** tab
 

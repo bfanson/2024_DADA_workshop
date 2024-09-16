@@ -7,7 +7,7 @@ author:
     url: https://bfanson.github.io/2024DADAworkshop/
     affiliation: Arthur Rylah Institute
     affiliation_url: https://www.ari.vic.gov.au/
-date: 2024-09-16
+date: 2024-09-17
 output:
   distill::distill_article:
     self_contained: true
