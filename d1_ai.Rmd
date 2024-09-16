@@ -57,7 +57,7 @@ Below are a couple examples...
 
 Example of the output
 
-![](images/ai/help_ai.png)
+![](images/ai/help_ai.PNG)
 
 
 - type..."*build me a R shiny app UI that has four tabs in the main panel and a side panel that has four user inputs.  One input for grazing type, one for fence type, one for year, and one for wetland type*"
@@ -68,7 +68,7 @@ I got a working interface...
 
 <br>
 
-Below is the code AI gave me...
+Below is the code AI gave me...see day 4 lecture for explanation of code.
 
 <br>
 ```{r eval=F}

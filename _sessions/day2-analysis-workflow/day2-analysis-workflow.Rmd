@@ -58,6 +58,12 @@ library(downloadthis)
 
 For background information on the dataset, see [dataset summary](https://bfanson.github.io/2024_DADA_workshop/dataset.html)
 
+# Workflow
+
+Reminder of our workflow...
+
+![](figures/workflow.PNG){width="90%"}
+
 # Exploring the data and developing the model
 
 ```{r, cache = TRUE}
