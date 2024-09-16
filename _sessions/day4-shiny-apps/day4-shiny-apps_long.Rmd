@@ -589,9 +589,23 @@ Good for basic shiny <https://mastering-shiny.org/>
 
 ## I/O: Uploading files
 
+As your Apps improve in capabilities, you may want to have users upload inputs (e.g. spatial layer, data)
+
+
 ## I/O: Saving user inputs
 
+- temporary results on the server for just the session
+
+- save to cloud: dropbox, Amazon (AWS), Gdrive
+  +  cloud dataset
+
+- save to a cloud database
+
 ## I/O: Downloading
+
+If your app produces output for the user, you may want to have a button so that they can download those results to their computer.
+
+
 
 # 
 

@@ -1,34 +1,320 @@
 ---
 title: "Day 2: Analysis workflow"
 description: |
- Statistical analysis: 1) statistical model; 2) extracting outputs, 3) displaying(/graphing)
+  Statistical analysis: statistical model; extracting outputs; displaying results
 author:
   - name: Paul Moloney
     url: https://bfanson.github.io/2024DADAworkshop/
     affiliation: Arthur Rylah Institute
     affiliation_url: https://www.ari.vic.gov.au/
-date: 2024-09-03
+date: 2024-09-16
 output:
   distill::distill_article:
     self_contained: true
-    toc: true                # table of content true
-    toc_float: true          # make 
-    depth: 3                 # upto three depths of headings (specified by #, ## and ###)
-    number_sections: false   # if you want number sections at each table header
-    code_folding: true       # awesome buttons to show/hide the code
+    toc: true # table of content true
+    toc_float: true # make 
+    depth: 3  # upto three depths of headings (specified by #, ## and ###)
+    number_sections: false  ## if you want number sections at each table header
+    code_folding: true # awesome buttons to show/hide the code
 draft: false
 slug: fanson2024dada
 ---
 
-
-# Header1
-
-```{r setup, include=FALSE}
+```{r include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(lme4)
+library(DHARMa)
+library(broom.mixed)
+library(emmeans)
 ```
 
-Distill is a publication format for scientific and technical writing, native to the web.
+# Day's objectives
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+-   Being able to display the raw data
+-   Interpreting how that effects the models we can use
+-   Being able to run that statistical model using RStudio/R
+-   Assessing the model fit and assumptions
+-   Interpreting and extracting the model outputs
+-   Displaying the model outputs to help explain the conclusions
+
+# Key packages
+![](figures/broom.png){width="10%"}![](figures/ggplot2.png){width="10%"}
+
+# Project folder for today
+
+```{r dwnldProject, eval=T, echo=FALSE, code_folding = FALSE}
+library(downloadthis)
+  download_link(
+    link="https://delwpvicgovau-my.sharepoint.com/:u:/g/personal/ben_fanson_deeca_vic_gov_au/EdJOxrIuzyJKjXJvzWiePOQBg7D_VxTJ_12ttIRnKW1XRw?e=Dcgjht",
+    output_name = "day2Project",
+    button_label = "Download Rstudio project",
+    button_type = "warning",
+    has_icon = TRUE,
+    icon = "fa fa-save"
+  )
+```
 
 
+For background information on the dataset, see [dataset summary](https://bfanson.github.io/2024_DADA_workshop/dataset.html)
+
+# Exploring the data and developing the model
+
+```{r, cache = TRUE}
+ds_ht <- readRDS('data/ards_height.rds') %>% filter(!is.na(wetland)) # remove NA's from data
+ds_richness <- readRDS('data/ards_richness.rds')
+```
+
+After yesterdays session we should all have a couple of data sets related to the WIMP project. One dataset (`ards_height.rds`) relates to the maximum plant height within a each quadrat across treatments, time, wetlands and transects. The other dataset (`ards_richness.rds`) relates to the native species richness within a transect across treatments, time and wetlands. The treatments were:
+
+-   **grazing** type which has two levels:
+    -   **Press** was generally lower intensity over a longer period
+    -   **Crash** was generally higher intensity over a shorter period, and
+-   **fence** referred to whether the transect was fenced or not (*Yes* or *No*)
+
+<aside>
+Click over to [dataset webpage](https://bfanson.github.io/2024_DADA_workshop/dataset.html) for overview of the wetland data
+</aside>
+
+Of interest was the patterns over time, and the effect of grazing type on the wetland. Let us start by looking at a plot of the maximum plant height (`max_ht`) over time (`dt_survey`) as shown in Figure \@ref(fig:htvsdate). The simple linear regression line added to the plot seems to indicate that there is an increase in maximum plant height over time. In R speak, that model takes the form:
+
+$$
+\text{max_ht} \sim \text{df_survey}
+$$
+In English, that could be translated to "maximum plant height is related to survey date".
+
+```{r htvsdate, fig.cap='Plot of maximum plant height at the quadrat over time. The blue line represent the estimate from the simple linear model'}
+ggplot(ds_ht, aes(dt_survey, max_ht)) + geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x, geom = "smooth") +
+  ylab('Maximum plant height (cm)') +
+  xlab('Time')
+```
+
+The simple linear model related to just time does not help with our understanding of the system, given within each wetland that half the transects were either fenced (excluded grazing) or unfenced (allowed grazing). We should look to see if there are any differences between those levels. In Figure \@ref(fig:htvsdatefence) we can see that maybe there is a difference between slopes at fenced versus non-fenced transects. This is clear when you see that in 2018 (before fencing) the maximum plant heights are around 40cm, but by 2024 they are closer to 66cm and 55cm for fenced and unfenced respectively. This is what we call an interaction, the response to time is allowed to differ between levels of the treatment. This model would be of the form[^interaction]:
+
+<aside>
+These types of models are called fixed effects models, as each predictor variable is fixed or non-random quantities. The values the parameters take is important and/or the predictor variables cover the range of values of interest.
+</aside>
+
+$$
+\text{max_ht} \sim \text{df_survey} * \text{fence}
+$$
+
+[^interaction]: In R coding practice, "*" is used to mean a full interaction of the predictors and includes their individual predictors. If you wanted to specify just the interaction, you would use ":".
+
+```{r htvsdatefence, fig.cap='Plot of maximum plant height at the quadrat over time split by fencing status. The blue line represent the estimate from the simple linear model on that treatment level'}
+ggplot(ds_ht, aes(dt_survey, max_ht)) + geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x, geom = "smooth") +
+  ylab('Maximum plant height (cm)') +
+  xlab('Time') +
+  facet_grid(. ~ fence) 
+```
+
+However, this still doesn't really represent the experimental design very well, as the data was collected at wetlands that used either press or crash grazing and well as having fenced and unfenced transects. If we update the plot to incorporate grazing type as well (Figure \@ref(fig:htvsdatefacet)) we can see that there may also be a differential effect of grazing type on the fencing effect. This means that we should include a second interaction in our model.
+
+$$
+\text{max_ht} \sim \text{df_survey} * \text{fence} * \text{grazing}
+$$
+
+```{r htvsdatefacet, fig.cap='Plot of maximum plant height at the quadrat over time split by treatment levels. The blue line represent the estimate from the simple linear model on that treatment level'}
+ggplot(ds_ht, aes(dt_survey, max_ht)) + geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x, geom = "smooth") +
+  ylab('Maximum plant height (cm)') +
+  xlab('Time') +
+  facet_grid(grazing ~ fence) 
+```
+
+Looking at these plots, you can see there is still a lot of variation in the observed maximum plant height. Some of this maybe due to the variation between wetlands. If we compare the maximum plant height at the Loringhoven and Tsuji wetlands (Figure \@ref(fig:htvsdateTvL)) then you will see that they are much lower and higher respectively than the overall average (Figure \@ref(fig:htvsdatefence)). This means that we should incorporate wetland into our model as well. However, if we are trying to generalise these results across all similar wetland in these CMAs, then we don't really care about the maximum plant height being larger at one wetland compared to another. Instead, we can treat them as a random effect. While some wetlands typically have a greater maximum plant height, others lower and some are average, we *don't care* about them individually, we care about the variation between them. If we include this random effect into our model it will take the form[^random]:
+
+$$
+\text{max_ht} \sim \text{df_survey} * \text{fence} * \text{grazing} + (1|\text{wetland)}
+$$
+
+[^random]: In different packages the random effect is referenced differently. This form common and is that used in packages like `lme4` and `brms`. It means wetland is treated like a factor and only effects the intercept.
+
+```{r htvsdateTvL, fig.cap='Plot of maximum plant height at the quadrat over time split by fencing status at the Loringhoven and Tsuji wetlands. The blue line represent the estimate from the simple linear model on that treatment level that wetland'}
+ggplot(ds_ht %>% filter(wetland %in% c('Loringhoven', 'Tsuji')), aes(dt_survey, max_ht)) + geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x, geom = "smooth") +
+  ylab('Maximum plant height (cm)') +
+  xlab('Time') +
+  facet_grid(wetland ~ fence, scales = 'free_y') 
+```
+
+## Mixed effects models: trying to account for correlation
+
+If we have a model with both fixed and random effects this model is known as a mixed effects model. These types of models are very useful in trying to account for correlations (structural patterns) in the residuals. These patterns in the residuals can take many forms:
+
+<aside>
+*Residuals* are the difference between the actual observed response data and the estimated response using the model.
+</aside>
+
+-   **Hierarchical model** (aka a nested or multilevel model) is where there observations in the same group (or level) are more similar to each other. Think of how the groupings of region, wetland and transect are nested within each other. Observations within the same transect are likely to be more similar than at different transects. However, observations at the same wetland may be more similar than at different wetland.
+-   **Temporal correlation** is where observations nearer in time are more similar to each other
+-   **Spatial correlation** is where observations physically near each other are more similar to each other
+-   **Spatio-temporal correlation** is where observations near each other either physically or in time are more similar to each other
+
+Looking at the results of linear models at the transect level from the Eggeling wetland (Figure \@ref(fig:htvsdateEgg)), it shows the difference between transect. It would be good to be able to account for some of the is extra variation. Similar to the wetland level effects, we "don't care" about the specific transect, as we are looking to be able to generalise across all possible transects. Hence, we will include transect as a random variable, but it is "nested" within wetland, so we will include it as a hierarchical (or nested) random effect. So the model now becomes:
+
+$$
+\text{max_ht} \sim \text{df_survey} * \text{fence} * \text{grazing} + (1|\text{wetland} / \text{transect_id})
+$$
+
+```{r htvsdateEgg, fig.cap='Plot of maximum plant height at the quadrat over time split by fencing status at the Eggeling wetland. The lines represent the estimate from the simple linear model on that treatment level at that transect'}
+ggplot(ds_ht %>% filter(wetland == 'Eggeling'), aes(dt_survey, max_ht, color = transect_id)) + geom_point() +
+  stat_smooth(method = "lm", formula = y ~ x, geom = "smooth") +
+  ylab('Maximum plant height (cm)') +
+  xlab('Time') +
+  facet_grid(. ~ fence, scales = 'free_y') 
+```
+
+## The underlying distribution
+
+So far we have implicitly assumed the data is normally distributed and follows all the required assumptions, like the residuals are independent and normally distributed and their variance is constant. However, if you look at Figure \@ref(fig:htvsdateEgg) you will notice that some of the confidence intervals around the mean and even some estimates are negative. Given that the response variable of interest is maximum plant height where values can't be negative, a different distribution should be chosen. Each distribution has a range of values it can take. If is important that as a first pass, the distribution you chose to use in your model does not allow for values outside the scope of your response variable.
+
+<aside>
+The normal (or Gaussian) distribution can theoretically take any value from $-\infty$ to $\infty$. If your mean is a long way from 0 compared to you standard deviation, then using a normal distribution may not cause any obvious issues.
+</aside>
+
+In our example where the response variable can take any non-negative values it may make sense to try a log-normal or gamma distribution, each of which can only take positive values. Given the log-normal distribution is easier to use, so we will use it in our model.
+
+```{r lnorm, fig.cap='Plot of log-normal distributions with the log-means of 1, 2.5 and 4 and a log-standard deviation of 1'}
+ggplot(expand.grid(x=seq(0.01, 100, 0.01), log_mean=c(1, 2.5, 4)) %>% mutate(y=dlnorm(x, log_mean, 1), log_mean=factor(log_mean)), aes(x,y, group=log_mean, color=log_mean)) +
+  geom_line() + geom_hline(yintercept=0, color='grey') +
+  geom_vline(xintercept=0, color='grey') + ylab('Probability') + scale_color_discrete(name = 'log-mean')
+```
+
+# Creating the model
+
+Using a combination of us exploring the data and the experimental design, it looks like we will try log-normal generalised linear mixed model (glmm). Using the log-normal distribution means that we won't predict negative numbers. The interaction of time, fencing and grazing type will be fixed effects and relate to our key question of grazing intensity affecting wetland plants. The wetland and transect could be nested in a hierarchical model of random effects, but for simplicity and quicker convergence we will just use wetland as a random effect. This can account for the repeated measures of sampling the same places over time.
+
+## Advanced topic: Frequentist or Bayesian?
+
+<span style="color: blue;">
+Chances are the statistics you learnt at university were frequentist statistics: t-tests, ANOVA, linear regression and *p*-values. It relies on long-run probabilities (how probable is this data given the null hypothesis). For many models, parameters can be relatively easily estimated using frequentist statistics, and solutions can be found quickly.
+</span>
+
+<aside>Inside RStudio/R functions that use frequentist models include the base functions like "lm" and "glm" as well as "(g)lmer" and "gam(m)" from "lme4" and "mgcv" respectively.</aside>
+
+<span style="color: blue;">
+More recently, Bayesian statistics have come into wider use with modern computing. Bayesian approaches involve the probability of a hypothesis given the dataset. It did require programming to generate models, but over the last 5 or so year, packages that will allow you to run without programming have become available for use. However, due to the number of iterations and complex calculations required, models can take between 5 minutes to 5 days to run and converge.
+</span>
+
+<aside>Inside RStudio/R packages for Bayesian models include "rjags" and "brms", that utilise external programs like jags and stan respectively.</aside>
+
+<span style="color: blue;">
+Some people have a particular adherence to either framework. Some people just use whichever tools will get the job done quickest. At ARI, most people are in the latter camp. If your model is relatively simple, then frequentist models should give you a quick and accurate answer. If your model is more complicated, then it may be simpler to do it in a Bayesian system.
+</span>
+
+## Coding the model
+To construct the model we are going to use the package `lme4` and the function `glmer`. The code for the function mimics the formulation we used earlier, with the addition of the data source and the distribution used (called "family").
+
+<aside>
+Note that there are some zero maximum heights in the data. You cannot take the log of zero, so to stop this error we will remove the zeros from the analysis. This has the effect of making the model conditional on there being plants present at the quadrat.
+</aside>
+
+```{r initalmodel, cache=TRUE, warning=TRUE, echo=TRUE, code_folding=FALSE}
+mod_ht <- glmer(max_ht ~ grazing*fence*dt_survey + (1|wetland),
+                data = ds_ht %>% filter(max_ht > 0),
+                family = gaussian(link = "log"))
+```
+
+Using the date in the model as a date seems to be causing computational issues. Usually, I scale my numerical predictor variables, so that they have a maximum and minimum value between -5 and 5. Here I am going to instead use the visit number that is give as the last digit in the `survey_id`. To help with interpretations, I am going to subtract 1 from the visit number, so that the first visit is 0 (pre fencing) and this will mean the intercepts now correspond to the initial mean maximum heights.
+
+```{r scaledmodel, cache=TRUE, warning=TRUE, echo=TRUE, code_folding=FALSE}
+ds_ht_scaled <- ds_ht %>% filter(max_ht > 0) %>% mutate(visit = as.numeric(str_sub(survey_id, start = -1)) - 1)
+mod_ht <- glmer(max_ht ~ grazing*fence*visit + (1|wetland),
+                data = ds_ht_scaled,
+                family = gaussian(link = "log"))
+```
+
+## Checking model assumptions
+
+Before we look at the output from the model, we should assess the model assumptions were violated. To do this, we can use the package `DHARMa`. The idea is that by running some simulations, you can get a new distribution for the residuals that should always follow the same pattern if the model assumptions met. That distribution is a flat (or uniform) distribution from 0 to 1. By looking at this or the subsequent QQ plot and residuals versus predicted plots, you will be able to see any deviations from what is expected. Unfortunately, our model seems to have fails some of the model assumptions, as the points and test show deviations from the expected. In particular, the assumption that the change over time is linear looks to have been violated, and there are some large outlier in the final survey.
+
+<aside>
+The QQ plots should have all the points on the 45$^\circ$ line from (0, 0) to (1, 1).
+</aside>
+
+```{r, echo=TRUE, code_folding=FALSE}
+sim_out_ht <- simulateResiduals(fittedModel = mod_ht, plot = F)
+hist(sim_out_ht)
+plot(sim_out_ht)
+plotQQunif(sim_out_ht)
+testCategorical(sim_out_ht, catPred = ds_ht_scaled$visit)
+```
+
+## Model interpretation and displying results
+
+Let us pretend for the moment that the model assumptions are not violated. If we look at the output from this model it can be a bit overwhelming. To pull out the key table of values that you may use in a report or paper you can use the function `tidy` from the `broom.mixed` package. This shows that many of the terms are significant, but is still a bit confusing to the uninitiated.
+
+```{r, echo=TRUE}
+tidy(mod_ht)
+```
+
+An alternative is to use a package like `emmeans` to estimate the the marginal means for the variables of interest. We can set-up a simple comparison between fenced and not fenced for each grazing type. It shows that at both grazing types that the unfenced transects had on average lower maximum plant heights.
+
+```{r, echo=TRUE}
+em_ht <- emmeans::emmeans(mod_ht, ~ fence | grazing*visit)
+pairs(em_ht, simple = 'fence')
+```
+
+Typically, a plot of the predicted values can be more informative than the parameter estimates tables. To produce the estimates from a model is R, typically you use the `predict` function. This works for `glmer` models to produce the estimate, but to produce the confidence intervals for those predictions we need to bootstrap the predictions and post-process the confidence intervals using the 0.025 and 0.975 quantiles from the simulations.
+
+<aside>
+Bootstrapping is a technique that simulate the outcome using a random subset of the data in each simulation. The resulting data can be used estimate derived statistics of interest, like standard errors or confidence intervals.
+</aside>
+
+```{r}
+pred_data <- ds_ht_scaled %>% select(fence, visit, grazing) %>% distinct()
+# predFun <- function(fit) {
+#   predict(fit, newdata = pred_data, re.form = NA)
+# }
+# boot_results <- bootMer(mod_ht, FUN = predFun, nsim = 1000)
+# ci_lower <- apply(boot_results$t, 2, quantile, 0.025)
+# ci_upper <- apply(boot_results$t, 2, quantile, 0.975)
+# predictions <- predict(model, newdata = your_new_data, re.form = NA)
+# results <- data.frame(predictions, ci_lower, ci_upper)
+ds_pred_ht <- readRDS('data/ds_pred_ht.rds')
+```
+
+The results of the bootstrapping can then be used to produce plots. In Figure \@ref(fig:modelout) it is easy to see that at crash wetlands the average maximum height has increased over time, while there is no significant increase at the unfenced transects. However, at the press wetlands, the change in time at the fenced and non-fenced transects looks similar.
+
+```{r modelout, fig.cap='Plot of log-normal distributions with the log-means of 1, 2.5 and 4 and a log-standard deviation of 1'}
+ggplot(ds_pred_ht, aes(visit, est, ymin = lb, ymax=ub)) + geom_line(linetype = 'dashed') +
+  geom_pointrange() + facet_grid(grazing~fence) +
+  scale_y_continuous(limits = c(0, NA)) + geom_hline(yintercept = 0, color = 'grey') +
+  xlab('Number of previous visits') + ylab('Maximum plant height (cm)')
+
+```
+
+# Hands-on compenent
+
+Below is the link to the project files for today
+
+::: {#readdata .greeting .message style="background: lightgrey;"}
+**Your Task: for the less experienced**
+
+1.    Go through the steps in the project a make sure they work, and see if you can follow along
+
+2.    If you feel confident, maybe change some of the options in the plots 
+
+:::
+
+Below is the link to just the data
+
+::: {#readdata .greeting .message style="background: lightgrey;"}
+**Your Task: for the more experienced**
+
+1.    Download the workshop data
+
+2.    Create your own model for the relationship to maximum plant height that may address the problems in the model
+
+3.    Test the model assumptions to see if your model is more appropriate
+
+4.    Produce a summary table of the model output
+
+5.    Produce a plot of the predicted values for your model
+
+6.    Analyses the species richness data using the supplied dataset
+
+:::
