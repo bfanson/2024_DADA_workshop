@@ -17,15 +17,23 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 ```
 
-# some examples
+Below is just a coarse overview of ggplot2.  See the following [ggplot tutorial]( https://rstudio.github.io/cheatsheets/html/data-visualization.html) for more examples.  Lots of other tutorials out there.
 
-The way to start a plot is `ggplot()` function. Then tell it what the x-variable and y-variable.  Here, I will plot hp (horsepower) vs mpg (miles per gallon).
+# Overview 
+
+## ggplot()
+
+All plots start with `ggplot()` function.  In this function, you tell it what data to use for all added layers and what are the x/y variables.   Here, I will plot hp (horsepower) vs mpg (miles per gallon). 
 
 ```{r}
 #  head(mtcars) # have a look at
   ggplot( mtcars, aes(x=hp, y=mpg) )
   
 ```
+
+## geoms (geometric shape)
+
+Above shows the setup of the plot, it has no points/lines (aka geometric shapes) because we have not specified `geom_xxx()` (e.g. geom_point, geom_line(), geom_boxplot)
 
 ```{r}
   ggplot( mtcars, aes(hp, mpg) ) +  # notice you can drop x=,y=
@@ -44,7 +52,29 @@ You can just add more and more layers.  You might want to add a smoother.
       geom_point() +
       geom_smooth()  # add a smoother/relationship
 ```
+## formatting
 
+Now, let's see some basic changes that you might want to do...
+
+```{r}
+  ggplot( mtcars, aes(hp, mpg) ) +
+      geom_point() +
+      geom_smooth(fill='blue', alpha=0.2 ) + # change color of the error band
+        labs( x='Horsepower', y='MPG', title='Title') + # add in some labels
+        ylim(0,40)  # set y-axis limits
+
+```
+There are different `theme_xxx()` in ggplot to change how the graph looks...
+
+```{r}
+  ggplot( mtcars, aes(hp, mpg) ) +
+      geom_point() +
+      geom_smooth(fill='blue', alpha=0.2 ) + 
+        labs( x='Horsepower', y='MPG', title='Title') +
+        ylim(0,40) +
+        theme_classic()  # there are themes that change overall formatting... type theme_ and see what autofills
+
+```
 
 ## grouping variables within a panel
 
@@ -57,7 +87,16 @@ Often you want to break a graph apart by a group variable (like a treatment fact
       geom_smooth( method='lm')  # running linear model
 ```
 
-## Faceting
+
+
+```{r}
+  ggplot( mtcars, aes(hp, mpg ) ) + # using factor to turn cyl from numeric to character/factor
+      geom_point( aes(size=factor(cyl), color=factor(cyl) ) ) + # I am going to add here so only point change
+      geom_smooth( method='lm')  # running linear model
+```
+
+
+## faceting (multi-panel)
 
 For one variable you can use `facet_wrap(~group)` or `facet_grid(~group)`.  For two variables, use `facet_grid(grp_1~grp_2)`
 
@@ -68,6 +107,8 @@ For one variable you can use `facet_wrap(~group)` or `facet_grid(~group)`.  For 
         facet_wrap(~cyl, ncol=2)  # added a variable to break up 
 ```
 
+The `facet_grid()` is setup that the first variable determines row and second the column [facet_grid(row ~ column)]
+
 ```{r}
   ggplot( mtcars, aes(hp, mpg, color=factor(cyl) ) ) + 
       geom_point() +
@@ -75,18 +116,18 @@ For one variable you can use `facet_wrap(~group)` or `facet_grid(~group)`.  For 
         facet_grid(~cyl, scales='free_x') 
 ```
 
-# by column
+
 ```{r}
   ggplot( mtcars, aes(hp, mpg, color=factor(cyl) ) ) + 
       geom_point() +
       geom_smooth( method='lm') + 
-        facet_grid(cyl~.)  # added a variable to break up 
+        facet_grid(cyl~vs)  # added a variable to break up two variables
 ```
 
 
 # interactive
 
-For interactive ggplots, there are packages that convert a ggplot object to an interactive object. I saw two packages below
+For interactive ggplots, there are packages that convert a ggplot object to an interactive object. See two packages below:
 
 ## convert to plotly
 
@@ -164,7 +205,7 @@ girafe_options(
 
 # animate
 
-check out [ggnimate](https://gganimate.com/) 
+Check out [ggnimate](https://gganimate.com/) to see a tutorial
 
 Example showing strontium profiles over life of a fish and likely location.
 
