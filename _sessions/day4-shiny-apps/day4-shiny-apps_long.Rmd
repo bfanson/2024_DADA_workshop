@@ -24,6 +24,8 @@ slug: fanson2024dada
 knitr::opts_chunk$set(echo = FALSE, collapse = TRUE)
 ```
 
+[REMINDER TO US: START RECORDING]{style="color: red;"}
+
 # Before starting
 
 Make sure you have the shiny package installed on your computer. You can use code below or the "Packages" tab in lower right panel in Rstudio.
@@ -345,6 +347,12 @@ Couple more examples...
   
 ```
 
+# A few tips on debugging
+
+-   work in steps
+-   to test UI, you can often comment out all of the server content
+-   once you got UI working, work on the server
+
 # Little more on the server side
 
 ## Reactivity
@@ -385,23 +393,11 @@ As noted about, search the Shiny [gallery](https://shiny.posit.co/r/gallery/) to
 
 Another good place to search for additional extensions for shiny is [Shiny Awesome](https://github.com/nanxstats/awesome-shiny-extensions) which has a curated list and some of the stuff, is well, awesome! (and overwhelming) The links often lead you to GitHub pages.
 
-## Dashboards
-
-### shinydashboards package
-
-This package helps with setting up dashboard layouts (columns, rows, matrix) as well as a suite of html objects (e.g. messages, notifications), aesthetics ("skins"), and other more bespoke tools. Check out <https://rstudio.github.io/shinydashboard/> for examples and overview.
-
-### flexdashboard package
-
-Flexdashboard can be useful way to quickly create a layout using Rmarkdown-like file. At the simplest, you can create an interactive dashboard with no reactivity. If you want reactivity (e.g. inputs), then you can still use the template and integrate selectInput() functions and renderXXX() functions without explicitly defining ui/server. It is a bit of a hybrid approach between Rmarkdown/Quarto and shiny App. Not sure how much this package is still being developed??
-
-For a range of examples: <https://rstudio.github.io/flexdashboard/articles/examples.html>
-
-An example as a shiny App run in a Rmarkdown file, see <https://jjallaire.shinyapps.io/shiny-ggplot2-diamonds/>.
-
 # Useful interactive packages for shiny
 
-As Shiny apps are all about interactivity, you will want to use interactive plots. Check the following [webpage](https://r-graph-gallery.com/interactive-charts.html) for a examples of packages that have interactivity. I will show a few common ones below:
+As Shiny apps are all about interactivity, you may want to use interactive plots. Check the following [webpage](https://r-graph-gallery.com/interactive-charts.html) for a examples of packages that have interactivity.
+
+I will show a few common ones below:
 
 ## leaflet
 
@@ -591,21 +587,33 @@ Good for basic shiny <https://mastering-shiny.org/>
 
 As your Apps improve in capabilities, you may want to have users upload inputs (e.g. spatial layer, data)
 
-
 ## I/O: Saving user inputs
 
-- temporary results on the server for just the session
+-   temporary results on the server for just the session
 
-- save to cloud: dropbox, Amazon (AWS), Gdrive
-  +  cloud dataset
+-   save to cloud: dropbox, Amazon (AWS), Gdrive
 
-- save to a cloud database
+    -   cloud dataset
+
+-   save to a cloud database
 
 ## I/O: Downloading
 
 If your app produces output for the user, you may want to have a button so that they can download those results to their computer.
 
+## Dashboards
 
+### shinydashboards package
+
+This package helps with setting up dashboard layouts (columns, rows, matrix) as well as a suite of html objects (e.g. messages, notifications), aesthetics ("skins"), and other more bespoke tools. Check out <https://rstudio.github.io/shinydashboard/> for examples and overview.
+
+### flexdashboard package
+
+Flexdashboard can be useful way to quickly create a layout using Rmarkdown-like file. At the simplest, you can create an interactive dashboard with no reactivity. If you want reactivity (e.g. inputs), then you can still use the template and integrate selectInput() functions and renderXXX() functions without explicitly defining ui/server. It is a bit of a hybrid approach between Rmarkdown/Quarto and shiny App. Not sure how much this package is still being developed??
+
+For a range of examples: <https://rstudio.github.io/flexdashboard/articles/examples.html>
+
+An example as a shiny App run in a Rmarkdown file, see <https://jjallaire.shinyapps.io/shiny-ggplot2-diamonds/>.
 
 # 
 
