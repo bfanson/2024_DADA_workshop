@@ -1,0 +1,51 @@
+# 
+
+# Beyond showing results
+
+## I/O: Uploading files
+
+As your Apps improve in capabilities, you may want to have users upload inputs (e.g. spatial layer, data)
+
+## I/O: Saving user inputs
+
+-   temporary results on the server for just the session
+
+-   save to cloud: dropbox, Amazon (AWS), Gdrive
+
+    -   cloud dataset
+
+-   save to a cloud database
+
+## I/O: Downloading
+
+If your app produces output for the user, you may want to have a button so that they can download those results to their computer.
+
+## Dashboards
+
+### shinydashboards package
+
+This package helps with setting up dashboard layouts (columns, rows, matrix) as well as a suite of html objects (e.g. messages, notifications), aesthetics ("skins"), and other more bespoke tools. Check out <https://rstudio.github.io/shinydashboard/> for examples and overview.
+
+### flexdashboard package
+
+Flexdashboard can be useful way to quickly create a layout using Rmarkdown-like file. At the simplest, you can create an interactive dashboard with no reactivity. If you want reactivity (e.g. inputs), then you can still use the template and integrate selectInput() functions and renderXXX() functions without explicitly defining ui/server. It is a bit of a hybrid approach between Rmarkdown/Quarto and shiny App. Not sure how much this package is still being developed??
+
+For a range of examples: <https://rstudio.github.io/flexdashboard/articles/examples.html>
+
+An example as a shiny App run in a Rmarkdown file, see <https://jjallaire.shinyapps.io/shiny-ggplot2-diamonds/>.
+
+# 
+
+# Think about how shiny Apps might be useful
+
+## Visualising data for clients
+
+**Ibis Tracker - Nev's masterpiece**
+
+<https://arisci.shinyapps.io/ibisTracker/>
+
+## Data sharing - upload
+
+## Model simulations
+
+# 

@@ -65,7 +65,8 @@ Across western and eastern Victoria, a total of 28 sites were selected to be sur
 
 ```{r echo=F, fig.height=4, fig.width=7}
   sf_site <- sf::read_sf('data/sf_site.gpkg') %>% select(-transect_id)
-  sf_cma <- VicmapR::vicmap_query(layer='open-data-platform:cma100') %>% collect()
+  # sf_cma <- VicmapR::vicmap_query(layer='open-data-platform:cma100') %>% VicmapR::collect()
+  sf_cma <- sf::read_sf('data/sf_cma.gpkg')  
   mapview::mapview(sf_cma, zcol='cmaname', layer.name='cma') + 
     mapview::mapview(sf_site, zcol='grazing', layer.name='site', col.regions=c('red','blue') )
 
